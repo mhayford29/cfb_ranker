@@ -1,4 +1,18 @@
 import React from 'react';
+import Modal from 'react-modal';
+
+const customStyles = {
+  content : {
+    top                   : '50%',
+    left                  : '50%',
+    right                 : 'auto',
+    bottom                : 'auto',
+    marginRight           : '-50%',
+    transform             : 'translate(-50%, -50%)'
+  }
+};
+
+Modal.setAppElement('#app');
 
 class InfoDisplay extends React.Component {
   constructor(props){
@@ -34,8 +48,13 @@ class InfoDisplay extends React.Component {
           <Team 
             team={this.state.team}
             addToRankings={this.props.addToRankings}
+            openModal={this.props.openModal}
           /> : 
-          <Welcome />}
+          <Welcome 
+            openModal = {this.openModal}
+            afterOpenModal = {this.afterOpenModal}
+            closeModal = {this.closeModal}
+            modalIsOpen = {this.state.modalIsOpen}/>}
       </div>
     )
   }
@@ -62,6 +81,7 @@ const Team = (props) => {
       {team.record.items[0].stats.map((stat, index) => {
         return <div style={{ fontSize: '20px'}}>{index + 1}. {stat.name}: {stat.value}</div>
       })}
+      <button onClick={props.openModal}>Open Modal</button>
     </div>
   )
 }
