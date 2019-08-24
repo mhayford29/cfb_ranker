@@ -24765,11 +24765,10 @@ exports.unstable_unsubscribe = unstable_unsubscribe;
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(1);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var react_modal__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(44);
-/* harmony import */ var react_modal__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(react_modal__WEBPACK_IMPORTED_MODULE_1__);
-/* harmony import */ var _Rankings_jsx__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(14);
-/* harmony import */ var _Navigation_jsx__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(15);
-/* harmony import */ var _InfoDisplay_jsx__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(43);
+/* harmony import */ var _Rankings_jsx__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(14);
+/* harmony import */ var _Navigation_jsx__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(15);
+/* harmony import */ var _InfoDisplay_jsx__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(43);
+/* harmony import */ var _Modal_jsx__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(60);
 /* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(16);
 /* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_5__);
 function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
@@ -24796,17 +24795,6 @@ function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || func
 
 
 
-var customStyles = {
-  content: {
-    top: '50%',
-    left: '50%',
-    right: 'auto',
-    bottom: 'auto',
-    marginRight: '-50%',
-    transform: 'translate(-50%, -50%)'
-  }
-};
-react_modal__WEBPACK_IMPORTED_MODULE_1___default.a.setAppElement('#app');
 
 var App =
 /*#__PURE__*/
@@ -24903,39 +24891,29 @@ function (_React$Component) {
   }, {
     key: "render",
     value: function render() {
-      var _this4 = this;
-
       return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "navigation"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_Navigation_jsx__WEBPACK_IMPORTED_MODULE_3__["default"], {
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_Navigation_jsx__WEBPACK_IMPORTED_MODULE_2__["default"], {
         fetchPoll: this.fetchPoll,
         fetchTeam: this.fetchTeam
       })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "appContainer"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "info-display"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_InfoDisplay_jsx__WEBPACK_IMPORTED_MODULE_4__["default"], {
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_InfoDisplay_jsx__WEBPACK_IMPORTED_MODULE_3__["default"], {
         publishedRankings: this.state.publishedRankings,
         teamData: this.state.teamData,
         addToRankings: this.addToRankings,
         openModal: this.openModal
       })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "rankings"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_Rankings_jsx__WEBPACK_IMPORTED_MODULE_2__["default"], {
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_Rankings_jsx__WEBPACK_IMPORTED_MODULE_1__["default"], {
         team: this.state.rankedTeam
-      }))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_modal__WEBPACK_IMPORTED_MODULE_1___default.a, {
-        isOpen: this.state.modalIsOpen,
-        onAfterOpen: this.afterOpenModal,
-        onRequestClose: this.closeModal,
-        style: customStyles,
-        contentLabel: "Example Modal"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h2", {
-        ref: function ref(subtitle) {
-          return _this4.subtitle = subtitle;
-        }
-      }, "Hello"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
-        onClick: this.closeModal
-      }, "close"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, "I am a modal"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("form", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", null, "tab navigation"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", null, "stays"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", null, "inside"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", null, "the modal"))));
+      }))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_Modal_jsx__WEBPACK_IMPORTED_MODULE_4__["default"], {
+        closeModal: this.closeModal,
+        afterOpenModal: this.afterOpenModal,
+        modalIsOpen: this.state.modalIsOpen
+      }));
     }
   }]);
 
@@ -27579,8 +27557,6 @@ module.exports = function spread(callback) {
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(1);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var react_modal__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(44);
-/* harmony import */ var react_modal__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(react_modal__WEBPACK_IMPORTED_MODULE_1__);
 function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -27600,18 +27576,6 @@ function _inherits(subClass, superClass) { if (typeof superClass !== "function" 
 function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
 
 
-
-var customStyles = {
-  content: {
-    top: '50%',
-    left: '50%',
-    right: 'auto',
-    bottom: 'auto',
-    marginRight: '-50%',
-    transform: 'translate(-50%, -50%)'
-  }
-};
-react_modal__WEBPACK_IMPORTED_MODULE_1___default.a.setAppElement('#app');
 
 var InfoDisplay =
 /*#__PURE__*/
@@ -27708,7 +27672,7 @@ var Team = function Team(props) {
     }, index + 1, ". ", stat.name, ": ", stat.value);
   }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
     onClick: props.openModal
-  }, "Open Modal"));
+  }, "+ Compare Team"));
 };
 
 var Poll = function Poll(props) {
@@ -30050,6 +30014,44 @@ function polyfill(Component) {
 
 
 
+
+/***/ }),
+/* 60 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(1);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var react_modal__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(44);
+/* harmony import */ var react_modal__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(react_modal__WEBPACK_IMPORTED_MODULE_1__);
+
+
+var customStyles = {
+  content: {
+    top: '50%',
+    left: '50%',
+    right: 'auto',
+    bottom: 'auto',
+    marginRight: '-50%',
+    transform: 'translate(-50%, -50%)'
+  }
+};
+react_modal__WEBPACK_IMPORTED_MODULE_1___default.a.setAppElement('#app');
+
+var TeamSelectModal = function TeamSelectModal(props) {
+  return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_modal__WEBPACK_IMPORTED_MODULE_1___default.a, {
+    isOpen: props.modalIsOpen //onAfterOpen={props.afterOpenModal}
+    ,
+    onRequestClose: props.closeModal,
+    style: customStyles,
+    contentLabel: "Example Modal"
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h2", null, "Hello"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+    onClick: props.closeModal
+  }, "close"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, "I am a modal"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("form", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", null, "tab navigation"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", null, "stays"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", null, "inside"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", null, "the modal"))));
+};
+
+/* harmony default export */ __webpack_exports__["default"] = (TeamSelectModal);
 
 /***/ })
 /******/ ]);
