@@ -36,11 +36,7 @@ class InfoDisplay extends React.Component {
             addToRankings={this.props.addToRankings}
             openModal={this.props.openModal}
           /> : 
-          <Welcome 
-            openModal = {this.openModal}
-            afterOpenModal = {this.afterOpenModal}
-            closeModal = {this.closeModal}
-            modalIsOpen = {this.state.modalIsOpen}/>}
+          <Welcome />}
       </div>
     )
   }

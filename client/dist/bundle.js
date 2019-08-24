@@ -27626,12 +27626,7 @@ function (_React$Component) {
         team: this.state.team,
         addToRankings: this.props.addToRankings,
         openModal: this.props.openModal
-      }) : react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(Welcome, {
-        openModal: this.openModal,
-        afterOpenModal: this.afterOpenModal,
-        closeModal: this.closeModal,
-        modalIsOpen: this.state.modalIsOpen
-      }));
+      }) : react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(Welcome, null));
     }
   }]);
 
@@ -30046,9 +30041,417 @@ var TeamSelectModal = function TeamSelectModal(props) {
     onRequestClose: props.closeModal,
     style: customStyles,
     contentLabel: "Example Modal"
-  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h2", null, "Hello"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
-    onClick: props.closeModal
-  }, "close"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, "I am a modal"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("form", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", null, "tab navigation"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", null, "stays"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", null, "inside"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", null, "the modal"))));
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "modal-container"
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "modal-column"
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "modal-header"
+  }, "American"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, "Central Florida"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, "Cincinnati"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, "East Carolina"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, "Houston"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, "Memphis"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, "Navy"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, "South Florida"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, "Southern Methodist"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, "Temple"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, "Tulane"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, "Tulsa")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "modal-column"
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "modal-header"
+  }, "ACC"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, "Boston College"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, "Clemson"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, "Duke"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, "Florida State"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, "Georgia Tech"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, "Louisville"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, "Miami"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, "North Carolina"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, "North Carolina State"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, "Pitt"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, "Syracuse"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, "Virginia"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, "Virginia Tech"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, "Wake Forest")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "modal-column"
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "modal-header"
+  }, "B1G"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, "Illinois"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, "Indiana"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, "Iowa"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, "Maryland"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, "Michigan"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, "Michigan State"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, "Minnesota"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, "Nebraska"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, "Northwestern"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, "Ohio State"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, "Penn State"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, "Purdue"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, "Rutgers"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, "Wisconsin")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "modal-column"
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "modal-header"
+  }, "Big 12"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    onClick: function onClick() {
+      return fetchTeam('baylor', 0);
+    }
+  }, "Baylor"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    onClick: function onClick() {
+      return fetchTeam('iowast', 1);
+    }
+  }, "Iowa State"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    onClick: function onClick() {
+      return fetchTeam('kansas', 2);
+    }
+  }, "Kansas"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    onClick: function onClick() {
+      return fetchTeam('ksu', 3);
+    }
+  }, "Kansas State"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    onClick: function onClick() {
+      return fetchTeam('oklahoma', 4);
+    }
+  }, "Oklahoma"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    onClick: function onClick() {
+      return fetchTeam('okst', 5);
+    }
+  }, "Oklahoma State"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    onClick: function onClick() {
+      return fetchTeam('tcu', 6);
+    }
+  }, "TCU"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    onClick: function onClick() {
+      return fetchTeam('texas', 7);
+    }
+  }, "Texas"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    onClick: function onClick() {
+      return fetchTeam('ttu', 8);
+    }
+  }, "Texas Tech"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    onClick: function onClick() {
+      return fetchTeam('wvu', 9);
+    }
+  }, "West Virginia")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "modal-column"
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "modal-header"
+  }, "C-USA"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    onClick: function onClick() {
+      return fetchTeam('uab', 10);
+    }
+  }, "Alabama Birmingham"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    onClick: function onClick() {
+      return fetchTeam('fau', 1);
+    }
+  }, "Florida Atlantic"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    onClick: function onClick() {
+      return fetchTeam('fiu', 2);
+    }
+  }, "Florida International"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    onClick: function onClick() {
+      return fetchTeam('latech', 3);
+    }
+  }, "Louisiana Tech"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    onClick: function onClick() {
+      return fetchTeam('marshall', 4);
+    }
+  }, "Marshall"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    onClick: function onClick() {
+      return fetchTeam('middletenn', 5);
+    }
+  }, "Middle Tennessee"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    onClick: function onClick() {
+      return fetchTeam('charlotte', 0);
+    }
+  }, "North Carolina Charlotte"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    onClick: function onClick() {
+      return fetchTeam('northtexas', 6);
+    }
+  }, "North Texas"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    onClick: function onClick() {
+      return fetchTeam('odu', 7);
+    }
+  }, "Old Dominion"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    onClick: function onClick() {
+      return fetchTeam('rice', 8);
+    }
+  }, "Rice"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    onClick: function onClick() {
+      return fetchTeam('usm', 9);
+    }
+  }, "Southern Miss"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    onClick: function onClick() {
+      return fetchTeam('utep', 11);
+    }
+  }, "Texas El Paso"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    onClick: function onClick() {
+      return fetchTeam('utsa', 12);
+    }
+  }, "Texas San Antonio"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    onClick: function onClick() {
+      return fetchTeam('wku', 13);
+    }
+  }, "Western Kentucky")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "modal-column"
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "modal-header"
+  }, "Independents"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    onClick: function onClick() {
+      return fetchTeam('army', 0);
+    }
+  }, "Army"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    onClick: function onClick() {
+      return fetchTeam('byu', 1);
+    }
+  }, "BYU"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    onClick: function onClick() {
+      return fetchTeam('uconn', 1);
+    }
+  }, "Connecticut"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    onClick: function onClick() {
+      return fetchTeam('liberty', 2);
+    }
+  }, "Liberty"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    onClick: function onClick() {
+      return fetchTeam('nmsu', 3);
+    }
+  }, "New Mexico State"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    onClick: function onClick() {
+      return fetchTeam('notredame', 4);
+    }
+  }, "Notre Dame"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    onClick: function onClick() {
+      return fetchTeam('umassamherst', 5);
+    }
+  }, "Massachusetts")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "modal-column"
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "modal-header"
+  }, "MAC"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    onClick: function onClick() {
+      return fetchTeam('akron', 0);
+    }
+  }, "Akron"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    onClick: function onClick() {
+      return fetchTeam('ball', 1);
+    }
+  }, "Ball State"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    onClick: function onClick() {
+      return fetchTeam('bgsu', 2);
+    }
+  }, "Bowling Green"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    onClick: function onClick() {
+      return fetchTeam('buffalo', 3);
+    }
+  }, "Buffalo"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    onClick: function onClick() {
+      return fetchTeam('cmu', 4);
+    }
+  }, "Central Michigan"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    onClick: function onClick() {
+      return fetchTeam('emu', 5);
+    }
+  }, "Eastern Michigan"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    onClick: function onClick() {
+      return fetchTeam('kent', 6);
+    }
+  }, "Kent State"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    onClick: function onClick() {
+      return fetchTeam('miamioh', 7);
+    }
+  }, "Miami University"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    onClick: function onClick() {
+      return fetchTeam('niu', 8);
+    }
+  }, "Northern Illinois"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    onClick: function onClick() {
+      return fetchTeam('ohio', 9);
+    }
+  }, "Ohio University"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    onClick: function onClick() {
+      return fetchTeam('toledo', 10);
+    }
+  }, "Toledo"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    onClick: function onClick() {
+      return fetchTeam('wmu', 11);
+    }
+  }, "Western Michigan")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "modal-column"
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "modal-header"
+  }, "MWC"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    onClick: function onClick() {
+      return fetchTeam('afa', 0);
+    }
+  }, "Air Force"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    onClick: function onClick() {
+      return fetchTeam('boisest', 1);
+    }
+  }, "Boise State"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    onClick: function onClick() {
+      return fetchTeam('csu', 2);
+    }
+  }, "Colorado State"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    onClick: function onClick() {
+      return fetchTeam('fresnost', 3);
+    }
+  }, "Fresno State"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    onClick: function onClick() {
+      return fetchTeam('hawaii', 4);
+    }
+  }, "Hawaii"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    onClick: function onClick() {
+      return fetchTeam('nevada', 5);
+    }
+  }, "Nevada"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    onClick: function onClick() {
+      return fetchTeam('unlv', 9);
+    }
+  }, "Nevada Las Vegas"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    onClick: function onClick() {
+      return fetchTeam('unm', 6);
+    }
+  }, "New Mexico"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    onClick: function onClick() {
+      return fetchTeam('sandiegost', 7);
+    }
+  }, "San Diego State"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    onClick: function onClick() {
+      return fetchTeam('sjsu', 8);
+    }
+  }, "San Jose State"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    onClick: function onClick() {
+      return fetchTeam('usu', 10);
+    }
+  }, "Utah State"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    onClick: function onClick() {
+      return fetchTeam('wyoming', 11);
+    }
+  }, "Wyoming")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "modal-column"
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "modal-header"
+  }, "Pac 12"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    onClick: function onClick() {
+      return fetchTeam('arizona', 0);
+    }
+  }, "Arizona"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    onClick: function onClick() {
+      return fetchTeam('asu', 1);
+    }
+  }, "Arizona State"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    onClick: function onClick() {
+      return fetchTeam('california');
+    }
+  }, "California"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    onClick: function onClick() {
+      return fetchTeam('colorado', 3);
+    }
+  }, "Colorado"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    onClick: function onClick() {
+      return fetchTeam('oregon', 4);
+    }
+  }, "Oregon"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    onClick: function onClick() {
+      return fetchTeam('oregonst', 5);
+    }
+  }, "Oregon State"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    onClick: function onClick() {
+      return fetchTeam('stanford', 6);
+    }
+  }, "Stanford"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    onClick: function onClick() {
+      return fetchTeam('ucla', 7);
+    }
+  }, "UCLA"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    onClick: function onClick() {
+      return fetchTeam('usc', 8);
+    }
+  }, "USC"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    onClick: function onClick() {
+      return fetchTeam('utah', 9);
+    }
+  }, "Utah"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    onClick: function onClick() {
+      return fetchTeam('washington', 10);
+    }
+  }, "Washington"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    onClick: function onClick() {
+      return fetchTeam('wsu', 11);
+    }
+  }, "Washington State")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "modal-column"
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "modal-header"
+  }, "SEC"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    onClick: function onClick() {
+      return fetchTeam('alabama');
+    }
+  }, "Alabama"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    onClick: function onClick() {
+      return fetchTeam('arkansas');
+    }
+  }, "Arkansas"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    onClick: function onClick() {
+      return fetchTeam('auburn', 2);
+    }
+  }, "Auburn"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    onClick: function onClick() {
+      return fetchTeam('florida', 3);
+    }
+  }, "Florida"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    onClick: function onClick() {
+      return fetchTeam('georgia', 4);
+    }
+  }, "Georgia"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    onClick: function onClick() {
+      return fetchTeam('kentucky', 5);
+    }
+  }, "Kentucky"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    onClick: function onClick() {
+      return fetchTeam('lsu', 6);
+    }
+  }, "LSU"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    onClick: function onClick() {
+      return fetchTeam('olemiss', 9);
+    }
+  }, "Ole Miss"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    onClick: function onClick() {
+      return fetchTeam('msst', 7);
+    }
+  }, "Mississippi State"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    onClick: function onClick() {
+      return fetchTeam('missouri', 8);
+    }
+  }, "Missouri"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    onClick: function onClick() {
+      return fetchTeam('socarolina', 10);
+    }
+  }, "South Carolina"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    onClick: function onClick() {
+      return fetchTeam('tennessee', 11);
+    }
+  }, "Tennessee"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    onClick: function onClick() {
+      return fetchTeam('ta&m', 12);
+    }
+  }, "Texas A&M"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    onClick: function onClick() {
+      return fetchTeam('vanderbilt', 13);
+    }
+  }, "Vanderbilt")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "modal-column"
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "modal-header"
+  }, "Sun Belt"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    onClick: function onClick() {
+      return fetchTeam('appst');
+    }
+  }, "Appalachian State"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    onClick: function onClick() {
+      return fetchTeam('arkst', 1);
+    }
+  }, "Arkansas State"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    onClick: function onClick() {
+      return fetchTeam('ccu', 2);
+    }
+  }, "Coastal Carolina"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    onClick: function onClick() {
+      return fetchTeam('gaso', 3);
+    }
+  }, "Georgia Southern"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    onClick: function onClick() {
+      return fetchTeam('georgiast', 4);
+    }
+  }, "Georgia State"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    onClick: function onClick() {
+      return fetchTeam('ull', 5);
+    }
+  }, "Louisiana Lafayette"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    onClick: function onClick() {
+      return fetchTeam('ulm', 6);
+    }
+  }, "Louisiana Monroe"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    onClick: function onClick() {
+      return fetchTeam('usa', 7);
+    }
+  }, "South Alabama"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    onClick: function onClick() {
+      return fetchTeam('txst', 8);
+    }
+  }, "Texas State"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    onClick: function onClick() {
+      return fetchTeam('troy', 9);
+    }
+  }, "Troy")))));
 };
 
 /* harmony default export */ __webpack_exports__["default"] = (TeamSelectModal);

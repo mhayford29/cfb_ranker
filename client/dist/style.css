@@ -157,3 +157,24 @@ i {
   z-index: 1;
 }
 
+.modal-container{
+  display: grid;
+  grid-template-columns: auto auto auto auto auto auto auto auto auto auto auto;
+}
+
+.modal-column{
+  padding: 5px;
+  font-size: 14px;
+}
+
+.modal-column div:hover{
+  color: white;
+  background-color: black;
+  cursor: pointer;
+}
+
+.modal-header{
+  font-size: 20px;
+  font-weight: bold;
+  padding-bottom: 10px;
+}
