@@ -24,7 +24,7 @@ body{
 }
 
 .info-display{
-  background: rgb(255, 228, 196);
+  background: rgb(204, 204, 204);
   height: 100%;
   font-size: 40px;
   padding-left: 5px;
@@ -34,6 +34,17 @@ body{
 .team-header-container{
   display: grid;
   grid-template-columns: 200px auto 150px;
+}
+
+.team-stats-container{
+  display: grid;
+  grid-template-columns: auto auto; 
+  font-size: 25px;
+  border-bottom-style: solid;
+  border-bottom-width: 1px;
+  border-bottom-color: black;
+  padding-top: 15px;
+  padding-bottom: 15px;
 }
 
 .add-to-rankings{

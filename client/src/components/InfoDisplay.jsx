@@ -5,7 +5,7 @@ class InfoDisplay extends React.Component {
     super(props)
     this.state = {
       poll: {},
-      team: {}
+      teams: []
     }
   }
 
@@ -13,13 +13,19 @@ class InfoDisplay extends React.Component {
     if (this.props.publishedRankings !== prevProps.publishedRankings) {
       this.setState({
         poll: this.props.publishedRankings,
-        team: {}
+        teams: []
       })
     } else if (this.props.teamData !== prevProps.teamData) {
       this.setState({
-        team: this.props.teamData,
-        poll: {}
-      }, () => console.log(this.state.team))
+        poll: {},
+        teams: [this.props.teamData]
+      }, () => console.log(this.state.teams))
+    } else if(this.props.teamDataTwo !== prevProps.teamDataTwo) {
+      var tempTeams = this.state.teams.slice();
+      tempTeams.push(this.props.teamDataTwo)
+      this.setState({
+        teams: tempTeams
+      })
     }
   }
 
@@ -30,12 +36,12 @@ class InfoDisplay extends React.Component {
           <Poll 
             poll={this.state.poll}
             addToRankings={this.props.addToRankings}/> : 
-        this.state.team.team ? 
-          <Team 
-            team={this.state.team}
+        this.state.teams.length ? this.state.teams.map((team, index) => {
+          return  <Team 
+            team={team}
             addToRankings={this.props.addToRankings}
-            openModal={this.props.openModal}
-          /> : 
+            openModal={this.props.openModal}/> 
+        }) :
           <Welcome />}
       </div>
     )
@@ -60,10 +66,25 @@ const Team = (props) => {
           Add To Rankings
         </div>
       </div>
-      {team.record.items[0].stats.map((stat, index) => {
-        return <div style={{ fontSize: '20px'}}>{index + 1}. {stat.name}: {stat.value}</div>
-      })}
-      <button onClick={props.openModal}>+ Compare Team</button>
+      <div className="team-stats-container">
+        <div>
+          <div>
+            Record: {team.record.items[0].stats[1].value} - {team.record.items[0].stats[2].value} 
+          </div>
+          <div>
+            Streak: {team.record.items[0].stats[15].value}
+          </div>
+        </div>
+        <div>
+          <div>
+            Points For and Against: {team.record.items[0].stats[9].value} - {team.record.items[0].stats[10].value}
+          </div>
+          <div>
+            Point Differential: {team.record.items[0].stats[14].value}
+          </div>
+        </div>
+        <button onClick={props.openModal}>+ Compare Team</button>
+      </div>
     </div>
   )
 }

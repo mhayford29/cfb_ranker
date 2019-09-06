@@ -11,18 +11,27 @@ class App extends React.Component {
     this.state = {
       publishedRankings: {},
       teamData: {},
-      schools: [],
-      conf: '',
+      teamDataTwo: {},
       rankedTeam: '',
       modalIsOpen: false
     }
     this.fetchPoll = this.fetchPoll.bind(this);
     this.fetchTeam = this.fetchTeam.bind(this);
+    this.fetchSecondTeam = this.fetchSecondTeam.bind(this);
     this.addToRankings = this.addToRankings.bind(this);
     //modal methods
     this.openModal = this.openModal.bind(this);
     this.afterOpenModal = this.afterOpenModal.bind(this);
     this.closeModal = this.closeModal.bind(this);
+  }
+
+  componentDidMount(){
+    Axios
+      .get('http://site.api.espn.com/apis/site/v2/sports/football/college-football/scoreboard')
+      .then(({ data }) => {
+        console.log(data)
+      })
+      .catch(err => console.log('error in getting scoreboard', err))
   }
 
   addToRankings(team){
@@ -46,9 +55,22 @@ class App extends React.Component {
     Axios
       .get(`http://site.api.espn.com/apis/site/v2/sports/football/college-football/teams/${schoolName}`)
       .then(({ data }) => {
+        console.log(data.team.nextEvent[0].id)
         this.setState({
           teamData: data
         })
+      })
+      .catch(err => alert(err))
+  }
+
+  fetchSecondTeam(schoolName){
+    Axios
+      .get(`http://site.api.espn.com/apis/site/v2/sports/football/college-football/teams/${schoolName}`)
+      .then(({ data }) => {
+        this.setState({
+          teamDataTwo: data,
+          modalIsOpen: false
+        }, () => console.log(this.state.teamDataTwo))
       })
       .catch(err => alert(err))
   }
@@ -83,6 +105,7 @@ class App extends React.Component {
             <InfoDisplay 
               publishedRankings = {this.state.publishedRankings} 
               teamData = {this.state.teamData}
+              teamDataTwo = {this.state.teamDataTwo}
               addToRankings = {this.addToRankings}
               openModal = {this.openModal}/>
           </div>
@@ -93,7 +116,8 @@ class App extends React.Component {
         <TeamSelectModal 
           closeModal={this.closeModal}
           afterOpenModal={this.afterOpenModal}
-          modalIsOpen={this.state.modalIsOpen}/>
+          modalIsOpen={this.state.modalIsOpen}
+          fetchTeam = {this.fetchSecondTeam}/>
       </div>
     )
   }
