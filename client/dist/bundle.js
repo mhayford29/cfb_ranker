@@ -24828,7 +24828,7 @@ function (_React$Component) {
   _createClass(App, [{
     key: "componentDidMount",
     value: function componentDidMount() {
-      axios__WEBPACK_IMPORTED_MODULE_5___default.a.get('http://site.api.espn.com/apis/site/v2/sports/football/college-football/scoreboard').then(function (_ref) {
+      axios__WEBPACK_IMPORTED_MODULE_5___default.a.get('http://site.api.espn.com/apis/site/v2/sports/football/college-football/summary?event=401112130').then(function (_ref) {
         var data = _ref.data;
         console.log(data);
       })["catch"](function (err) {

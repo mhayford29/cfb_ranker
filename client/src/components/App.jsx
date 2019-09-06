@@ -27,7 +27,7 @@ class App extends React.Component {
 
   componentDidMount(){
     Axios
-      .get('http://site.api.espn.com/apis/site/v2/sports/football/college-football/scoreboard')
+      .get('http://site.api.espn.com/apis/site/v2/sports/football/college-football/summary?event=401112130')
       .then(({ data }) => {
         console.log(data)
       })
