@@ -60,6 +60,12 @@ body{
   cursor: pointer;
 }
 
+.poll-item-container{
+  display: grid;
+  grid-template-columns: 30% 15% auto;
+  font-size: 25px;
+}
+
 .rankings{
   background-color: white;
   margin-left: 5px;

@@ -49,38 +49,37 @@ class InfoDisplay extends React.Component {
 }
 
 const Team = (props) => {
-  const { team } = props.team;
   return(
     <div>
       <div className="team-header-container">
         <span width={200} height={200}>
-          <img src={team.logos[0].href} width={200} height={200}></img>
+          <img src={props.team[0].logos[0]} width={200} height={200}></img>
         </span>
         <span style={{ fontSize: '35px', textAlign: 'center', margin: 'auto'}}>
-          {team.location} {team.name}
+          {props.team[0].location} {props.team[0].name}
         </span>
         <div 
           className="add-to-rankings" 
-          style={{ color: `#${team.color}`, borderColor: `#${team.alternateColor}` }}
-          onClick={() => props.addToRankings(team.location)}>
+          style={{ color: `#${props.team[0].color}`, borderColor: `#${props.team[0].alternateColor}` }}
+          onClick={() => props.addToRankings(props.team[0].location)}>
           Add To Rankings
         </div>
       </div>
       <div className="team-stats-container">
         <div>
           <div>
-            Record: {team.record.items[0].stats[1].value} - {team.record.items[0].stats[2].value} 
+            Record: {props.team[0].stats[1].value} - {props.team[0].stats[2].value} 
           </div>
           <div>
-            Streak: {team.record.items[0].stats[15].value}
+            Streak: {props.team[0].stats[15].value}
           </div>
         </div>
         <div>
           <div>
-            Points For and Against: {team.record.items[0].stats[9].value} - {team.record.items[0].stats[10].value}
+            Points For and Against: {props.team[0].stats[9].value} - {props.team[0].stats[10].value}
           </div>
           <div>
-            Point Differential: {team.record.items[0].stats[14].value}
+            Point Differential: {props.team[0].stats[14].value}
           </div>
         </div>
         <button onClick={props.openModal}>+ Compare Team</button>
@@ -96,8 +95,31 @@ const Poll = (props) => {
         {props.poll.name}
       </div>
       {props.poll.ranks.map((team, index) => {
-        return <div style={{fontSize: '25px'}}>{team.current}. {team.team.location} {team.recordSummary} <button onClick={() => props.addToRankings(team.team.location)}>add</button></div>
+        return <PollItem team={team} rank={index + 1} addToRankings={props.addToRankings}/>
       })}
+      <div style={{ marginBottom: '30px' }}>
+        Others recieving votes: <br/>
+        {props.poll.others.map((team, index) => {
+          return <span style={{ fontSize: '25px' }}>{team.team.location}: {team.points},{'  '}</span>
+        })}
+      </div>
+    </div>
+  )
+}
+
+const PollItem = (props) => {
+  const { team } = props;
+  return(
+    <div className="poll-item-container">
+      <div>
+        {props.rank}. {team.team.location}
+      </div>
+      <div>
+        <img src={team.team.logo} width={25} height={25}></img>{team.recordSummary}
+      </div>
+      <div>
+      <button onClick={() => props.addToRankings(team.team.location)}>add</button>
+      </div>
     </div>
   )
 }

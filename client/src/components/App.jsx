@@ -27,7 +27,7 @@ class App extends React.Component {
 
   componentDidMount(){
     Axios
-      .get('http://site.api.espn.com/apis/site/v2/sports/football/college-football/summary?event=401112130')
+      .get('/api/team', { params: {school: 'Navy'} })
       .then(({ data }) => {
         console.log(data)
       })
@@ -51,11 +51,22 @@ class App extends React.Component {
       .catch(err => alert(err))
   }
 
+  // fetchTeam(schoolName){
+  //   Axios
+  //     .get(`http://site.api.espn.com/apis/site/v2/sports/football/college-football/teams/${schoolName}`)
+  //     .then(({ data }) => {
+  //       console.log(data.team.nextEvent[0].id)
+  //       this.setState({
+  //         teamData: data
+  //       })
+  //     })
+  //     .catch(err => alert(err))
+  // }
+
   fetchTeam(schoolName){
     Axios
-      .get(`http://site.api.espn.com/apis/site/v2/sports/football/college-football/teams/${schoolName}`)
+      .get(`/api/team`, { params: { school: schoolName }})
       .then(({ data }) => {
-        console.log(data.team.nextEvent[0].id)
         this.setState({
           teamData: data
         })
@@ -65,7 +76,7 @@ class App extends React.Component {
 
   fetchSecondTeam(schoolName){
     Axios
-      .get(`http://site.api.espn.com/apis/site/v2/sports/football/college-football/teams/${schoolName}`)
+      .get(`/api/team`, { params: { school: schoolName }})
       .then(({ data }) => {
         this.setState({
           teamDataTwo: data,

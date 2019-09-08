@@ -46,15 +46,56 @@ async function updateID() {
   }
 }
 
+async function scrapeTeamStats() {
+  for(const school of teamAbvs){
+    try {
+      const { data } = await axios.get(`http://site.api.espn.com/apis/site/v2/sports/football/college-football/teams/${school}`);
+      model.updateOne({ school: data.team.nickname }, { stats: [] })
+           .then(() => 
+            model.updateOne({ school: data.team.nickname }, 
+                  { $push: { stats: { $each: [
+                    { name: data.team.record.items[0].stats[0].name, value: data.team.record.items[0].stats[0].value },
+                    { name: data.team.record.items[0].stats[1].name, value: data.team.record.items[0].stats[1].value },
+                    { name: data.team.record.items[0].stats[2].name, value: data.team.record.items[0].stats[2].value },
+                    { name: data.team.record.items[0].stats[3].name, value: data.team.record.items[0].stats[3].value },
+                    { name: data.team.record.items[0].stats[4].name, value: data.team.record.items[0].stats[4].value },
+                    { name: data.team.record.items[0].stats[5].name, value: data.team.record.items[0].stats[5].value },
+                    { name: data.team.record.items[0].stats[6].name, value: data.team.record.items[0].stats[6].value },
+                    { name: data.team.record.items[0].stats[7].name, value: data.team.record.items[0].stats[7].value },
+                    { name: data.team.record.items[0].stats[8].name, value: data.team.record.items[0].stats[8].value },
+                    { name: data.team.record.items[0].stats[9].name, value: data.team.record.items[0].stats[9].value },
+                    { name: data.team.record.items[0].stats[10].name, value: data.team.record.items[0].stats[10].value },
+                    { name: data.team.record.items[0].stats[11].name, value: data.team.record.items[0].stats[11].value },
+                    { name: data.team.record.items[0].stats[12].name, value: data.team.record.items[0].stats[12].value },
+                    { name: data.team.record.items[0].stats[13].name, value: data.team.record.items[0].stats[13].value },
+                    { name: data.team.record.items[0].stats[14].name, value: data.team.record.items[0].stats[14].value },
+                    { name: data.team.record.items[0].stats[15].name, value: data.team.record.items[0].stats[15].value },
+                    { name: data.team.record.items[0].stats[17].name, value: data.team.record.items[0].stats[17].value },
+                    { name: data.team.record.items[0].stats[18].name, value: data.team.record.items[0].stats[18].value },
+                    { name: data.team.record.items[0].stats[19].name, value: data.team.record.items[0].stats[19].value },
+                    { name: data.team.record.items[0].stats[20].name, value: data.team.record.items[0].stats[20].value },
+                    { name: data.team.record.items[0].stats[21].name, value: data.team.record.items[0].stats[21].value },
+                    { name: data.team.record.items[0].stats[22].name, value: data.team.record.items[0].stats[22].value },
+                  ]}}}))
+                .then(() => console.log(`successfully updated ${data.team.nickname}'s stats`))
+                .catch(err => console.log(`error updating ${data.team.nickname}`))
+           .catch(err => console.log(`error`))
+    } catch (error) {
+      console.error(`error updating ${school}`);
+    }
+  }
+}
+
 async function setCollection() {
   for(const school of teamAbvs){
     try {
       const { data } = await axios.get(`http://site.api.espn.com/apis/site/v2/sports/football/college-football/teams/${school}`);
-      model.create({ 
-        school: data.team.nickname,
-        schoolId: data.team.id,
-        gameIds: []
-      })
+      model.updateMany({ school: data.team.nickname },
+        { logos: [] }
+        //school: data.team.nickname,
+        //schoolId: data.team.id,
+        //gameIds: []
+      )
       .then(() => console.log(`successfully updated ${data.team.nickname}`))
       .catch(err => console.log(`error updating ${data.team.nickname}`))
     } catch (error) {
@@ -63,6 +104,7 @@ async function setCollection() {
   }
 }
 
+scrapeTeamStats();
 //setCollection();
 //getFirstID();
-updateID();
+//updateID();
