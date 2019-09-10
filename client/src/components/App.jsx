@@ -12,26 +12,19 @@ class App extends React.Component {
       publishedRankings: {},
       teamData: {},
       teamDataTwo: {},
+      standings: {},
       rankedTeam: '',
       modalIsOpen: false
     }
     this.fetchPoll = this.fetchPoll.bind(this);
     this.fetchTeam = this.fetchTeam.bind(this);
     this.fetchSecondTeam = this.fetchSecondTeam.bind(this);
+    this.fetchStandings = this.fetchStandings.bind(this);
     this.addToRankings = this.addToRankings.bind(this);
     //modal methods
     this.openModal = this.openModal.bind(this);
     this.afterOpenModal = this.afterOpenModal.bind(this);
     this.closeModal = this.closeModal.bind(this);
-  }
-
-  componentDidMount(){
-    Axios
-      .get('/api/team', { params: {school: 'Navy'} })
-      .then(({ data }) => {
-        console.log(data)
-      })
-      .catch(err => console.log('error in getting scoreboard', err))
   }
 
   addToRankings(team){
@@ -50,18 +43,6 @@ class App extends React.Component {
       })
       .catch(err => alert(err))
   }
-
-  // fetchTeam(schoolName){
-  //   Axios
-  //     .get(`http://site.api.espn.com/apis/site/v2/sports/football/college-football/teams/${schoolName}`)
-  //     .then(({ data }) => {
-  //       console.log(data.team.nextEvent[0].id)
-  //       this.setState({
-  //         teamData: data
-  //       })
-  //     })
-  //     .catch(err => alert(err))
-  // }
 
   fetchTeam(schoolName){
     Axios
@@ -86,6 +67,16 @@ class App extends React.Component {
       .catch(err => alert(err))
   }
 
+  fetchStandings(){
+    Axios
+      .get('http://site.api.espn.com/apis/v2/sports/football/college-football/standings')
+      .then(({ data }) => {
+        this.setState({
+          standings: data
+        })
+      })
+      .catch(err => console.log('error getting standings', err))
+  }
   /******* MODAL METHODS *********/
 
   openModal() {
@@ -105,11 +96,12 @@ class App extends React.Component {
 
   render(){
     return (
-      <div>
+      <div style={{ marginTop: '0px' }}>
         <div className="navigation">
           <Navigation 
             fetchPoll = {this.fetchPoll}
-            fetchTeam = {this.fetchTeam}/>
+            fetchTeam = {this.fetchTeam}
+            fetchStandings = {this.fetchStandings}/>
         </div>
         <div className="appContainer">
           <div className="info-display">
@@ -117,6 +109,7 @@ class App extends React.Component {
               publishedRankings = {this.state.publishedRankings} 
               teamData = {this.state.teamData}
               teamDataTwo = {this.state.teamDataTwo}
+              standings = {this.state.standings}
               addToRankings = {this.addToRankings}
               openModal = {this.openModal}/>
           </div>

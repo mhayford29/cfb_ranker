@@ -22,7 +22,7 @@ async function getFirstID() {
       let results = await axios.get(`http://site.api.espn.com/apis/site/v2/sports/football/college-football/summary?event=${nextGameID}`);
       for(var i = 0; i < results.data.lastFiveGames.length; i++){
         if(results.data.lastFiveGames[i].team.id === schoolId){
-          model.updateOne({ school: data.team.nickname }, { $push: { gameIds: results.data.lastFiveGames[i].events[4].id }})
+          model.GameIds.updateOne({ school: data.team.nickname }, { $push: { gameIds: results.data.lastFiveGames[i].events[4].id }})
                .then(() => console.log(`successfully updated ${results.data.team.nickname}`))
                .catch(err => console.log(`error updating ${results.data.team.nickname}`))
         }
@@ -37,7 +37,7 @@ async function updateID() {
   for(const school of teamAbvs){
     try {
       const { data } = await axios.get(`http://site.api.espn.com/apis/site/v2/sports/football/college-football/teams/${school}`);
-      model.updateOne({ school: data.team.nickname }, { $push: { gameIds: data.team.nextEvent[0].id }})
+      model.GameIds.updateOne({ school: data.team.nickname }, { $push: { gameIds: data.team.nextEvent[0].id }})
            .then(() => console.log(`successfully updated ${data.team.nickname}`))
            .catch(err => console.log(`error updating ${data.team.nickname}`))
     } catch (error) {
@@ -50,9 +50,9 @@ async function scrapeTeamStats() {
   for(const school of teamAbvs){
     try {
       const { data } = await axios.get(`http://site.api.espn.com/apis/site/v2/sports/football/college-football/teams/${school}`);
-      model.updateOne({ school: data.team.nickname }, { stats: [] })
+      model.GameIds.updateOne({ school: data.team.nickname }, { stats: [] })
            .then(() => 
-            model.updateOne({ school: data.team.nickname }, 
+            model.GameIds.updateOne({ school: data.team.nickname }, 
                   { $push: { stats: { $each: [
                     { name: data.team.record.items[0].stats[0].name, value: data.team.record.items[0].stats[0].value },
                     { name: data.team.record.items[0].stats[1].name, value: data.team.record.items[0].stats[1].value },
@@ -90,11 +90,8 @@ async function setCollection() {
   for(const school of teamAbvs){
     try {
       const { data } = await axios.get(`http://site.api.espn.com/apis/site/v2/sports/football/college-football/teams/${school}`);
-      model.updateMany({ school: data.team.nickname },
+      model.GameIds.updateMany({ school: data.team.nickname },
         { logos: [] }
-        //school: data.team.nickname,
-        //schoolId: data.team.id,
-        //gameIds: []
       )
       .then(() => console.log(`successfully updated ${data.team.nickname}`))
       .catch(err => console.log(`error updating ${data.team.nickname}`))
@@ -102,6 +99,10 @@ async function setCollection() {
       console.error(`error updating ${school}`);
     }
   }
+}
+
+async function setStandigns() {
+  
 }
 
 scrapeTeamStats();

@@ -14,5 +14,14 @@ var gameIdsSchema = new Schema({
   stats: [{ name: String, value: Number }]
 }, {strict: 'false'})
 
+var standingsSchema = new Schema({
+  test: {}
+})
+
 var GameIds = mongoose.model('GameIds', gameIdsSchema);
-module.exports = GameIds;
+var Standings = mongoose.model('Standings', standingsSchema);
+
+module.exports = {
+  GameIds,
+  Standings
+};

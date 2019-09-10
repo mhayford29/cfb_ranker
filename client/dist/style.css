@@ -1,21 +1,22 @@
 body{
   width: 100%;
   margin-left: 0px;
+  margin-top: 0px;
+  margin-bottom: 0px;
 }
 
 .appContainer {
   display: grid;
   grid-template-columns: 70% 30%;
   position: relative;
-  top: 75px;
-  height: 100%;
+  top: 70px;
+  height: 89%;
   width: 100%;
-  margin-top: 0px;
 }
 
 .navigation{
   width: 100%;
-  height: 75px;
+  height: 71px;
   position: fixed;
   top: 0px;
   z-index: 1;
@@ -29,6 +30,7 @@ body{
   font-size: 40px;
   padding-left: 5px;
   padding-top: 5px;
+  overflow: auto;
 }
 
 .team-header-container{
@@ -66,12 +68,22 @@ body{
   font-size: 25px;
 }
 
+.thumbnail{
+  height: 25;
+  width: 25;
+  transform: translateY(3px);
+}
+
+button{
+  transform: translateY(7px);
+}
+
 .rankings{
   background-color: white;
-  margin-left: 5px;
-  border-style: solid;
+  border-left-style: solid;
   border-width: 2px;
   border-color: black;
+  overflow: auto;
 }
 
 .rankings-container{
@@ -120,7 +132,7 @@ i {
 .navigation-container{
   display: grid;
   grid-template-columns: auto auto auto auto auto;
-  height: 75px;
+  height: 100%;
 }
 
 .navigation-item{
@@ -156,7 +168,7 @@ i {
 .dropdown-content {
   display: none;
   position: fixed;
-  top: 75px;
+  top: 11%;
   background-color: #f9f9f9;
   color: black;
   min-width: 19%;
@@ -194,4 +206,38 @@ i {
   font-size: 20px;
   font-weight: bold;
   padding-bottom: 10px;
+}
+
+.standings-header{
+  display: grid;
+  grid-template-columns: 60% auto auto;
+  font-size: 30px;
+  text-align: right;
+}
+
+.light-grey-row{
+  background: rgb(218, 218, 218);
+  font-size: 20px;
+  font-weight: normal;
+  width: 910px;
+}
+
+.dark-grey-row{
+  font-size: 20px;
+  font-weight: normal;
+  width: 910px;
+}
+
+.conference-item-header{
+  display: grid;
+  grid-template-columns: 250px 110px 110px 110px 110px 110px 110px;
+  text-align: center;
+  font-size: 25px;
+  transform: translateY(25px)
+}
+
+.conference-item-container{
+  display: grid;
+  grid-template-columns: 250px 110px 110px 110px 110px 110px 110px;
+  text-align: center;
 }

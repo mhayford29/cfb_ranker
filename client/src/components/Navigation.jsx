@@ -32,7 +32,7 @@ class Navigation extends React.Component {
           Conferences
           <div className="dropdown-content">
             <div>
-              <span className="test">
+              <span>
                 American
               </span>
               <span className="dropdown-submenu" style={{transform: `translate(${56}px, ${-10}px)`}}>
@@ -50,7 +50,7 @@ class Navigation extends React.Component {
               </span>
             </div>
             <div>
-              <span className="test">
+              <span>
                 ACC
               </span>
               <span className="dropdown-submenu" style={{transform: `translate(${72}px, ${-48}px)`}}>
@@ -222,7 +222,7 @@ class Navigation extends React.Component {
             </div> 
           </div>
         </div>
-        <div className="navigation-item">
+        <div className="navigation-item" onClick={this.props.fetchStandings}>
           Standings
         </div>
         <div className="navigation-item">

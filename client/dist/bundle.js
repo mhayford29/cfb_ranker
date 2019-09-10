@@ -24811,12 +24811,14 @@ function (_React$Component) {
       publishedRankings: {},
       teamData: {},
       teamDataTwo: {},
+      standings: {},
       rankedTeam: '',
       modalIsOpen: false
     };
     _this.fetchPoll = _this.fetchPoll.bind(_assertThisInitialized(_this));
     _this.fetchTeam = _this.fetchTeam.bind(_assertThisInitialized(_this));
     _this.fetchSecondTeam = _this.fetchSecondTeam.bind(_assertThisInitialized(_this));
+    _this.fetchStandings = _this.fetchStandings.bind(_assertThisInitialized(_this));
     _this.addToRankings = _this.addToRankings.bind(_assertThisInitialized(_this)); //modal methods
 
     _this.openModal = _this.openModal.bind(_assertThisInitialized(_this));
@@ -24826,20 +24828,6 @@ function (_React$Component) {
   }
 
   _createClass(App, [{
-    key: "componentDidMount",
-    value: function componentDidMount() {
-      axios__WEBPACK_IMPORTED_MODULE_5___default.a.get('/api/team', {
-        params: {
-          school: 'Navy'
-        }
-      }).then(function (_ref) {
-        var data = _ref.data;
-        console.log(data);
-      })["catch"](function (err) {
-        return console.log('error in getting scoreboard', err);
-      });
-    }
-  }, {
     key: "addToRankings",
     value: function addToRankings(team) {
       this.setState({
@@ -24851,8 +24839,8 @@ function (_React$Component) {
     value: function fetchPoll(pollId) {
       var _this2 = this;
 
-      axios__WEBPACK_IMPORTED_MODULE_5___default.a.get('http://site.api.espn.com/apis/site/v2/sports/football/college-football/rankings').then(function (_ref2) {
-        var data = _ref2.data;
+      axios__WEBPACK_IMPORTED_MODULE_5___default.a.get('http://site.api.espn.com/apis/site/v2/sports/football/college-football/rankings').then(function (_ref) {
+        var data = _ref.data;
 
         _this2.setState({
           publishedRankings: data.rankings[pollId]
@@ -24862,18 +24850,7 @@ function (_React$Component) {
       })["catch"](function (err) {
         return alert(err);
       });
-    } // fetchTeam(schoolName){
-    //   Axios
-    //     .get(`http://site.api.espn.com/apis/site/v2/sports/football/college-football/teams/${schoolName}`)
-    //     .then(({ data }) => {
-    //       console.log(data.team.nextEvent[0].id)
-    //       this.setState({
-    //         teamData: data
-    //       })
-    //     })
-    //     .catch(err => alert(err))
-    // }
-
+    }
   }, {
     key: "fetchTeam",
     value: function fetchTeam(schoolName) {
@@ -24883,8 +24860,8 @@ function (_React$Component) {
         params: {
           school: schoolName
         }
-      }).then(function (_ref3) {
-        var data = _ref3.data;
+      }).then(function (_ref2) {
+        var data = _ref2.data;
 
         _this3.setState({
           teamData: data
@@ -24902,8 +24879,8 @@ function (_React$Component) {
         params: {
           school: schoolName
         }
-      }).then(function (_ref4) {
-        var data = _ref4.data;
+      }).then(function (_ref3) {
+        var data = _ref3.data;
 
         _this4.setState({
           teamDataTwo: data,
@@ -24913,6 +24890,21 @@ function (_React$Component) {
         });
       })["catch"](function (err) {
         return alert(err);
+      });
+    }
+  }, {
+    key: "fetchStandings",
+    value: function fetchStandings() {
+      var _this5 = this;
+
+      axios__WEBPACK_IMPORTED_MODULE_5___default.a.get('http://site.api.espn.com/apis/v2/sports/football/college-football/standings').then(function (_ref4) {
+        var data = _ref4.data;
+
+        _this5.setState({
+          standings: data
+        });
+      })["catch"](function (err) {
+        return console.log('error getting standings', err);
       });
     }
     /******* MODAL METHODS *********/
@@ -24942,11 +24934,16 @@ function (_React$Component) {
   }, {
     key: "render",
     value: function render() {
-      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        style: {
+          marginTop: '0px'
+        }
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "navigation"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_Navigation_jsx__WEBPACK_IMPORTED_MODULE_2__["default"], {
         fetchPoll: this.fetchPoll,
-        fetchTeam: this.fetchTeam
+        fetchTeam: this.fetchTeam,
+        fetchStandings: this.fetchStandings
       })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "appContainer"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
@@ -24955,6 +24952,7 @@ function (_React$Component) {
         publishedRankings: this.state.publishedRankings,
         teamData: this.state.teamData,
         teamDataTwo: this.state.teamDataTwo,
+        standings: this.state.standings,
         addToRankings: this.addToRankings,
         openModal: this.openModal
       })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
@@ -25183,9 +25181,7 @@ function (_React$Component) {
         className: "navigation-item"
       }, "Conferences", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "dropdown-content"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
-        className: "test"
-      }, "American"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", null, "American"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
         className: "dropdown-submenu",
         style: {
           transform: "translate(".concat(56, "px, ", -10, "px)")
@@ -25234,9 +25230,7 @@ function (_React$Component) {
         onClick: function onClick() {
           return fetchTeam('Tulsa', 10);
         }
-      }, "Tulsa"))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
-        className: "test"
-      }, "ACC"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
+      }, "Tulsa"))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", null, "ACC"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
         className: "dropdown-submenu",
         style: {
           transform: "translate(".concat(72, "px, ", -48, "px)")
@@ -25755,7 +25749,8 @@ function (_React$Component) {
           return fetchTeam('Troy', 9);
         }
       }, "Troy"))))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "navigation-item"
+        className: "navigation-item",
+        onClick: this.props.fetchStandings
       }, "Standings"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "navigation-item"
       }, "Filler"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
@@ -27602,6 +27597,7 @@ module.exports = function spread(callback) {
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(1);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _Standings_jsx__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(61);
 function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -27622,6 +27618,7 @@ function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || func
 
 
 
+
 var InfoDisplay =
 /*#__PURE__*/
 function (_React$Component) {
@@ -27635,7 +27632,8 @@ function (_React$Component) {
     _this = _possibleConstructorReturn(this, _getPrototypeOf(InfoDisplay).call(this, props));
     _this.state = {
       poll: {},
-      teams: []
+      teams: [],
+      standings: {}
     };
     return _this;
   }
@@ -27648,12 +27646,20 @@ function (_React$Component) {
       if (this.props.publishedRankings !== prevProps.publishedRankings) {
         this.setState({
           poll: this.props.publishedRankings,
-          teams: []
+          teams: [],
+          standings: {}
+        });
+      } else if (this.props.standings !== prevProps.standings) {
+        this.setState({
+          poll: {},
+          teams: [],
+          standings: this.props.standings
         });
       } else if (this.props.teamData !== prevProps.teamData) {
         this.setState({
           poll: {},
-          teams: [this.props.teamData]
+          teams: [this.props.teamData],
+          standings: {}
         }, function () {
           return console.log(_this2.state.teams);
         });
@@ -27681,6 +27687,9 @@ function (_React$Component) {
           addToRankings: _this3.props.addToRankings,
           openModal: _this3.props.openModal
         });
+      }) : this.state.standings.name ? react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_Standings_jsx__WEBPACK_IMPORTED_MODULE_1__["default"], {
+        standings: this.state.standings,
+        addToRankings: this.props.addToRankings
       }) : react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(Welcome, null));
     }
   }]);
@@ -27746,13 +27755,12 @@ var PollItem = function PollItem(props) {
     className: "poll-item-container"
   }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, props.rank, ". ", team.team.location), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
     src: team.team.logo,
-    width: 25,
-    height: 25
+    className: "thumbnail"
   }), team.recordSummary), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
     onClick: function onClick() {
       return props.addToRankings(team.team.location);
     }
-  }, "add")));
+  }, "add ", team.team.location)));
 };
 
 var Welcome = function Welcome() {
@@ -30675,6 +30683,112 @@ var TeamSelectModal = function TeamSelectModal(props) {
 };
 
 /* harmony default export */ __webpack_exports__["default"] = (TeamSelectModal);
+
+/***/ }),
+/* 61 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(1);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+
+
+var Standings = function Standings(props) {
+  console.log(props.standings);
+  return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    style: {
+      marginBottom: '50px'
+    }
+  }, props.standings.children.map(function (conf, index) {
+    return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(Conference, {
+      conf: conf
+    });
+  }));
+};
+
+var Conference = function Conference(props) {
+  return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    style: {
+      textAlign: 'center',
+      marginTop: '30px'
+    }
+  }, props.conf.name), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "conference-item-header"
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, "W-L"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, "PF"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, "PA"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, "Home"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, "Away"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, "STRK")), props.conf.standings ? props.conf.standings.entries.map(function (item, index) {
+    return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(ConferenceItem, {
+      item: item,
+      index: index
+    });
+  }) : props.conf.children.map(function (division, index) {
+    return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(Division, {
+      division: division,
+      index: index
+    });
+  }));
+};
+
+var Division = function Division(props) {
+  var tempArr = props.division.shortName.split(' ');
+  var division = tempArr[tempArr.length - 1];
+
+  if (props.index === 1) {
+    var styles = {
+      fontSize: '25px',
+      fontWeight: 'bold',
+      marginTop: '30px'
+    };
+  } else {
+    var styles = {
+      fontSize: '25px',
+      fontWeight: 'bold'
+    };
+  }
+
+  return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    style: styles
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, division), props.division.standings.entries.map(function (item, index) {
+    return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(ConferenceItem, {
+      item: item,
+      index: index
+    });
+  }));
+};
+
+var ConferenceItem = function ConferenceItem(props) {
+  console.log(props.item);
+
+  if (props.index % 2 === 0) {
+    return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      className: "light-grey-row"
+    }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(ConferenceItemFormat, {
+      item: props.item,
+      index: props.index
+    }));
+  } else {
+    return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      className: "dark-grey-row"
+    }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(ConferenceItemFormat, {
+      item: props.item,
+      index: props.index
+    }));
+  }
+};
+
+var ConferenceItemFormat = function ConferenceItemFormat(props) {
+  return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "conference-item-container"
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    style: {
+      textAlign: 'left'
+    }
+  }, props.index + 1, ". ", props.item.team.location, " ", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
+    src: props.item.team.logos[0].href,
+    className: "thumbnail"
+  })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, props.item.stats[11].summary), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, props.item.stats[3].value), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, props.item.stats[4].value), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, props.item.stats[23].summary), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, props.item.stats[35].summary), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, props.item.stats[5].displayValue));
+};
+
+/* harmony default export */ __webpack_exports__["default"] = (Standings);
 
 /***/ })
 /******/ ]);

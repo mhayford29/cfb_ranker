@@ -1,11 +1,13 @@
 import React from 'react';
+import Standings from './Standings.jsx';
 
 class InfoDisplay extends React.Component {
   constructor(props){
     super(props)
     this.state = {
       poll: {},
-      teams: []
+      teams: [],
+      standings: {}
     }
   }
 
@@ -13,12 +15,20 @@ class InfoDisplay extends React.Component {
     if (this.props.publishedRankings !== prevProps.publishedRankings) {
       this.setState({
         poll: this.props.publishedRankings,
-        teams: []
+        teams: [],
+        standings: {}
+      })
+    } else if(this.props.standings !== prevProps.standings){
+      this.setState({
+        poll: {},
+        teams: [],
+        standings: this.props.standings
       })
     } else if (this.props.teamData !== prevProps.teamData) {
       this.setState({
         poll: {},
-        teams: [this.props.teamData]
+        teams: [this.props.teamData],
+        standings: {}
       }, () => console.log(this.state.teams))
     } else if(this.props.teamDataTwo !== prevProps.teamDataTwo) {
       var tempTeams = this.state.teams.slice();
@@ -42,6 +52,10 @@ class InfoDisplay extends React.Component {
             addToRankings={this.props.addToRankings}
             openModal={this.props.openModal}/> 
         }) :
+        this.state.standings.name ?
+          <Standings 
+            standings={this.state.standings}
+            addToRankings={this.props.addToRankings}/> :
           <Welcome />}
       </div>
     )
@@ -115,10 +129,10 @@ const PollItem = (props) => {
         {props.rank}. {team.team.location}
       </div>
       <div>
-        <img src={team.team.logo} width={25} height={25}></img>{team.recordSummary}
+        <img src={team.team.logo} className="thumbnail"></img>{team.recordSummary}
       </div>
       <div>
-      <button onClick={() => props.addToRankings(team.team.location)}>add</button>
+      <button onClick={() => props.addToRankings(team.team.location)}>add {team.team.location}</button>
       </div>
     </div>
   )
