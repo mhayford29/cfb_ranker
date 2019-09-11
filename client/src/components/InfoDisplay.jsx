@@ -76,7 +76,7 @@ const Team = (props) => {
           className="add-to-rankings" 
           style={{ color: `#${props.team[0].color}`, borderColor: `#${props.team[0].alternateColor}` }}
           onClick={() => props.addToRankings(props.team[0].location)}>
-          Add To Rankings
+          <span>Add To Rankings</span>
         </div>
       </div>
       <div className="team-stats-container">
@@ -132,7 +132,7 @@ const PollItem = (props) => {
         <img src={team.team.logo} className="thumbnail"></img>{team.recordSummary}
       </div>
       <div>
-      <button onClick={() => props.addToRankings(team.team.location)}>add {team.team.location}</button>
+      <button className="button" onClick={() => props.addToRankings(team.team.location)}>add {team.team.location}</button>
       </div>
     </div>
   )

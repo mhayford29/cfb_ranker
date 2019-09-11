@@ -13,6 +13,7 @@ const teamAbvs = ['ucf', 'cincinnati', 'ecu', 'houston', 'memphis', 'navy', 'usf
                   'alabama', 'arkansas', 'auburn', 'florida', 'georgia', 'kentucky', 'lsu', 'olemiss', 'msst', 'missouri', 'socarolina', 'tennessee', 'ta&m', 'vanderbilt',
                   'arkst', 'ccu', 'gaso', 'georgiast', 'ull', 'ulm', 'usa', 'txst', 'troy'];
 
+
 async function getFirstID() {
   for(const school of teamAbvs){
     try {
@@ -33,17 +34,26 @@ async function getFirstID() {
   }
 }
 
-async function updateID() {
+async function getNextID() {
   for(const school of teamAbvs){
     try {
-      const { data } = await axios.get(`http://site.api.espn.com/apis/site/v2/sports/football/college-football/teams/${school}`);
-      model.GameIds.updateOne({ school: data.team.nickname }, { $push: { gameIds: data.team.nextEvent[0].id }})
-           .then(() => console.log(`successfully updated ${data.team.nickname}`))
-           .catch(err => console.log(`error updating ${data.team.nickname}`))
+      let { data } = await axios.get(`http://site.api.espn.com/apis/site/v2/sports/football/college-football/teams/${school}`);
+      const nextEvent = data.team.nextEvent[0].id;
+      const team = data.team.nickname;
+      let results = await axios.get(`http://localhost:3000/api/team`, { params: { school: team }});
+      let ids = results.data[0].gameIds
+      if(ids[ids.length - 1] !== nextEvent){
+        model.GameIds.updateOne({ school: team }, { $push: { gameIds: nextEvent }})
+          .then(() => console.log(`successfully updated ${team}'s gameIds`))
+          .catch(err => console.log(`error updating ${team}'s gameIds`))
+      } else{
+        console.log(`${team} is already up to date`)
+      }
     } catch (error) {
       console.error(`error updating ${school}`);
     }
   }
+  process.exit();
 }
 
 async function scrapeTeamStats() {
@@ -84,6 +94,7 @@ async function scrapeTeamStats() {
       console.error(`error updating ${school}`);
     }
   }
+  process.exit();
 }
 
 async function setCollection() {
@@ -105,7 +116,7 @@ async function setStandigns() {
   
 }
 
-scrapeTeamStats();
+getNextID();
+//scrapeTeamStats();
 //setCollection();
 //getFirstID();
-//updateID();

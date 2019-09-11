@@ -35,7 +35,7 @@ body{
 
 .team-header-container{
   display: grid;
-  grid-template-columns: 200px auto 150px;
+  grid-template-columns: 200px auto 175px;
 }
 
 .team-stats-container{
@@ -49,7 +49,7 @@ body{
   padding-bottom: 15px;
 }
 
-.add-to-rankings{
+.add-to-rankings {
   font-size: 25px;
   text-align: center;
   margin-left: auto; 
@@ -60,6 +60,31 @@ body{
   border-width: 2px; 
   border-style: solid;
   cursor: pointer;
+}
+
+.add-to-rankings span {
+  cursor: pointer;
+  display: inline-block;
+  position: relative;
+  transition: 0.5s;
+}
+
+.add-to-rankings span:after {
+  content: '\00bb';
+  position: absolute;
+  opacity: 0;
+  top: 12px;
+  right: -20px;
+  transition: 0.5s;
+}
+
+.add-to-rankings:hover span {
+  padding-right: 25px;
+}
+
+.add-to-rankings:hover span:after {
+  opacity: 1;
+  right: 10px;
 }
 
 .poll-item-container{
@@ -74,7 +99,7 @@ body{
   transform: translateY(3px);
 }
 
-button{
+.button{
   transform: translateY(7px);
 }
 
@@ -95,8 +120,8 @@ button{
 .ranked-team-container{
   display: grid;
   grid-template-columns: auto 50px 50px 50px;
-  border: solid;
-  border-color: black;
+  border-bottom: solid;
+  border-color: rgb(212, 212, 212);
   border-width: 1px;
 }
 
@@ -230,7 +255,7 @@ i {
 
 .conference-item-header{
   display: grid;
-  grid-template-columns: 250px 110px 110px 110px 110px 110px 110px;
+  grid-template-columns: 310px 100px 100px 100px 100px 100px 100px;
   text-align: center;
   font-size: 25px;
   transform: translateY(25px)
@@ -238,6 +263,46 @@ i {
 
 .conference-item-container{
   display: grid;
-  grid-template-columns: 250px 110px 110px 110px 110px 110px 110px;
+  grid-template-columns: 210px 100px 100px 100px 100px 100px 100px 100px;
   text-align: center;
+}
+
+.conference-item-stat{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.conference-item-rank-button{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+}
+
+.conference-item-rank-button span {
+  cursor: pointer;
+  display: inline-block;
+  position: relative;
+  transition: 0.5s;
+  text-decoration: underline;
+}
+
+.conference-item-rank-button span:after {
+  content: '\00bb';
+  position: absolute;
+  opacity: 0;
+  top: -1px;
+  right: -20px;
+  transition: 0.5s;
+}
+
+.conference-item-rank-button:hover span {
+  padding-right: 25px;
+  text-decoration: none;
+}
+
+.conference-item-rank-button:hover span:after {
+  opacity: 1;
+  right: 10px;
 }

@@ -27722,7 +27722,7 @@ var Team = function Team(props) {
     onClick: function onClick() {
       return props.addToRankings(props.team[0].location);
     }
-  }, "Add To Rankings")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", null, "Add To Rankings"))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "team-stats-container"
   }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, "Record: ", props.team[0].stats[1].value, " - ", props.team[0].stats[2].value), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, "Streak: ", props.team[0].stats[15].value)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, "Points For and Against: ", props.team[0].stats[9].value, " - ", props.team[0].stats[10].value), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, "Point Differential: ", props.team[0].stats[14].value)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
     onClick: props.openModal
@@ -27757,6 +27757,7 @@ var PollItem = function PollItem(props) {
     src: team.team.logo,
     className: "thumbnail"
   }), team.recordSummary), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+    className: "button",
     onClick: function onClick() {
       return props.addToRankings(team.team.location);
     }
@@ -30702,7 +30703,8 @@ var Standings = function Standings(props) {
     }
   }, props.standings.children.map(function (conf, index) {
     return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(Conference, {
-      conf: conf
+      conf: conf,
+      addToRankings: props.addToRankings
     });
   }));
 };
@@ -30718,12 +30720,14 @@ var Conference = function Conference(props) {
   }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, "W-L"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, "PF"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, "PA"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, "Home"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, "Away"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, "STRK")), props.conf.standings ? props.conf.standings.entries.map(function (item, index) {
     return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(ConferenceItem, {
       item: item,
-      index: index
+      index: index,
+      addToRankings: props.addToRankings
     });
   }) : props.conf.children.map(function (division, index) {
     return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(Division, {
       division: division,
-      index: index
+      index: index,
+      addToRankings: props.addToRankings
     });
   }));
 };
@@ -30750,7 +30754,8 @@ var Division = function Division(props) {
   }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, division), props.division.standings.entries.map(function (item, index) {
     return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(ConferenceItem, {
       item: item,
-      index: index
+      index: index,
+      addToRankings: props.addToRankings
     });
   }));
 };
@@ -30763,14 +30768,16 @@ var ConferenceItem = function ConferenceItem(props) {
       className: "light-grey-row"
     }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(ConferenceItemFormat, {
       item: props.item,
-      index: props.index
+      index: props.index,
+      addToRankings: props.addToRankings
     }));
   } else {
     return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
       className: "dark-grey-row"
     }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(ConferenceItemFormat, {
       item: props.item,
-      index: props.index
+      index: props.index,
+      addToRankings: props.addToRankings
     }));
   }
 };
@@ -30785,7 +30792,24 @@ var ConferenceItemFormat = function ConferenceItemFormat(props) {
   }, props.index + 1, ". ", props.item.team.location, " ", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
     src: props.item.team.logos[0].href,
     className: "thumbnail"
-  })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, props.item.stats[11].summary), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, props.item.stats[3].value), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, props.item.stats[4].value), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, props.item.stats[23].summary), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, props.item.stats[35].summary), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, props.item.stats[5].displayValue));
+  })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "conference-item-rank-button",
+    onClick: function onClick() {
+      return props.addToRankings(props.item.team.location);
+    }
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", null, "Rank")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "conference-item-stat"
+  }, props.item.stats[11].summary), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "conference-item-stat"
+  }, props.item.stats[3].value), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "conference-item-stat"
+  }, props.item.stats[4].value), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "conference-item-stat"
+  }, props.item.stats[23].summary), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "conference-item-stat"
+  }, props.item.stats[35].summary), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "conference-item-stat"
+  }, props.item.stats[5].displayValue));
 };
 
 /* harmony default export */ __webpack_exports__["default"] = (Standings);
