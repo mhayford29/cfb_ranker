@@ -13,7 +13,7 @@ class App extends React.Component {
       teamData: {},
       teamDataTwo: {},
       standings: {},
-      rankedTeam: '',
+      rankedTeam: {},
       modalIsOpen: false
     }
     this.fetchPoll = this.fetchPoll.bind(this);
@@ -27,9 +27,9 @@ class App extends React.Component {
     this.closeModal = this.closeModal.bind(this);
   }
 
-  addToRankings(team){
+  addToRankings(teamInfo){
     this.setState({
-      rankedTeam: team
+      rankedTeam: teamInfo
     })
   }
 

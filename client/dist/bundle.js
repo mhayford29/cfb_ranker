@@ -24812,7 +24812,7 @@ function (_React$Component) {
       teamData: {},
       teamDataTwo: {},
       standings: {},
-      rankedTeam: '',
+      rankedTeam: {},
       modalIsOpen: false
     };
     _this.fetchPoll = _this.fetchPoll.bind(_assertThisInitialized(_this));
@@ -24829,9 +24829,9 @@ function (_React$Component) {
 
   _createClass(App, [{
     key: "addToRankings",
-    value: function addToRankings(team) {
+    value: function addToRankings(teamInfo) {
       this.setState({
-        rankedTeam: team
+        rankedTeam: teamInfo
       });
     }
   }, {
@@ -25088,11 +25088,11 @@ function (_React$Component) {
 var RankedTeam = function RankedTeam(props) {
   return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "ranked-team-container"
-  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, props.index + 1, ". ", props.team), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-    onClick: function onClick() {
-      return props.handleDelete(props.index);
-    }
-  }, "X"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, props.index + 1, ". ", props.team.school, " ", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
+    src: props.team.logo,
+    height: 20,
+    width: 20
+  })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, props.team.record), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "up",
     onClick: function onClick() {
       return props.handleMoveUp(props.index);
@@ -25106,7 +25106,12 @@ var RankedTeam = function RankedTeam(props) {
     }
   }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
     className: "down-arrow"
-  })));
+  })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "remove",
+    onClick: function onClick() {
+      return props.handleDelete(props.index);
+    }
+  }, "X"));
 };
 
 /* harmony default export */ __webpack_exports__["default"] = (Rankings);
@@ -27698,6 +27703,12 @@ function (_React$Component) {
 }(react__WEBPACK_IMPORTED_MODULE_0___default.a.Component);
 
 var Team = function Team(props) {
+  console.log('Hello inside Team component', props.team[0]);
+  var teamInfo = {
+    school: props.team[0].school,
+    record: "".concat(props.team[0].stats[1].value, "-").concat(props.team[0].stats[2].value),
+    logo: props.team[0].logos[0]
+  };
   return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "team-header-container"
   }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
@@ -27720,7 +27731,7 @@ var Team = function Team(props) {
       borderColor: "#".concat(props.team[0].alternateColor)
     },
     onClick: function onClick() {
-      return props.addToRankings(props.team[0].location);
+      return props.addToRankings(teamInfo);
     }
   }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", null, "Add To Rankings"))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "team-stats-container"
@@ -27751,6 +27762,11 @@ var Poll = function Poll(props) {
 
 var PollItem = function PollItem(props) {
   var team = props.team;
+  var teamInfo = {
+    school: team.team.location,
+    record: team.recordSummary,
+    logo: team.team.logo
+  };
   return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "poll-item-container"
   }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, props.rank, ". ", team.team.location), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
@@ -27759,9 +27775,9 @@ var PollItem = function PollItem(props) {
   }), team.recordSummary), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
     className: "button",
     onClick: function onClick() {
-      return props.addToRankings(team.team.location);
+      return props.addToRankings(teamInfo);
     }
-  }, "add ", team.team.location)));
+  }, "Rank ", team.team.location)));
 };
 
 var Welcome = function Welcome() {
@@ -30783,6 +30799,11 @@ var ConferenceItem = function ConferenceItem(props) {
 };
 
 var ConferenceItemFormat = function ConferenceItemFormat(props) {
+  var teamInfo = {
+    school: props.item.team.location,
+    record: props.item.stats[11].summary,
+    logo: props.item.team.logos[0].href
+  };
   return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "conference-item-container"
   }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
@@ -30795,7 +30816,7 @@ var ConferenceItemFormat = function ConferenceItemFormat(props) {
   })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "conference-item-rank-button",
     onClick: function onClick() {
-      return props.addToRankings(props.item.team.location);
+      return props.addToRankings(teamInfo);
     }
   }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", null, "Rank")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "conference-item-stat"

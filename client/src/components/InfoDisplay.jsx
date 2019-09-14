@@ -63,6 +63,12 @@ class InfoDisplay extends React.Component {
 }
 
 const Team = (props) => {
+  console.log('Hello inside Team component', props.team[0])
+  var teamInfo = {
+    school: props.team[0].school,
+    record: `${props.team[0].stats[1].value}-${props.team[0].stats[2].value}`,
+    logo: props.team[0].logos[0]
+  }
   return(
     <div>
       <div className="team-header-container">
@@ -75,7 +81,7 @@ const Team = (props) => {
         <div 
           className="add-to-rankings" 
           style={{ color: `#${props.team[0].color}`, borderColor: `#${props.team[0].alternateColor}` }}
-          onClick={() => props.addToRankings(props.team[0].location)}>
+          onClick={() => props.addToRankings(teamInfo)}>
           <span>Add To Rankings</span>
         </div>
       </div>
@@ -123,6 +129,11 @@ const Poll = (props) => {
 
 const PollItem = (props) => {
   const { team } = props;
+  var teamInfo = { 
+    school: team.team.location,
+    record: team.recordSummary,
+    logo: team.team.logo
+  }
   return(
     <div className="poll-item-container">
       <div>
@@ -132,7 +143,7 @@ const PollItem = (props) => {
         <img src={team.team.logo} className="thumbnail"></img>{team.recordSummary}
       </div>
       <div>
-      <button className="button" onClick={() => props.addToRankings(team.team.location)}>add {team.team.location}</button>
+      <button className="button" onClick={() => props.addToRankings(teamInfo)}>Rank {team.team.location}</button>
       </div>
     </div>
   )
