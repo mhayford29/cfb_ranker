@@ -53,7 +53,7 @@ async function getNextID() {
       console.error(`error updating ${school}`);
     }
   }
-  process.exit();
+  //process.exit();
 }
 
 async function scrapeTeamStats() {
@@ -94,7 +94,7 @@ async function scrapeTeamStats() {
       console.error(`error updating ${school}`);
     }
   }
-  process.exit();
+  //process.exit();
 }
 
 async function setCollection() {
@@ -116,7 +116,7 @@ async function setStandigns() {
   
 }
 
-getNextID();
-//scrapeTeamStats();
+//getNextID();
+scrapeTeamStats();
 //setCollection();
 //getFirstID();

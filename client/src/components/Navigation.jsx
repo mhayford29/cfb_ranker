@@ -226,10 +226,7 @@ class Navigation extends React.Component {
           Standings
         </div>
         <div className="navigation-item">
-          Filler
-        </div>
-        <div className="navigation-item">
-          Filler
+          
         </div>
       </div>
     )
