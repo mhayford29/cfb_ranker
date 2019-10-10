@@ -27,15 +27,6 @@ class App extends React.Component {
     this.closeModal = this.closeModal.bind(this);
   }
 
-  componentDidMount(){
-    Axios
-      .get(`/api/team`, { params: { school: 'Navy' }})
-      .then(({ data }) => {
-        console.log(data)
-      })
-      .catch(err => alert(err))
-  }
-
   addToRankings(teamInfo){
     this.setState({
       rankedTeam: teamInfo

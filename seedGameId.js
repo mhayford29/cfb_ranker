@@ -116,7 +116,7 @@ async function setStandigns() {
   
 }
 
-//getNextID();
-scrapeTeamStats();
+getNextID();
+//scrapeTeamStats();
 //setCollection();
 //getFirstID();

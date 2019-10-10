@@ -61,7 +61,6 @@ class Rankings extends React.Component {
             handleMoveUp={this.handleMoveUp} 
             handleMoveDown={this.handleMoveDown}/>
         })}
-        <button>save</button>
       </div>
     )
   }

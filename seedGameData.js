@@ -48,21 +48,27 @@ async function fetchGameData(){
   }
 }
 
+async function updateGameData(){
+  model.GameData.find({
+    week: 6
+  })
+  .then(async games => {
+    try{
+      for(var game of games){
+        let result = await axios.get(`http://site.api.espn.com/apis/site/v2/sports/football/college-football/summary?event=${game.id}`)
+        model.GameData.update({ id: game.id }, {
+          data: result.data
+        })
+        .then(() => console.log(`successful update`))
+        .catch(err => console.log('error updating game data'))
+      }
+    }catch(err){
+      console.log('error')
+    }
+  })
+  .catch(err => console.log(err))
+}
 
-// async function fetchGameData(){
-//   try{
-//     let { data } = await axios.get(`http://localhost:3000/api/team`, { params: { school: `Navy`}})
-//     console.log(data[0].gameIds)
-//     for(var id of data[0].gameIds){
-//       let obj = await axios.get(`http://site.api.espn.com/apis/site/v2/sports/football/college-football/summary?event=${id}`)
-//       //console.log(obj.data)
-//       model.GameIds.updateOne({ school: data[0].school }, { $push: { gameData: { week: `Week ${obj.data.header.week}`}, data: obj.data }})
-//         .then(() => console.log(`successfully inserted ${data[0].school} week ${obj.data.header.week} game data`))
-//         .catch(err => console.log(`${err} error inserting game data`))
-//     }
-//   } catch{
-//     console.log('error')
-//   }
-// }
 
-fetchGameData();
+//fetchGameData();
+updateGameData();

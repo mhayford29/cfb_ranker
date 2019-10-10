@@ -91,15 +91,25 @@ body{
   grid-template-columns: 200px auto 175px;
 }
 
-.team-stats-container{
-  display: grid;
-  grid-template-columns: auto auto; 
+.team-stats{
   font-size: 25px;
   border-bottom-style: solid;
   border-bottom-width: 1px;
   border-bottom-color: black;
   padding-top: 15px;
   padding-bottom: 15px;
+}
+
+.team-stats-container{
+  display: grid;
+  grid-template-columns: auto auto; 
+  padding-bottom: 15px;
+}
+
+.prev-game-item-container{
+  display: grid;
+  grid-template-columns: 250px auto;
+  width: 50%
 }
 
 .add-to-rankings {

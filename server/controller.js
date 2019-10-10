@@ -7,7 +7,7 @@ module.exports = {
     model.GameIds.aggregate([
       { $match: school },
       { $lookup: {
-        from: "gamedatas",
+        from: "test",
         localField: "gameIds",
         foreignField: "id",
         as: "game_data"
@@ -21,3 +21,4 @@ module.exports = {
     })
   }
 }
+

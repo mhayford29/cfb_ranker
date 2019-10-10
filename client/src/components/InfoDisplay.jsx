@@ -85,24 +85,71 @@ const Team = (props) => {
           <span>Add To Rankings</span>
         </div>
       </div>
-      <div className="team-stats-container">
-        <div>
+      <div className="team-stats">
+        <div className="team-stats-container">
           <div>
-            Record: {props.team[0].stats[1].value} - {props.team[0].stats[2].value} 
+            <div>
+              Record: {props.team[0].stats[1].value} - {props.team[0].stats[2].value} 
+            </div>
+            <div>
+              Streak: {props.team[0].stats[15].value}
+            </div>
           </div>
           <div>
-            Streak: {props.team[0].stats[15].value}
+            <div>
+              Points For and Against: {props.team[0].stats[9].value} - {props.team[0].stats[10].value}
+            </div>
+            <div>
+              Point Differential: {props.team[0].stats[14].value}
+            </div>
           </div>
         </div>
+        <div style={{ fontSize: '40px' }}>Games Played</div>
+        <PrevGames schedule={props.team[0].game_data} id={props.team[0].schoolId}/>
         <div>
-          <div>
-            Points For and Against: {props.team[0].stats[9].value} - {props.team[0].stats[10].value}
-          </div>
-          <div>
-            Point Differential: {props.team[0].stats[14].value}
-          </div>
+          <button onClick={props.openModal}>+ Compare Team</button>
         </div>
-        <button onClick={props.openModal}>+ Compare Team</button>
+      </div>
+    </div>
+  )
+}
+
+const PrevGames = (props) => {
+  const { schedule, id } = props;
+  return(
+    <div>
+      {schedule.map((game, index) => {
+        return game.data.scoringPlays ? <PrevGameItem game={game} id={id}/> : <div>next game</div>
+      })} 
+    </div>
+  )
+}
+
+const PrevGameItem = (props) => {
+  const { game, id } = props;
+  const { homeScore, awayScore } = game.data.scoringPlays[game.data.scoringPlays.length - 1];
+  var isHomeTeam = false;
+  var win = false;
+  if(game.data.boxscore.teams[1].team.id == id){
+    isHomeTeam = true;
+  }
+  if(Math.max(homeScore, awayScore) === homeScore){
+    if(game.data.boxscore.teams[1].team.id == id){
+      win = true;
+    }
+  } else{
+    if(game.data.boxscore.teams[0].team.id == id){
+      win = true;
+    }
+  }
+  return(
+    <div className="prev-game-item-container">
+      {isHomeTeam 
+        ? <div>{game.data.boxscore.teams[0].team.location} <img src={game.data.boxscore.teams[0].team.logo} height={25} width={25}/></div> 
+        : <div>@ {game.data.boxscore.teams[1].team.location} <img src={game.data.boxscore.teams[1].team.logo} height={25} width={25}/></div>}
+      <div>
+        <span>{awayScore}-{homeScore} </span>
+        {win ? <span style={{ color: 'green' }}>W</span> : <span style={{ color: 'red' }}>L</span>}
       </div>
     </div>
   )
