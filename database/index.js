@@ -2,7 +2,11 @@ const mongoose = require('mongoose');
 const password = require('../config');
 
 //mongoose.connect('mongodb://localhost/cfb_ranker', {useNewUrlParser: true});
-mongoose.connect(`mongodb+srv://mhayford29:${password}@cluster0-fu2nf.mongodb.net/cfb_ranker?retryWrites=true&w=majority`, {useNewUrlParser: true});
+if(process.env.PASSWORD){
+  mongoose.connect(`mongodb+srv://mhayford29:${process.env.PASSWORD}@cluster0-fu2nf.mongodb.net/cfb_ranker?retryWrites=true&w=majority`, {useNewUrlParser: true});
+} else{
+  mongoose.connect(`mongodb+srv://mhayford29:${password}@cluster0-fu2nf.mongodb.net/cfb_ranker?retryWrites=true&w=majority`, {useNewUrlParser: true});
+}
 
 var db = mongoose.connection;
 db.on('error', console.error.bind(console, 'connection error:'));
