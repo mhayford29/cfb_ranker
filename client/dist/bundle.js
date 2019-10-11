@@ -33462,6 +33462,20 @@ function (_React$Component) {
   }
 
   _createClass(App, [{
+    key: "componentDidMount",
+    value: function componentDidMount() {
+      axios__WEBPACK_IMPORTED_MODULE_5___default.a.get("/api/team", {
+        params: {
+          school: 'USC'
+        }
+      }).then(function (_ref) {
+        var data = _ref.data;
+        console.log(data);
+      })["catch"](function (err) {
+        return alert(err);
+      });
+    }
+  }, {
     key: "addToRankings",
     value: function addToRankings(teamInfo) {
       this.setState({
@@ -33473,8 +33487,8 @@ function (_React$Component) {
     value: function fetchPoll(pollId) {
       var _this2 = this;
 
-      axios__WEBPACK_IMPORTED_MODULE_5___default.a.get('http://site.api.espn.com/apis/site/v2/sports/football/college-football/rankings').then(function (_ref) {
-        var data = _ref.data;
+      axios__WEBPACK_IMPORTED_MODULE_5___default.a.get('http://site.api.espn.com/apis/site/v2/sports/football/college-football/rankings').then(function (_ref2) {
+        var data = _ref2.data;
 
         _this2.setState({
           publishedRankings: data.rankings[pollId]
@@ -33494,8 +33508,8 @@ function (_React$Component) {
         params: {
           school: schoolName
         }
-      }).then(function (_ref2) {
-        var data = _ref2.data;
+      }).then(function (_ref3) {
+        var data = _ref3.data;
 
         _this3.setState({
           teamData: data
@@ -33513,8 +33527,8 @@ function (_React$Component) {
         params: {
           school: schoolName
         }
-      }).then(function (_ref3) {
-        var data = _ref3.data;
+      }).then(function (_ref4) {
+        var data = _ref4.data;
 
         _this4.setState({
           teamDataTwo: data,
@@ -33531,8 +33545,8 @@ function (_React$Component) {
     value: function fetchStandings() {
       var _this5 = this;
 
-      axios__WEBPACK_IMPORTED_MODULE_5___default.a.get('http://site.api.espn.com/apis/v2/sports/football/college-football/standings').then(function (_ref4) {
-        var data = _ref4.data;
+      axios__WEBPACK_IMPORTED_MODULE_5___default.a.get('http://site.api.espn.com/apis/v2/sports/football/college-football/standings').then(function (_ref5) {
+        var data = _ref5.data;
 
         _this5.setState({
           standings: data

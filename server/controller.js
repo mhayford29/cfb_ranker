@@ -3,14 +3,26 @@ require('mongoose');
 
 module.exports = {
   get: (req, res) => {
-    var school = req.query;
+    const { query } = req
     model.GameIds.aggregate([
-      { $match: school },
+      { $match: query },
       { $lookup: {
-        from: "test",
-        localField: "gameIds",
-        foreignField: "id",
-        as: "game_data"
+          from: "test",
+          localField: "gameIds",
+          foreignField: "id",
+          as: "game_data"
+      }},
+      { $project: { 
+        "game_data.data.boxscore.teams": 1,
+        "game_data.data.scoringPlays": 1,
+        "location": 1,
+        "name": 1,
+        "schoolId": 1 ,
+        "stats": 1,
+        "color": 1,
+        "alternateColor": 1,
+        "logos": 1,
+        "school": 1
       }}
     ])
     .then(data => {

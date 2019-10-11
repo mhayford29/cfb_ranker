@@ -1,5 +1,6 @@
 const db = require('./index');
 const mongoose = require('mongoose');
+
 var Schema = mongoose.Schema
 
 var gameIdsSchema = new Schema({
