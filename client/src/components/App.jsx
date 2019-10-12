@@ -44,7 +44,7 @@ class App extends React.Component {
 
   fetchPoll(pollId){
     Axios
-      .get('http://site.api.espn.com/apis/site/v2/sports/football/college-football/rankings')
+      .get('https://site.api.espn.com/apis/site/v2/sports/football/college-football/rankings')
       .then(({ data }) => {
         this.setState({
           publishedRankings: data.rankings[pollId]
@@ -78,7 +78,7 @@ class App extends React.Component {
 
   fetchStandings(){
     Axios
-      .get('http://site.api.espn.com/apis/v2/sports/football/college-football/standings')
+      .get('https://site.api.espn.com/apis/v2/sports/football/college-football/standings')
       .then(({ data }) => {
         this.setState({
           standings: data
