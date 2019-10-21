@@ -1,5 +1,8 @@
 import React from 'react';
 import Standings from './Standings.jsx';
+import TeamInfo from './TeamInfo.jsx';
+import { HashRouter as Router, Route, Switch } from 'react-router-dom';
+import TeamInfoContainer from '../containers/teamInfoContainer.js';
 
 class InfoDisplay extends React.Component {
   constructor(props){
@@ -47,10 +50,11 @@ class InfoDisplay extends React.Component {
             poll={this.state.poll}
             addToRankings={this.props.addToRankings}/> : 
         this.state.teams.length ? this.state.teams.map((team, index) => {
-          return  <Team 
-            team={team}
-            addToRankings={this.props.addToRankings}
-            openModal={this.props.openModal}/> 
+          // return  <TeamInfo 
+          //   team={team}
+          //   addToRankings={this.props.addToRankings}
+          //   openModal={this.props.openModal}/> 
+          return <TeamInfoContainer team={team}/>
         }) :
         this.state.standings.name ?
           <Standings 
@@ -59,7 +63,29 @@ class InfoDisplay extends React.Component {
           <Welcome />}
       </div>
     )
+    // return(
+    //   <Router>
+    //     <div>
+          
+    //         <Route exact path='/' component={Welcome}/>
+    //         <Route path='/test' component={Test} />
+    //         <Route path='/standings' state={{message: 'hello!'}} render={(props) => {
+    //           console.log(props.location)
+    //           return(<div>test</div>)
+    //         }} />
+          
+    //     </div>
+    //   </Router>
+    // )
   }
+}
+
+const Test = (props) => {
+  return(
+    <div>
+      this is some text
+    </div>
+  )
 }
 
 const Team = (props) => {
@@ -105,51 +131,10 @@ const Team = (props) => {
           </div>
         </div>
         <div style={{ fontSize: '40px' }}>Games Played</div>
-        <PrevGames schedule={props.team[0].game_data} id={props.team[0].schoolId}/>
+        <Schedule schedule={props.team[0].game_data} id={props.team[0].schoolId}/>
         <div>
           <button onClick={props.openModal}>+ Compare Team</button>
         </div>
-      </div>
-    </div>
-  )
-}
-
-const PrevGames = (props) => {
-  const { schedule, id } = props;
-  return(
-    <div>
-      {schedule.map((game, index) => {
-        return game.data.scoringPlays ? <PrevGameItem game={game} id={id}/> : <div>next game</div>
-      })} 
-    </div>
-  )
-}
-
-const PrevGameItem = (props) => {
-  const { game, id } = props;
-  const { homeScore, awayScore } = game.data.scoringPlays[game.data.scoringPlays.length - 1];
-  var isHomeTeam = false;
-  var win = false;
-  if(game.data.boxscore.teams[1].team.id == id){
-    isHomeTeam = true;
-  }
-  if(Math.max(homeScore, awayScore) === homeScore){
-    if(game.data.boxscore.teams[1].team.id == id){
-      win = true;
-    }
-  } else{
-    if(game.data.boxscore.teams[0].team.id == id){
-      win = true;
-    }
-  }
-  return(
-    <div className="prev-game-item-container">
-      {isHomeTeam 
-        ? <div>{game.data.boxscore.teams[0].team.location} <img src={game.data.boxscore.teams[0].team.logo} height={25} width={25}/></div> 
-        : <div>@ {game.data.boxscore.teams[1].team.location} <img src={game.data.boxscore.teams[1].team.logo} height={25} width={25}/></div>}
-      <div>
-        <span>{awayScore}-{homeScore} </span>
-        {win ? <span style={{ color: 'green' }}>W</span> : <span style={{ color: 'red' }}>L</span>}
       </div>
     </div>
   )
@@ -199,7 +184,8 @@ const PollItem = (props) => {
 const Welcome = () => {
   return(
     <div>
-      Welcome!
+      <div>Welcome!</div>
+      <p>I built this application to streamline the process of assembling a college football top 25 poll.</p>
     </div>
   )
 }

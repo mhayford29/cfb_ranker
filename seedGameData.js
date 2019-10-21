@@ -14,6 +14,18 @@ const teamAbvs = ['UCF', 'Cincinnati', 'East Carolina', 'Houston', 'Memphis', 'N
                   'Alabama', 'Arkansas', 'Auburn', 'Florida', 'Georgia', 'Kentucky', 'LSU', 'Ole Miss', 'Miss St', 'Missouri', 'S Carolina', 'Tennessee', 'Texas A&M', 'Vanderbilt',
                   'Arkansas State', 'C. Carolina', 'Ga Southern', 'Georgia State', 'Louisiana', 'UL Monroe', 'South Alabama', 'Texas State', 'Troy'];
 
+async function updateGames(){
+
+}
+
+async function popLastGameId(){
+  for(const school of teamAbvs){
+    model.GameIds.updateOne({ school: school }, { $pop: { gameIds: 1 }})
+    .then(() => console.log(`successfully removed ${school}'s most recent gameId`))
+    .catch(err => console.log('error removing last gameId'))
+  }
+}
+
 async function fetchGameData(){
   var idMemo = {};
   var idArr = [];
@@ -48,9 +60,17 @@ async function fetchGameData(){
   }
 }
 
+async function deleteGameData(){
+  model.GameData.deleteMany({
+    week: { $gte: 8 }
+  })
+  .then(() => console.log('deleted games'))
+  .catch(err => console.log('error'))
+}
+
 async function updateGameData(){
   model.GameData.find({
-    week: 6
+    week: 7
   })
   .then(async games => {
     try{
@@ -69,6 +89,8 @@ async function updateGameData(){
   .catch(err => console.log(err))
 }
 
-
+deleteGameData();
+//popLastGameId();
 //fetchGameData();
-updateGameData();
+//updateGameData();
+//getRecentGame();

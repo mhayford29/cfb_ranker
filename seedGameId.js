@@ -37,7 +37,7 @@ async function getFirstID() {
 async function getNextID() {
   for(const school of teamAbvs){
     try {
-      let { data } = await axios.get(`http://site.api.espn.com/apis/site/v2/sports/football/college-football/teams/${school}`);
+      let { data } = await axios.get(`https://site.api.espn.com/apis/site/v2/sports/football/college-football/teams/${school}`);
       const nextEvent = data.team.nextEvent[0].id;
       const team = data.team.nickname;
       let results = await axios.get(`http://localhost:3000/api/team`, { params: { school: team }});
@@ -53,7 +53,51 @@ async function getNextID() {
       console.error(`error updating ${school}`);
     }
   }
-  //process.exit();
+}
+
+
+async function updateGames(){
+  var idMemo = {};
+  for(const school of teamAbvs){
+    try {
+      let { data } = await axios.get(`https://site.api.espn.com/apis/site/v2/sports/football/college-football/teams/${school}`);
+      const nextEvent = data.team.nextEvent[0].id;
+      const team = data.team.nickname;
+      let results = await axios.get(`http://localhost:3000/api/team`, { params: { school: team }});
+      let ids = results.data[0].gameIds
+      if(ids[ids.length - 1] !== nextEvent){
+        model.GameIds.updateOne({ school: team }, { $push: { gameIds: nextEvent }})
+          .then(async () => {
+            console.log(`successfully updated ${team}'s gameIds`)
+            if(!idMemo[nextEvent]){
+              idMemo[nextEvent] = true;
+              try{
+                let result = await axios.get(`http://site.api.espn.com/apis/site/v2/sports/football/college-football/summary?event=${nextEvent}`)
+                model.GameData.create({
+                  id: nextEvent,
+                  week: result.data.header.week,
+                  data: result.data,
+                })
+                .then(() => console.log(`successfully inserted game data for game id: ${nextEvent} week ${result.data.header.week} ${result.data.boxscore.teams[0].team.location} VS ${result.data.boxscore.teams[1].team.location}`))
+                .catch(err => {
+                  console.log(`error creating document`, err)
+                  process.exit();
+                })
+              } catch(err){
+                console.log('error amongst all this async spaghetti')
+              }
+            } else{
+              console.log('event already created');
+            }
+          })
+          .catch(err => console.log(`error updating ${team}'s gameIds`))
+      } else{
+        console.log(`${team} is already up to date`)
+      }
+    } catch (error) {
+      console.error(`error updating ${school}`);
+    }
+  }
 }
 
 async function scrapeTeamStats() {
@@ -116,7 +160,8 @@ async function setStandigns() {
   
 }
 
-getNextID();
+//getNextID();
 //scrapeTeamStats();
 //setCollection();
 //getFirstID();
+updateGames();

@@ -4,6 +4,7 @@ import Navigation from './Navigation.jsx';
 import InfoDisplay from './InfoDisplay.jsx';
 import TeamSelectModal from './Modal.jsx';
 import Axios from 'axios';
+import MyRankingsContainer from '../containers/myRankingsContainer.js';
 
 class App extends React.Component {
   constructor(props){
@@ -20,7 +21,7 @@ class App extends React.Component {
     this.fetchTeam = this.fetchTeam.bind(this);
     this.fetchSecondTeam = this.fetchSecondTeam.bind(this);
     this.fetchStandings = this.fetchStandings.bind(this);
-    this.addToRankings = this.addToRankings.bind(this);
+    //this.addToRankings = this.addToRankings.bind(this);
     //modal methods
     this.openModal = this.openModal.bind(this);
     this.afterOpenModal = this.afterOpenModal.bind(this);
@@ -29,18 +30,18 @@ class App extends React.Component {
 
   componentDidMount(){
     Axios
-      .get(`/api/team`, { params: { school: 'USC' }})
+      .get(`http://site.api.espn.com/apis/site/v2/sports/football/college-football/teams/michigan/schedule`)
       .then(({ data }) => {
         console.log(data)
       })
       .catch(err => alert(err))
   }
 
-  addToRankings(teamInfo){
-    this.setState({
-      rankedTeam: teamInfo
-    })
-  }
+  // addToRankings(teamInfo){
+  //   this.setState({
+  //     rankedTeam: teamInfo
+  //   })
+  // }
 
   fetchPoll(pollId){
     Axios
@@ -123,7 +124,7 @@ class App extends React.Component {
               openModal = {this.openModal}/>
           </div>
           <div className="rankings">
-            <Rankings team = {this.state.rankedTeam}/> 
+            <MyRankingsContainer /> 
           </div>
         </div>
         <TeamSelectModal 
