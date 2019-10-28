@@ -1,14 +1,30 @@
 import React from 'react';
-import ConferenceItemContainer from '../containers/conferenceItemContainer.js';
+import { ConferenceItemContainer } from '../containers/conferenceItemContainer.js';
 
-const Standings = (props) => {
-  return(
-    <div style={{ marginBottom: '50px' }}>
-      {props.standings.children.map((conf, index) => {
-        return <Conference conf={conf} addToRankings={props.addToRankings}/>
-      })}
-    </div>
-  )
+class Standings extends React.Component{
+  constructor(props){
+    super(props)
+  }
+
+  componentDidMount(){
+    this.props.fetchStandings()
+  }
+
+  render(){
+    if(this.props.standings.children){
+      return(
+        <div style={{ marginBottom: '50px' }}>
+          {this.props.standings.children.map((conf, index) => {
+            return <Conference conf={conf} addToRankings={this.props.addToRankings}/>
+          })}
+        </div>
+      )
+    } else{
+      return(
+        <div>Loading</div>
+      )
+    }
+  }
 }
 
 const Conference = (props) => {

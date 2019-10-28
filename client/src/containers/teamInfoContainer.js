@@ -1,9 +1,9 @@
 import { connect } from 'react-redux';
-import TeamInfo from '../components/TeamInfo.jsx';
+import TeamInfoList from '../components/TeamInfoList.jsx';
 import { addTeam } from '../actions/myRankings.js';
 
 var mapStateToProps = (state, ownProps) => ({
-  team: ownProps.team
+  team: ownProps.match.params.team
 })
 
 var mapDispatchToProps = (dispatch) => ({
@@ -12,6 +12,6 @@ var mapDispatchToProps = (dispatch) => ({
   }
 })
 
-var TeamInfoContainer = connect(mapStateToProps, mapDispatchToProps)(TeamInfo)
+var TeamInfoContainer = connect(mapStateToProps, mapDispatchToProps)(TeamInfoList)
 
 export default TeamInfoContainer;

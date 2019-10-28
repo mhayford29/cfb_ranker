@@ -1,25 +1,26 @@
 import React from 'react';
 import Schedule from './Schedule.jsx';
+import TeamSelectModal from './Modal.jsx';
 
-var TeamInfo = (props) => {
-  console.log(props)
+var TeamInfoItem = (props) => {
+  const { team } = props;
   var teamInfo = {
-    school: props.team[0].school,
-    record: `${props.team[0].stats[1].value}-${props.team[0].stats[2].value}`,
-    logo: props.team[0].logos[0]
+    school: team.school,
+    record: `${team.stats[1].value}-${team.stats[2].value}`,
+    logo: team.logos[0]
   }
   return(
     <div>
       <div className="team-header-container">
         <span width={200} height={200}>
-          <img src={props.team[0].logos[0]} width={200} height={200}></img>
+          <img src={team.logos[0]} width={200} height={200}></img>
         </span>
         <span style={{ fontSize: '35px', textAlign: 'center', margin: 'auto'}}>
-          {props.team[0].location} {props.team[0].name}
+          {team.location} {team.name}
         </span>
         <div 
           className="add-to-rankings" 
-          style={{ color: `#${props.team[0].color}`, borderColor: `#${props.team[0].alternateColor}` }}
+          style={{ color: `#${team.color}`, borderColor: `#${team.alternateColor}` }}
           onClick={() => props.addToRankings(teamInfo)}>
           <span>Add To Rankings</span>
         </div>
@@ -28,29 +29,34 @@ var TeamInfo = (props) => {
         <div className="team-stats-container">
           <div>
             <div>
-              Record: {props.team[0].stats[1].value} - {props.team[0].stats[2].value} 
+              Record: {team.stats[1].value} - {team.stats[2].value} 
             </div>
             <div>
-              Streak: {props.team[0].stats[15].value}
+              Streak: {team.stats[15].value}
             </div>
           </div>
           <div>
             <div>
-              Points For and Against: {props.team[0].stats[9].value} - {props.team[0].stats[10].value}
+              Points For and Against: {team.stats[9].value} - {team.stats[10].value}
             </div>
             <div>
-              Point Differential: {props.team[0].stats[14].value}
+              Point Differential: {team.stats[14].value}
             </div>
           </div>
         </div>
         <div style={{ fontSize: '40px' }}>Games Played</div>
-        <Schedule schedule={props.team[0].game_data} id={props.team[0].schoolId}/>
+        <Schedule schedule={team.game_data} id={team.schoolId}/>
         <div>
           <button onClick={props.openModal}>+ Compare Team</button>
         </div>
       </div>
+      <TeamSelectModal 
+        closeModal={props.closeModal}
+        afterOpenModal={props.afterOpenModal}
+        modalIsOpen={props.modalIsOpen}
+        fetchTeam={props.fetchTeam}/>
     </div>
   )
 }
 
-export default TeamInfo;
+export default TeamInfoItem;
