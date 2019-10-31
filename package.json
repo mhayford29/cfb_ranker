@@ -29,6 +29,6 @@
   },
   "scripts": {
     "start": "nodemon ./server/index.js",
-    "build": "webpack -w"
+    "build": "webpack"
   }
 }
