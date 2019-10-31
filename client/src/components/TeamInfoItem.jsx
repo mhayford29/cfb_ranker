@@ -44,7 +44,7 @@ var TeamInfoItem = (props) => {
             </div>
           </div>
         </div>
-        <div style={{ fontSize: '40px' }}>Games Played</div>
+        <div style={{ fontSize: '40px' }}>Schedule</div>
         <Schedule schedule={team.game_data} id={team.schoolId}/>
         <div>
           <button onClick={props.openModal}>+ Compare Team</button>

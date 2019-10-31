@@ -2,11 +2,13 @@ import React from 'react';
 
 const Schedule = (props) => {
   const { schedule, id } = props;
-  console.log(schedule.length);
+  schedule.sort((a, b) => {
+    return a.week - b.week;
+  })
   return(
     <div>
       {schedule.map((game, index) => {
-        return game.data.scoringPlays ? <ScheduleItem game={game} id={id}/> : <div>next game</div>
+        return game.data.scoringPlays ? <ScheduleItem game={game} id={id}/> : <NotPlayed game={game} id={id}/>
       })} 
     </div>
   )
@@ -38,6 +40,15 @@ const ScheduleItem = (props) => {
         <span>{awayScore}-{homeScore} </span>
         {win ? <span style={{ color: 'green' }}>W</span> : <span style={{ color: 'red' }}>L</span>}
       </div>
+    </div>
+  )
+}
+
+const NotPlayed = (props) => {
+  const { game: { data: { boxscore: { teams } }} } = props;
+  return(
+    <div>
+      {teams[0].team.location} vs. {teams[1].team.location}
     </div>
   )
 }

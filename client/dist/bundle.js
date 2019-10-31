@@ -33405,147 +33405,29 @@ exports.unstable_unsubscribe = unstable_unsubscribe;
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(309);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var _Modal_jsx__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(325);
-/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(342);
-/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_2__);
-/* harmony import */ var _containers_myRankingsContainer_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(422);
-/* harmony import */ var _containers_navigationContainer_js__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(429);
-/* harmony import */ var _containers_infoDisplayContainer_js__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(431);
-function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
-
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
-
-function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
-
-function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
-
-function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
-
-function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
-
-function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
-
-function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
+/* harmony import */ var _containers_myRankingsContainer_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(422);
+/* harmony import */ var _containers_navigationContainer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(429);
+/* harmony import */ var _containers_infoDisplayContainer_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(431);
 
 
 
 
 
-
-
-
-var App =
-/*#__PURE__*/
-function (_React$Component) {
-  _inherits(App, _React$Component);
-
-  function App(props) {
-    var _this;
-
-    _classCallCheck(this, App);
-
-    _this = _possibleConstructorReturn(this, _getPrototypeOf(App).call(this, props));
-    _this.state = {
-      publishedRankings: {},
-      teamData: {},
-      teamDataTwo: {},
-      standings: {},
-      rankedTeam: {},
-      modalIsOpen: false
-    };
-    _this.fetchSecondTeam = _this.fetchSecondTeam.bind(_assertThisInitialized(_this)); //modal methods
-
-    _this.openModal = _this.openModal.bind(_assertThisInitialized(_this));
-    _this.afterOpenModal = _this.afterOpenModal.bind(_assertThisInitialized(_this));
-    _this.closeModal = _this.closeModal.bind(_assertThisInitialized(_this));
-    return _this;
-  }
-
-  _createClass(App, [{
-    key: "fetchSecondTeam",
-    value: function fetchSecondTeam(schoolName) {
-      var _this2 = this;
-
-      axios__WEBPACK_IMPORTED_MODULE_2___default.a.get("/api/team", {
-        params: {
-          school: schoolName
-        }
-      }).then(function (_ref) {
-        var data = _ref.data;
-
-        _this2.setState({
-          teamDataTwo: data,
-          modalIsOpen: false
-        }, function () {
-          return console.log(_this2.state.teamDataTwo);
-        });
-      })["catch"](function (err) {
-        return alert(err);
-      });
+var App = function App() {
+  return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    style: {
+      marginTop: '0px'
     }
-    /******* MODAL METHODS *********/
-
-  }, {
-    key: "openModal",
-    value: function openModal() {
-      this.setState({
-        modalIsOpen: true
-      });
-    }
-  }, {
-    key: "afterOpenModal",
-    value: function afterOpenModal() {
-      // references are now sync'd and can be accessed.
-      this.subtitle.style.color = '#f00';
-    }
-  }, {
-    key: "closeModal",
-    value: function closeModal() {
-      this.setState({
-        modalIsOpen: false
-      });
-    }
-    /*******************************/
-
-  }, {
-    key: "render",
-    value: function render() {
-      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        style: {
-          marginTop: '0px'
-        }
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "navigation"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_containers_navigationContainer_js__WEBPACK_IMPORTED_MODULE_4__["default"] //fetchPoll = {this.fetchPoll}
-      //fetchTeam = {this.fetchTeam}
-      , {
-        fetchStandings: this.fetchStandings
-      })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "appContainer"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "info-display"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_containers_infoDisplayContainer_js__WEBPACK_IMPORTED_MODULE_5__["default"], {
-        publishedRankings: this.state.publishedRankings,
-        teamData: this.state.teamData,
-        teamDataTwo: this.state.teamDataTwo,
-        standings: this.state.standings,
-        addToRankings: this.addToRankings,
-        openModal: this.openModal
-      })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "rankings"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_containers_myRankingsContainer_js__WEBPACK_IMPORTED_MODULE_3__["default"], null))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_Modal_jsx__WEBPACK_IMPORTED_MODULE_1__["default"], {
-        closeModal: this.closeModal,
-        afterOpenModal: this.afterOpenModal,
-        modalIsOpen: this.state.modalIsOpen,
-        fetchTeam: this.fetchSecondTeam
-      }));
-    }
-  }]);
-
-  return App;
-}(react__WEBPACK_IMPORTED_MODULE_0___default.a.Component);
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "navigation"
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_containers_navigationContainer_js__WEBPACK_IMPORTED_MODULE_2__["default"], null)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "appContainer"
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "info-display"
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_containers_infoDisplayContainer_js__WEBPACK_IMPORTED_MODULE_3__["default"], null)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "rankings"
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_containers_myRankingsContainer_js__WEBPACK_IMPORTED_MODULE_1__["default"], null))));
+};
 
 /* harmony default export */ __webpack_exports__["default"] = (App);
 
@@ -33726,6 +33608,27 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _containers_teamInfoContainer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(423);
 /* harmony import */ var _containers_pollContainer_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(433);
 /* harmony import */ var _containers_standingsContainer_js__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(438);
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(342);
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_5__);
+function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
+
+function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
+
+function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
+
+function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
+
+function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
+
+
 
 
 
@@ -33751,9 +33654,36 @@ var InfoDisplay = function InfoDisplay(props) {
   }))));
 };
 
-var Welcome = function Welcome() {
-  return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, "Welcome!"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "I built this application to streamline the process of assembling a college football top 25 poll."));
-};
+var Welcome =
+/*#__PURE__*/
+function (_React$Component) {
+  _inherits(Welcome, _React$Component);
+
+  function Welcome() {
+    _classCallCheck(this, Welcome);
+
+    return _possibleConstructorReturn(this, _getPrototypeOf(Welcome).apply(this, arguments));
+  }
+
+  _createClass(Welcome, [{
+    key: "componentDidMount",
+    value: function componentDidMount() {
+      axios__WEBPACK_IMPORTED_MODULE_5___default.a.get("http://site.api.espn.com/apis/site/v2/sports/football/college-football/summary?event=401114179").then(function (_ref) {
+        var data = _ref.data;
+        console.log(data);
+      })["catch"](function (err) {
+        return console.log(err);
+      });
+    }
+  }, {
+    key: "render",
+    value: function render() {
+      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, "Welcome!"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "I built this application to streamline the process of assembling a college football top 25 poll."));
+    }
+  }]);
+
+  return Welcome;
+}(react__WEBPACK_IMPORTED_MODULE_0___default.a.Component);
 
 /* harmony default export */ __webpack_exports__["default"] = (InfoDisplay);
 
@@ -33771,14 +33701,12 @@ __webpack_require__.r(__webpack_exports__);
 
 var customStyles = {
   content: {
-    position: 'fixed',
     top: '50%',
     left: '50%',
     right: 'auto',
     bottom: 'auto',
     marginRight: '-50%',
-    transform: 'translate(-50%, -50%)',
-    zIndex: -1
+    transform: 'translate(-50%, -50%)'
   }
 };
 react_modal__WEBPACK_IMPORTED_MODULE_1___default.a.setAppElement('#app');
@@ -44629,12 +44557,17 @@ __webpack_require__.r(__webpack_exports__);
 var Schedule = function Schedule(props) {
   var schedule = props.schedule,
       id = props.id;
-  console.log(schedule.length);
+  schedule.sort(function (a, b) {
+    return a.week - b.week;
+  });
   return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, schedule.map(function (game, index) {
     return game.data.scoringPlays ? react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(ScheduleItem, {
       game: game,
       id: id
-    }) : react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, "next game");
+    }) : react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(NotPlayed, {
+      game: game,
+      id: id
+    });
   }));
 };
 
@@ -44680,6 +44613,11 @@ var ScheduleItem = function ScheduleItem(props) {
       color: 'red'
     }
   }, "L")));
+};
+
+var NotPlayed = function NotPlayed(props) {
+  var teams = props.game.data.boxscore.teams;
+  return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, teams[0].team.location, " vs. ", teams[1].team.location);
 };
 
 /* harmony default export */ __webpack_exports__["default"] = (Schedule);
@@ -45361,7 +45299,7 @@ var TeamInfoItem = function TeamInfoItem(props) {
     style: {
       fontSize: '40px'
     }
-  }, "Games Played"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_Schedule_jsx__WEBPACK_IMPORTED_MODULE_1__["default"], {
+  }, "Schedule"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_Schedule_jsx__WEBPACK_IMPORTED_MODULE_1__["default"], {
     schedule: team.game_data,
     id: team.schoolId
   }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {

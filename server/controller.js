@@ -13,6 +13,7 @@ module.exports = {
           as: "game_data"
       }},
       { $project: { 
+        "game_data.week": 1,
         "game_data.data.boxscore.teams": 1,
         "game_data.data.scoringPlays": 1,
         "location": 1,
