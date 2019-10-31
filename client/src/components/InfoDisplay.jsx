@@ -1,5 +1,5 @@
 import React from 'react';
-import { HashRouter as Router, Route } from 'react-router-dom';
+import { BrowserRouter as Router, Route } from 'react-router-dom';
 import TeamInfoContainer from '../containers/teamInfoContainer.js';
 import PollContainer from '../containers/pollContainer.js';
 import StandingsContainer from '../containers/standingsContainer.js';
