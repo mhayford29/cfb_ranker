@@ -1,5 +1,5 @@
 const mongoose = require('mongoose');
-const PASSWORD = require('../config') || process.env.PASSWORD;
+const PASSWORD = process.env.PASSWORD || require('../config');
 
 //mongoose.connect('mongodb://localhost/cfb_ranker', {useNewUrlParser: true});
 
