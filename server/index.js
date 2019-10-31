@@ -14,7 +14,7 @@ app.use(parser.urlencoded({ extended: true }));
 app.use('/api', routes);
 
 app.get('*', (req, res) => {
-  res.sendFile(`${path.resolve(__dirname, '../client/dist')}`)
+  res.sendFile(`${path.resolve(__dirname, '../client/dist/index.html')}`)
 })
 
 app.listen(process.env.PORT || PORT, () => console.log(`Listening on port ${PORT}`));
