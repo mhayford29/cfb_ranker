@@ -27,19 +27,47 @@ class Standings extends React.Component{
   }
 }
 
+const DivisionsHeader = () => {
+  return(
+    <div className="conference-item-header-divisions">
+      <div></div>
+      <div>W-L</div>
+      <div>PF</div>
+      <div>PA</div>
+      <div>Home</div>
+      <div>Away</div>
+      <div>STRK</div>
+    </div>
+  )
+}
+
+const NoDivisionsHeader = () => {
+  return(
+    <div className="conference-item-header-no-divisions">
+      <div></div>
+      <div>W-L</div>
+      <div>PF</div>
+      <div>PA</div>
+      <div>Home</div>
+      <div>Away</div>
+      <div>STRK</div>
+    </div>
+  )
+}
+
+const Header = (props) => {
+  if(props.conf.standings){
+    return <NoDivisionsHeader />
+  } else{
+    return <DivisionsHeader />
+  }
+}
+
 const Conference = (props) => {
   return(
     <div>
       <div style={{ textAlign: 'center', marginTop: '30px' }}>{props.conf.name}</div>
-      <div className="conference-item-header">
-        <div></div>
-        <div>W-L</div>
-        <div>PF</div>
-        <div>PA</div>
-        <div>Home</div>
-        <div>Away</div>
-        <div>STRK</div>
-      </div>
+      <Header conf={props.conf} />
       {props.conf.standings ? 
         props.conf.standings.entries.map((item, index) => {
           return <ConferenceItem 

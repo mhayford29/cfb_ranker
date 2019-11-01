@@ -45063,15 +45063,35 @@ function (_React$Component) {
   return Standings;
 }(react__WEBPACK_IMPORTED_MODULE_0___default.a.Component);
 
+var DivisionsHeader = function DivisionsHeader() {
+  return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "conference-item-header-divisions"
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, "W-L"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, "PF"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, "PA"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, "Home"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, "Away"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, "STRK"));
+};
+
+var NoDivisionsHeader = function NoDivisionsHeader() {
+  return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "conference-item-header-no-divisions"
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, "W-L"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, "PF"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, "PA"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, "Home"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, "Away"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, "STRK"));
+};
+
+var Header = function Header(props) {
+  if (props.conf.standings) {
+    return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(NoDivisionsHeader, null);
+  } else {
+    return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(DivisionsHeader, null);
+  }
+};
+
 var Conference = function Conference(props) {
   return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     style: {
       textAlign: 'center',
       marginTop: '30px'
     }
-  }, props.conf.name), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-    className: "conference-item-header"
-  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, "W-L"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, "PF"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, "PA"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, "Home"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, "Away"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, "STRK")), props.conf.standings ? props.conf.standings.entries.map(function (item, index) {
+  }, props.conf.name), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(Header, {
+    conf: props.conf
+  }), props.conf.standings ? props.conf.standings.entries.map(function (item, index) {
     return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(ConferenceItem, {
       item: item,
       index: index,
