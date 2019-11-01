@@ -42515,7 +42515,9 @@ function (_React$Component) {
           });
         }));
       } else {
-        return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, "Loading");
+        return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+          className: "lds-dual-ring"
+        });
       }
     }
   }]);
@@ -42558,8 +42560,9 @@ var TeamInfoItem = function TeamInfoItem(props) {
   })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
     style: {
       fontSize: '35px',
-      textAlign: 'center',
-      margin: 'auto'
+      display: 'flex',
+      alignItems: 'center',
+      justifyContent: 'center'
     }
   }, team.location, " ", team.name), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "add-to-rankings",
@@ -44829,7 +44832,9 @@ function (_React$Component) {
           }, team.team.location, ": ", team.points, ",", '  ');
         })));
       } else {
-        return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, "Loading");
+        return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+          className: "lds-dual-ring"
+        });
       }
     }
   }]);
@@ -45048,7 +45053,9 @@ function (_React$Component) {
           });
         }));
       } else {
-        return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, "Loading");
+        return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+          className: "lds-dual-ring"
+        });
       }
     }
   }]);

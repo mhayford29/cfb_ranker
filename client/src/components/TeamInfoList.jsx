@@ -91,7 +91,7 @@ class TeamInfoList extends React.Component {
         </div>
       )
     } else{
-      return(<div>Loading</div>)
+      return(<div className="lds-dual-ring"></div>)
     }
   }
 }

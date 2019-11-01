@@ -15,7 +15,7 @@ var TeamInfoItem = (props) => {
         <span width={200} height={200}>
           <img src={team.logos[0]} width={200} height={200}></img>
         </span>
-        <span style={{ fontSize: '35px', textAlign: 'center', margin: 'auto'}}>
+        <span style={{ fontSize: '35px', display: 'flex', alignItems: 'center', justifyContent: 'center'}}>
           {team.location} {team.name}
         </span>
         <div 

@@ -21,7 +21,7 @@ class Standings extends React.Component{
       )
     } else{
       return(
-        <div>Loading</div>
+        <div className="lds-dual-ring"></div>
       )
     }
   }
