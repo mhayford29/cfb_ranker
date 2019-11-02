@@ -1,5 +1,5 @@
 import React from 'react';
-import { HashRouter as Router, Link } from 'react-router-dom';
+import { HashRouter as Router, Link, NavLink } from 'react-router-dom';
 import conferences from '../../../lib/schools.js';
 
 
@@ -37,7 +37,13 @@ var Navigation = (props) => {
             </span>
             <span className="dropdown-submenu" style={{transform: `translate(${56}px, ${-10}px)`}}>
               {conferences.AAC.map((team, index) => {
-                return <div><Link to={`/team/${team}`}>{team}</Link></div>
+                return (
+                  <div>
+                    <Link to={`/team/${team}`}>
+                      {team}
+                    </Link>
+                  </div>
+                )
               })}
             </span>
           </div>
@@ -129,9 +135,11 @@ var Navigation = (props) => {
       </div>
       </Router>
       <Router>
-        <Link to='/standings' className="navigation-item">
+        <NavLink 
+          to='/standings'
+          className="navigation-item">
           Standings
-        </Link>
+        </NavLink>
       </Router>
       <div className="navigation-item">
         
