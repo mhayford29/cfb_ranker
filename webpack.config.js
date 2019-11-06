@@ -1,7 +1,7 @@
 const path = require('path');
 
 module.exports = {
-  entry: ['@babel/polyfill', './client/src/'],
+  entry: ['./client/src/'],
   output: {
     path: path.resolve(__dirname, './client/dist'),
     filename: 'bundle.js'
@@ -14,8 +14,7 @@ module.exports = {
         exclude: /node_modules/,
         loader: "babel-loader",
         options: {
-          presets: ['@babel/preset-env', '@babel/preset-react'],
-          plugins: ['@babel/plugin-transform-async-to-generator']
+          presets: ['@babel/preset-env', '@babel/preset-react']
         }
       }
     ]
