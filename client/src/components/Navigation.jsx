@@ -4,25 +4,40 @@ import conferences from '../../../lib/schools.js';
 
 
 var Navigation = (props) => {
-  const { fetchTeam } = props;
   return(
     <div className="navigation-container">
+      <Router>
+        <NavLink 
+          to='/'
+          className="navigation-item">
+          Home
+        </NavLink>
+      </Router>
+      <Router>
+        <NavLink 
+          to='/standings'
+          className="navigation-item">
+          Standings
+        </NavLink>
+      </Router>
       <div className="navigation-item">
         Polls
         <div className="dropdown-content">
           <Router>
             <div>
               <Link to='/poll/0'>
-                AP Poll                
+                CFP Committee               
               </Link>
             </div>
             <div>
               <Link to='/poll/1'>
-                Coaches Poll
+                AP Poll
               </Link>
             </div>
             <div>
-              CFP Committee  
+              <Link to='/poll/2'>
+                Coaches Poll
+              </Link>
             </div>
           </Router>
         </div>
@@ -134,15 +149,11 @@ var Navigation = (props) => {
         </div>
       </div>
       </Router>
-      <Router>
-        <NavLink 
-          to='/standings'
-          className="navigation-item">
-          Standings
-        </NavLink>
-      </Router>
       <div className="navigation-item">
         
+      </div>
+      <div className="navigation-item">
+        Sign Up / Login
       </div>
     </div>
   )
