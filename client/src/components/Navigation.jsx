@@ -1,7 +1,8 @@
 import React from 'react';
 import { HashRouter as Router, Link, NavLink } from 'react-router-dom';
 import conferences from '../../../lib/schools.js';
-
+import * as firebase from 'firebase/app';
+import 'firebase/auth'
 
 var Navigation = (props) => {
   return(
@@ -149,12 +150,29 @@ var Navigation = (props) => {
         </div>
       </div>
       </Router>
-      <div className="navigation-item">
+      <div >
         
       </div>
-      <div className="navigation-item">
-        Sign Up / Login
-      </div>
+      { props.loginStatus==='LOGGED_OUT' ?
+        <div className="navigation-item" onClick={() => props.toggleLoginModal(true)}>
+          Sign Up / Login
+        </div> :
+        <div className="user-panel-container">
+          <div className="navigation-item" >
+            Hello, {firebase.auth().currentUser.displayName}
+          </div>
+          <Router>
+            <NavLink 
+              to='/my_ballots'
+              className="navigation-item">
+              My Ballots
+            </NavLink>
+          </Router>
+          <div className="navigation-item" onClick={props.signOut}>
+            Sign Out
+          </div>
+        </div>
+      }
     </div>
   )
 }

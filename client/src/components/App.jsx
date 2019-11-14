@@ -1,23 +1,62 @@
 import React from 'react';
 import MyRankingsContainer from '../containers/myRankingsContainer.js';
-import NavigationContainer from '../containers/navigationContainer.js';
+import { NavigationContainer } from '../containers/navigationContainer.js';
 import InfoDisplayContainer from '../containers/infoDisplayContainer.js';
+import LoginModalContainer from '../containers/loginModalContainer.js';
+import * as firebase from 'firebase/app';
+import 'firebase/auth'
 
-var App = () => (
-  <div style={{ marginTop: '0px' }}>
-    <div className="navigation">
-      <NavigationContainer />
-    </div>
-    <div className="appContainer">
-      <div className="info-display">
-        <InfoDisplayContainer />
-      </div>
-      <div className="rankings">
-        <MyRankingsContainer /> 
-      </div>
-    </div>
-  </div>
-)
+class App extends React.Component {
+  constructor(props){
+    super(props)
+    this.handleSignOut = this.handleSignOut.bind(this);
+  }
+
+  componentDidMount(){
+    firebase.auth().onAuthStateChanged((user) => {
+      if(user){
+        this.props.toggleLogin()
+      } else{
+        this.props.toggleLogout()
+      }
+    })
+  }
+
+  handleSignOut(){
+    firebase.auth().signOut()
+      .then(() => {
+        console.log('signed out')
+      })
+      .catch((error) => {
+        console.log(error)
+      });
+  }
+
+  render(){
+    return(
+      <div>
+        {this.props.loginModalisOpen ? 
+          <LoginModalContainer /> :
+          null
+        }
+        <div>
+          <div className="navigation">
+            <NavigationContainer handleSignOut={this.handleSignOut}/>
+          </div>
+          <div className="appContainer" onClick={() => this.props.toggleLoginModal(false)}>
+            <div className="info-display">
+              <InfoDisplayContainer />
+            </div>
+            <div className="rankings">
+              <MyRankingsContainer /> 
+            </div>
+          </div>
+        </div>
+      </div>  
+    )
+  }
+}
+
 
 
 export default App;

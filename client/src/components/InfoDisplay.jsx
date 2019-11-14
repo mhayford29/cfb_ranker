@@ -3,38 +3,39 @@ import { HashRouter as Router, Route } from 'react-router-dom';
 import TeamInfoContainer from '../containers/teamInfoContainer.js';
 import PollContainer from '../containers/pollContainer.js';
 import StandingsContainer from '../containers/standingsContainer.js';
-import Axios from 'axios';
+import { PrivateRouteContainer } from '../containers/navigationContainer.js';
+import MyBallots from './MyBallots.jsx';
+import * as firebase from 'firebase/app';
+import 'firebase/auth';
+
 
 var InfoDisplay = (props) => {
   return(
     <div className="info-display-container">
       <Router>
         <div>
-          <Route exact path='/' component={Welcome}/>
+          <Route exact path='/' component={Home}/>
           <Route path='/standings' component={StandingsContainer} />
           <Route path='/poll/:id' component={PollContainer} />
           <Route path='/team/:team' component={TeamInfoContainer} />
+          <PrivateRouteContainer path='/my_ballots' component={MyBallots}/>
         </div>
       </Router>  
     </div>
   )
 }
 
-class Welcome extends React.Component {
-  componentDidMount(){
-    Axios
-      .get(`http://site.api.espn.com/apis/site/v2/sports/football/college-football/summary?event=401114179`)
-      .then(({ data }) => {
-        console.log(data)
-      })
-      .catch(err => console.log(err))
+class Home extends React.Component {
+  constructor(props){
+    super(props);
   }
 
   render(){
     return(
-      <div>
+      <div style={{ paddingLeft: 30 }}>
         <div>Welcome!</div>
         <p>I built this application to streamline the process of assembling a college football top 25 poll.</p>
+        <p>Signed in users can submit polls to cross-reference when making future polls</p>
       </div>
     )
   }

@@ -1,8 +1,8 @@
 const express = require('express');
 const path = require('path');
 const parser = require('body-parser');
-const db = require('../database/models');
-const routes = require('./routes.js')
+const routes = require('./routes.js');
+require('../database/models');
 
 const app = express();
 const PORT = 3000;

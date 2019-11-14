@@ -6,5 +6,7 @@ export default createStore(rootReducer, {
   myRankings: [],
   teamInfo: [],
   poll: {},
-  standings: {}
+  standings: {},
+  loginModalisOpen: false,
+  loginStatus: 'LOGGED_OUT'
 }, applyMiddleware(thunk));
