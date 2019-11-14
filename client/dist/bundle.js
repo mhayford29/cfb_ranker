@@ -104,9 +104,11 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(14);
 /* harmony import */ var _containers_appContainer_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(130);
 /* harmony import */ var _store_js__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(140);
-/* harmony import */ var firebase_app__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(131);
-/* harmony import */ var firebase_app__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(firebase_app__WEBPACK_IMPORTED_MODULE_5__);
-/* harmony import */ var firebase_auth__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(136);
+/* harmony import */ var _firebaseConfig_js__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(151);
+/* harmony import */ var _firebaseConfig_js__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(_firebaseConfig_js__WEBPACK_IMPORTED_MODULE_5__);
+/* harmony import */ var firebase_app__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(131);
+/* harmony import */ var firebase_app__WEBPACK_IMPORTED_MODULE_6___default = /*#__PURE__*/__webpack_require__.n(firebase_app__WEBPACK_IMPORTED_MODULE_6__);
+/* harmony import */ var firebase_auth__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(136);
 
 
 
@@ -114,17 +116,8 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
-var firebaseConfig = {
-  apiKey: "AIzaSyAA84qCDBk32EGCyOb-jMqj1n7I22PGjeE",
-  authDomain: "cfb-ranker.firebaseapp.com",
-  databaseURL: "https://cfb-ranker.firebaseio.com",
-  projectId: "cfb-ranker",
-  storageBucket: "cfb-ranker.appspot.com",
-  messagingSenderId: "653104447417",
-  appId: "1:653104447417:web:588cc3d422670d9f860068",
-  measurementId: "G-XC44H26XEP"
-};
-firebase_app__WEBPACK_IMPORTED_MODULE_5__["initializeApp"](firebaseConfig);
+
+firebase_app__WEBPACK_IMPORTED_MODULE_6__["initializeApp"](_firebaseConfig_js__WEBPACK_IMPORTED_MODULE_5___default.a);
 react_dom__WEBPACK_IMPORTED_MODULE_1___default.a.render(react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_redux__WEBPACK_IMPORTED_MODULE_2__["Provider"], {
   store: _store_js__WEBPACK_IMPORTED_MODULE_4__["default"]
 }, " ", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_containers_appContainer_js__WEBPACK_IMPORTED_MODULE_3__["default"], null), " "), document.getElementById('app'));
@@ -40390,6 +40383,21 @@ var MyBallots = function MyBallots() {
 };
 
 /* harmony default export */ __webpack_exports__["default"] = (MyBallots);
+
+/***/ }),
+/* 151 */
+/***/ (function(module, exports) {
+
+module.exports = {
+  apiKey: "AIzaSyAA84qCDBk32EGCyOb-jMqj1n7I22PGjeE",
+  authDomain: "cfb-ranker.firebaseapp.com",
+  databaseURL: "https://cfb-ranker.firebaseio.com",
+  projectId: "cfb-ranker",
+  storageBucket: "cfb-ranker.appspot.com",
+  messagingSenderId: "653104447417",
+  appId: "1:653104447417:web:588cc3d422670d9f860068",
+  measurementId: "G-XC44H26XEP"
+};
 
 /***/ })
 /******/ ]);
