@@ -1,7 +1,6 @@
 import React from 'react';
 
 const RankedTeam = (props) => {
-  console.log(props);
   return(
     <div className="ranked-team-container">
       <div>

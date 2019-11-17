@@ -51,7 +51,6 @@ class SignUpLoginModal extends React.Component {
   }
 
   handlePasswordVerify(e){
-    const { password, reEnteredPassword } = this.state;
     this.setState({
       reEnteredPassword: e.target.value
     })
@@ -147,7 +146,7 @@ var SignUp = (props) => {
         <div>Password</div>
         <input type='password' onChange={(e) => props.handlePasswordInput(e)}></input> <br/>
         <div>Re Enter Password</div>
-        <input type='text' onChange={(e) => props.handlePasswordVerify(e)}></input> <br/>
+        <input type='password' onChange={(e) => props.handlePasswordVerify(e)}></input> <br/>
         <button type='submit' onClick={props.handleCreateUser}>Create User</button>
       </form>
       <button onClick={props.toggleCreateUser}>Sign In</button>

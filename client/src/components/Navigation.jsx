@@ -154,7 +154,7 @@ var Navigation = (props) => {
         
       </div>
       { props.loginStatus==='LOGGED_OUT' ?
-        <div className="navigation-item" onClick={() => props.toggleLoginModal(true)}>
+        <div className="signup-login" onClick={() => props.toggleLoginModal(true)}>
           Sign Up / Login
         </div> :
         <div className="user-panel-container">

@@ -46,6 +46,19 @@ a{
   text-decoration: none;
 }
 
+.signup-login{
+  text-align: right;
+  padding-top: 25px;
+  padding-right: 20px;
+  color: white;
+  text-decoration: none;  
+}
+
+.signup-login:hover{
+  color: grey;
+  cursor: pointer;
+}
+
 .user-panel-container{
   display: grid;
   grid-template-columns: auto auto auto;
@@ -377,3 +390,29 @@ i {
   }
 }
 
+.example-enter {
+  opacity: 0.01;
+}
+
+.example-enter.example-enter-active {
+  opacity: 1;
+  transition: opacity 500ms ease-in;
+}
+
+.example-leave {
+  opacity: 1;
+}
+
+.example-leave.example-leave-active {
+  opacity: 0.01;
+  transition: opacity 300ms ease-in;
+}
+
+.example-appear {
+  opacity: 0.01;
+}
+
+.example-appear.example-appear-active {
+  opacity: 1;
+  transition: opacity .5s ease-in;
+}
