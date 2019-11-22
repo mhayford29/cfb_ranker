@@ -1,8 +1,15 @@
 var router = require('express').Router();
-const controller = require('./controller')
+const { teams, userPolls } = require('./controller')
 
 router
   .route('/team')
-  .get(controller.get)
+  .get(teams.get)
+
+router
+  .route('/userpolls')
+  .get(userPolls.get)
+  .post(userPolls.post)
+  .patch(userPolls.patch)
+  .delete(userPolls.delete)
 
 module.exports = router;

@@ -259,6 +259,26 @@ i {
   -webkit-transform: rotate(45deg);
 }
 
+.test {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-style: solid;
+  border-color: blue;
+  border-width: 1px;
+  margin-left: 20%;
+  margin-right: 20%;
+  margin-top: 20px;
+  color: white;
+  background-color: blue;
+  transition-duration: .4s;
+  cursor: pointer;
+}
+
+.test:hover{
+  background-color: rgb(47, 85, 255);
+}
+
 .modal-container{
   display: grid;
   grid-template-columns: auto auto auto auto auto auto auto auto auto auto auto;

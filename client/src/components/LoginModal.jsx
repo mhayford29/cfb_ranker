@@ -65,6 +65,9 @@ class SignUpLoginModal extends React.Component {
         user.updateProfile({
           displayName: this.state.dispayName
         }).then(() => {
+
+          /* CREATE USER POLLS */
+
           console.log('user successfully created')
           this.props.toggleLoginModal(false)
         }).catch((error) => {
