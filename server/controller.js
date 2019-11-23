@@ -40,7 +40,13 @@ module.exports = {
   userPolls: {
     get: (req, res) => {
       const { query } = req
-      model.UserPolls.find(query)
+      model.UserPolls.aggregate([
+        { $match: query },
+        { $group: {
+          _id: "$year",
+          polls: { $push: "$$ROOT" }
+        }}
+      ])
       .then(data => {
         res.status(200).send(data)
       })
