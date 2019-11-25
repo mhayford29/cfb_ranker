@@ -28524,7 +28524,7 @@ function (_React$Component) {
         week: week,
         poll: this.props.rankings
       }).then(function () {
-        return console.log('no error');
+        return alert('poll submitted successfully!');
       })["catch"](function (err) {
         return console.log(err);
       });
@@ -28534,12 +28534,12 @@ function (_React$Component) {
     value: function render() {
       return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "rankings-container"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, "Your poll for this week:"), this.props.rankings.map(function (team, index) {
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, "Your poll for week ", Object(_dateFunctions_js__WEBPACK_IMPORTED_MODULE_5__["getWeekNumber"])(), ":"), this.props.rankings.map(function (team, index) {
         return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_containers_rankedTeamContainer_js__WEBPACK_IMPORTED_MODULE_4__["default"], {
           team: team,
           index: index
         });
-      }), !Object(_dateFunctions_js__WEBPACK_IMPORTED_MODULE_5__["isValidDay"])() ? react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      }), Object(_dateFunctions_js__WEBPACK_IMPORTED_MODULE_5__["isValidDay"])() ? react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "test",
         onClick: this.handlePostRankings
       }, "Save") : null);
@@ -40514,14 +40514,41 @@ function (_React$Component) {
   }, {
     key: "render",
     value: function render() {
-      return this.state.polls ? react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, "Under Construction") : react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "lds-dual-ring"
-      });
+      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        style: {
+          paddingLeft: '25px',
+          paddingTop: '25px'
+        }
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        style: {
+          textAlign: 'center'
+        }
+      }, "My Ballots"), this.state.polls.map(function (year, index) {
+        return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(BallotItem, {
+          year: year,
+          index: index
+        });
+      }));
     }
   }]);
 
   return MyBallots;
 }(react__WEBPACK_IMPORTED_MODULE_0___default.a.Component);
+
+var BallotItem = function BallotItem(props) {
+  var year = props.year;
+  return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    style: {
+      borderBottom: '1px'
+    }
+  }, year._id), year.polls.map(function (week, index) {
+    return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      style: {
+        fontSize: 20
+      }
+    }, "Week ", week.week);
+  }));
+};
 
 /* harmony default export */ __webpack_exports__["default"] = (MyBallots);
 
@@ -40551,7 +40578,7 @@ module.exports = {
     var start = new Date('2019-08-25 23:00:00');
     var end = new Date();
     var diff = new moment.duration(end.getTime() - start.getTime());
-    return Math.floor(diff.asWeeks()) + 1;
+    return Math.floor(diff.asWeeks()) + 2;
   },
   isValidDay: function isValidDay() {
     var currentDate = new Date();

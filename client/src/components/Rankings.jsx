@@ -10,7 +10,7 @@ class Rankings extends React.Component {
     super(props)
     this.handlePostRankings = this.handlePostRankings.bind(this);
   }
-  
+
   handlePostRankings(){
     var week = getWeekNumber();
     axios.patch(`/api/userpolls`, {
@@ -19,22 +19,20 @@ class Rankings extends React.Component {
       week: week,
       poll: this.props.rankings
     })
-    .then(() => console.log('no error'))
+    .then(() => alert('poll submitted successfully!'))
     .catch(err => console.log(err))
   }
 
   render(){
     return(
       <div className="rankings-container">
-        <div>Your poll for this week:</div>   
+        <div>Your poll for week {getWeekNumber()}:</div>   
         {this.props.rankings.map((team, index) => {
           return <RankedTeamContainer team={team} index={index} />
         })}
-        
-          {!isValidDay() 
-          ? <div className="test" onClick={this.handlePostRankings}>Save</div>
-          : null}
-        
+        {isValidDay() 
+        ? <div className="test" onClick={this.handlePostRankings}>Save</div>
+        : null}
       </div>
     )
   }

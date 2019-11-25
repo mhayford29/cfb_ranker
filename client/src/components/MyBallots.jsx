@@ -30,11 +30,26 @@ class MyBallots extends React.Component {
 
   render(){
     return(
-      this.state.polls 
-      ? <div>Under Construction</div>
-      : <div className="lds-dual-ring"></div>
+      <div style={{ paddingLeft: '25px', paddingTop: '25px' }}>
+        <div style={{ textAlign: 'center' }}>My Ballots</div>
+        {this.state.polls.map((year, index) => {
+          return <BallotItem year={year} index={index}/>
+        })}
+      </div>
     )
   }
+}
+
+var BallotItem = (props) => {
+  const { year } = props
+  return(
+    <div>
+      <div style={{ borderBottom: '1px' }}>{year._id}</div>
+      {year.polls.map((week, index) => {
+        return <div style={{ fontSize: 20 }}>Week {week.week}</div>
+      })}
+    </div>
+  )
 }
 
 export default MyBallots;
