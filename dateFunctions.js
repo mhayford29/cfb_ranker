@@ -2,7 +2,7 @@ var moment = require('moment');
 
 module.exports = {
   getWeekNumber: () => {
-    var start = new Date('2019-08-25 23:00:00');
+    var start = new Date('2019-08-24 23:00:00');
     var end = new Date();
     
     var diff = new moment.duration(end.getTime() - start.getTime())
