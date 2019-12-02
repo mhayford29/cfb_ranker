@@ -1,7 +1,9 @@
 const axios = require('axios');
+const axiosRetry = require('axios-retry');
 const async = require('async');
 const { teamAbvs, teamFullNames, teamIds } = require('../lib/teamAbvs.js');
 const { GameData, GameIds } = require('../database/models');
+
 
 var deleteAllGames = () => {
   GameData.deleteMany()
@@ -46,48 +48,30 @@ var updateStatsById = async () => {
 }
 
 var seedGameData = async () => {
+  axiosRetry(axios, { retries: 3 })
   var idMemo = {};
   try{
     for(const school of teamFullNames){
       let { data } = await axios.get(`http://localhost:3000/api/team`, {params: { school: school }})
-      for(const id of data[0].gameIds){
-        if(!idMemo[id]){
-          idMemo[id] = true;
-          let result = await axios.get(`http://site.api.espn.com/apis/site/v2/sports/football/college-football/summary?event=${id}`)
-          try{
-            await GameData.create({
-              id: id,
-              week: result.data.header.week,
-              data: result.data
-            })
-            console.log(`success in creating week ${result.data.header.week} data for ${school}`)
-          } catch(err){
-            console.log('error with model.create')
+      try{
+        for(const id of data[0].gameIds){
+          if(!idMemo[id]){
+            idMemo[id] = true;
+            let result = await axios.get(`http://site.api.espn.com/apis/site/v2/sports/football/college-football/summary?event=${id}`)
+            try{
+              await GameData.create({
+                id: id,
+                week: result.data.header.week,
+                data: result.data
+              })
+              console.log(`success in creating week ${result.data.header.week} data for ${school}`)
+            } catch(err){
+              console.log('error with model.create')
+            }
           }
         }
-      }
-    }
-  } catch(err) {
-    console.log(err)
-  }
-  try{
-    for(const teamId of teamIds){
-      let { data } = await axios.get(`http://localhost:3000/api/team`, {params: { schoolId: teamId }})
-      for(const id of data[0].gameIds){
-        if(!idMemo[id]){
-          idMemo[id] = true;
-          let result = await axios.get(`http://site.api.espn.com/apis/site/v2/sports/football/college-football/summary?event=${id}`)
-          try{
-            await GameData.create({
-              id: id,
-              week: result.data.header.week,
-              data: result.data
-            })
-            console.log(`success in creating week ${result.data.header.week} data for ${teamId}`)
-          } catch(err){
-            console.log('error with model.create')
-          }
-        }
+      } catch(err){
+        console.log('error getting api data')
       }
     }
   } catch(err) {
@@ -95,8 +79,11 @@ var seedGameData = async () => {
   }
 }
 
-updateStats();
+
+
+//updateStats();
 //deleteAllGames();
-//async.retry(2, seedGameData)
+//async.retry({ times: 20, interval: 300 }, seedGameData)
+seedGameData();
 
 //updateStatsById();
