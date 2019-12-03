@@ -36778,8 +36778,8 @@ function (_React$Component) {
 
   _createClass(SignUpLoginModal, [{
     key: "toggleCreateUser",
-    value: function toggleCreateUser() {
-      this.state.createUser ? this.setState({
+    value: function toggleCreateUser(toggle) {
+      toggle === 'on' ? this.setState({
         createUser: false
       }) : this.setState({
         createUser: true
@@ -36872,6 +36872,19 @@ function (_React$Component) {
     value: function render() {
       var _this4 = this;
 
+      if (!this.state.createUser) {
+        var login = 'toggled-signup-login';
+        var signup = 'untoggled-signup-login';
+      } else {
+        var login = 'untoggled-signup-login';
+        var signup = 'toggled-signup-login';
+      }
+
+      var borderLeft = {
+        borderLeftStyle: 'solid',
+        borderLeftColor: 'black',
+        borderLeftWidth: '1px'
+      };
       return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "modal",
         onClick: function onClick() {
@@ -36882,6 +36895,23 @@ function (_React$Component) {
         onClick: function onClick(e) {
           return _this4.preventModalClose(e);
         }
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "inner-border"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "toggle-login-signup-container"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: login,
+        onClick: function onClick() {
+          return _this4.toggleCreateUser('on');
+        }
+      }, "Log In"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: signup,
+        style: borderLeft,
+        onClick: function onClick() {
+          return _this4.toggleCreateUser('off');
+        }
+      }, "Sign Up")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "center"
       }, this.state.createUser ? react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(SignUp, {
         handleEmailInput: this.handleEmailInput,
         handlePasswordInput: this.handlePasswordInput,
@@ -36894,7 +36924,7 @@ function (_React$Component) {
         handlePasswordInput: this.handlePasswordInput,
         handleSignInUser: this.handleSignInUser,
         toggleCreateUser: this.toggleCreateUser
-      })));
+      })))));
     }
   }]);
 
@@ -36904,53 +36934,79 @@ function (_React$Component) {
 var SignIn = function SignIn(props) {
   return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "login"
-  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, "Sign In"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("form", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, "Email:"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("form", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "center"
+  }, "Email"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "center"
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
     type: "text",
+    className: "input-field",
     onChange: function onChange(e) {
       return props.handleEmailInput(e);
     }
-  }), " ", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, "Password"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+  }), " ", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "center"
+  }, "Password"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "center"
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
     type: "password",
+    className: "input-field",
     onChange: function onChange(e) {
       return props.handlePasswordInput(e);
     }
-  }), " ", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
-    type: "submit",
+  }), " ", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "submit",
     onClick: props.handleSignInUser
-  }, "Sign In"), " ", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
-    onClick: props.toggleCreateUser
-  }, "Create User"));
+  }, "Submit"), " ", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null));
 };
 
 var SignUp = function SignUp(props) {
   return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-    className: "sign-up"
-  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, "Sign Up"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("form", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, "Email:"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+    className: "login"
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("form", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "center"
+  }, "Email"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "center"
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
     type: "text",
+    className: "input-field",
     onChange: function onChange(e) {
       return props.handleEmailInput(e);
     }
-  }), " ", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, "Display Name"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+  }), " ", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "center"
+  }, "Display Name"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "center"
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
     type: "text",
+    className: "input-field",
     onChange: function onChange(e) {
       return props.handleDisplayNameInput(e);
     }
-  }), " ", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, "Password"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+  }), " ", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "center"
+  }, "Password"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "center"
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
     type: "password",
+    className: "input-field",
     onChange: function onChange(e) {
       return props.handlePasswordInput(e);
     }
-  }), " ", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, "Re Enter Password"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+  }), " ", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "center"
+  }, "Re Enter Password"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "center"
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
     type: "password",
+    className: "input-field",
     onChange: function onChange(e) {
       return props.handlePasswordVerify(e);
     }
-  }), " ", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
-    type: "submit",
+  }), " ", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "submit",
     onClick: props.handleCreateUser
-  }, "Create User")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
-    onClick: props.toggleCreateUser
-  }, "Sign In"));
+  }, "Submit"));
 };
 
 /* harmony default export */ __webpack_exports__["default"] = (SignUpLoginModal);

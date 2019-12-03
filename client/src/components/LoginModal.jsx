@@ -22,8 +22,8 @@ class SignUpLoginModal extends React.Component {
     this.toggleCreateUser = this.toggleCreateUser.bind(this);
   } 
 
-  toggleCreateUser(){
-    this.state.createUser ? 
+  toggleCreateUser(toggle){
+    toggle === 'on'?
     this.setState({
       createUser: false 
     }) :
@@ -98,23 +98,45 @@ class SignUpLoginModal extends React.Component {
   }
 
   render(){
+    if(!this.state.createUser){
+      var login = 'toggled-signup-login'
+      var signup = 'untoggled-signup-login'
+    } else{
+      var login = 'untoggled-signup-login'
+      var signup = 'toggled-signup-login'
+    }
+
+    var borderLeft = {
+      borderLeftStyle: 'solid',
+      borderLeftColor: 'black',
+      borderLeftWidth: '1px'
+    }
+
     return(
       <div className='modal' onClick={() => this.props.toggleLoginModal(false)}>
         <div className='modal-content' onClick={(e) => this.preventModalClose(e)}>
-          {this.state.createUser ? 
-            <SignUp 
-              handleEmailInput={this.handleEmailInput}
-              handlePasswordInput={this.handlePasswordInput}
-              handlePasswordVerify={this.handlePasswordVerify}
-              handleDisplayNameInput={this.handleDisplayNameInput}
-              handleCreateUser={this.handleCreateUser}
-              toggleCreateUser={this.toggleCreateUser}/> :
-            <SignIn 
-              handleEmailInput={this.handleEmailInput}
-              handlePasswordInput={this.handlePasswordInput}
-              handleSignInUser={this.handleSignInUser}
-              toggleCreateUser={this.toggleCreateUser}/>
-          }
+          <div className='inner-border'>
+            <div className='toggle-login-signup-container'>
+              <div className={login} onClick={() => this.toggleCreateUser('on')}>Log In</div>
+              <div className={signup} style={borderLeft} onClick={() => this.toggleCreateUser('off')}>Sign Up</div>
+            </div>
+            <div className='center'>
+              {this.state.createUser ? 
+                <SignUp 
+                  handleEmailInput={this.handleEmailInput}
+                  handlePasswordInput={this.handlePasswordInput}
+                  handlePasswordVerify={this.handlePasswordVerify}
+                  handleDisplayNameInput={this.handleDisplayNameInput}
+                  handleCreateUser={this.handleCreateUser}
+                  toggleCreateUser={this.toggleCreateUser}/> :
+                <SignIn 
+                  handleEmailInput={this.handleEmailInput}
+                  handlePasswordInput={this.handlePasswordInput}
+                  handleSignInUser={this.handleSignInUser}
+                  toggleCreateUser={this.toggleCreateUser}/>
+              }
+            </div>
+          </div>
         </div>
       </div>
     )
@@ -124,35 +146,51 @@ class SignUpLoginModal extends React.Component {
 var  SignIn = (props) => {
   return(
     <div className='login'>
-      <div>Sign In</div>
       <form>
-        <div>Email:</div>
-        <input type='text' onChange={(e) => props.handleEmailInput(e)}></input> <br/>
-        <div>Password</div>
-        <input type='password' onChange={(e) => props.handlePasswordInput(e)}></input> <br/>
-        <button type='submit' onClick={props.handleSignInUser}>Sign In</button> <br/>
+        <div className='center'>Email</div>
+        <div className='center'>
+          <input type='text' className='input-field' onChange={(e) => props.handleEmailInput(e)}></input> <br/>
+        </div>
+        <div className='center'>Password</div>
+        <div className='center'>
+          <input type='password' className='input-field' onChange={(e) => props.handlePasswordInput(e)}></input> <br/>
+        </div>
       </form>
-      <button onClick={props.toggleCreateUser}>Create User</button>
+      <div className='submit' onClick={props.handleSignInUser}>Submit</div> <br/>
     </div> 
   )
 }
 
 var SignUp = (props) => {
   return(
-    <div className='sign-up'>
-      <div>Sign Up</div>
+    <div className='login'>
       <form>
-        <div>Email:</div>
-        <input type="text" onChange={(e) => props.handleEmailInput(e)}></input> <br/>
-        <div>Display Name</div>
-        <input type="text" onChange={(e) => props.handleDisplayNameInput(e)}></input> <br/>
-        <div>Password</div>
-        <input type='password' onChange={(e) => props.handlePasswordInput(e)}></input> <br/>
-        <div>Re Enter Password</div>
-        <input type='password' onChange={(e) => props.handlePasswordVerify(e)}></input> <br/>
-        <button type='submit' onClick={props.handleCreateUser}>Create User</button>
+        <div className='center'>Email</div>
+        
+        <div className='center'>
+          <input type="text" className='input-field' onChange={(e) => props.handleEmailInput(e)}></input> <br/>
+        </div>
+        
+        <div className='center'>Display Name</div>
+        
+        <div className='center'>
+          <input type="text" className='input-field' onChange={(e) => props.handleDisplayNameInput(e)}></input> <br/>
+        </div>
+        
+        <div className='center'>Password</div>
+        
+        <div className='center'>
+          <input type='password' className='input-field' onChange={(e) => props.handlePasswordInput(e)}></input> <br/>
+        </div>
+        
+        <div className='center'>Re Enter Password</div>
+        
+        <div className='center'>
+          <input type='password' className='input-field' onChange={(e) => props.handlePasswordVerify(e)}></input> <br/>
+        </div>
+        
       </form>
-      <button onClick={props.toggleCreateUser}>Sign In</button>
+      <div className='submit' onClick={props.handleCreateUser}>Submit</div>
     </div>
   )
 }

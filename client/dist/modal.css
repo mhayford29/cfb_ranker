@@ -27,10 +27,60 @@
   animation-duration: 700ms;
 }
 
-.sign-up {
-  margin: auto 0%;
+.inner-border{
+  border: solid rgb(224, 224, 224) 1px;
 }
 
 .login {
-  margin: auto 0%;
+  width: 40%
+}
+
+.toggle-login-signup-container{
+  display: grid;
+  grid-template-columns: auto auto;
+}
+
+.untoggled-signup-login {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: rgb(197, 197, 197);
+  margin-bottom: 10px;
+  padding: 10px 10px;
+  cursor: pointer;
+}
+
+.toggled-signup-login {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-bottom: solid rgb(87, 199, 87) 3px;
+  margin-bottom: 10px;
+  padding: 10px 10px;
+  cursor: pointer;
+}
+
+.center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding-top: 8px;
+}
+
+.submit {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  margin-top: 16px;
+  margin-bottom: 8px;
+  color: white;
+  background-color: rgb(87, 199, 87);
+  cursor: pointer;
+}
+
+.input-field{
+  padding: 8px 8px 8px 8px;
+  width: 100%;
 }
