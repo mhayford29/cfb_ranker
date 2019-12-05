@@ -1,9 +1,9 @@
 import Redux from 'redux';
 
-var pollReducer = (state={}, action) => {
+var pollReducer = (state=[], action) => {
   switch(action.type){
-    case 'ADD_POLL':
-      return action.poll
+    case 'ADD_POLLS':
+      return action.polls
     default: 
       return state
   }

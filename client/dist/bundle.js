@@ -28341,13 +28341,15 @@ __webpack_require__.r(__webpack_exports__);
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(2);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var _containers_myRankingsContainer_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(51);
-/* harmony import */ var _containers_navigationContainer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(56);
-/* harmony import */ var _containers_infoDisplayContainer_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(102);
-/* harmony import */ var _containers_loginModalContainer_js__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(139);
-/* harmony import */ var firebase_app__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(131);
-/* harmony import */ var firebase_app__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(firebase_app__WEBPACK_IMPORTED_MODULE_5__);
-/* harmony import */ var firebase_auth__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(136);
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(58);
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var _containers_myRankingsContainer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(51);
+/* harmony import */ var _containers_navigationContainer_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(56);
+/* harmony import */ var _containers_infoDisplayContainer_js__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(102);
+/* harmony import */ var _containers_loginModalContainer_js__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(139);
+/* harmony import */ var firebase_app__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(131);
+/* harmony import */ var firebase_app__WEBPACK_IMPORTED_MODULE_6___default = /*#__PURE__*/__webpack_require__.n(firebase_app__WEBPACK_IMPORTED_MODULE_6__);
+/* harmony import */ var firebase_auth__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(136);
 function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -28365,6 +28367,7 @@ function _assertThisInitialized(self) { if (self === void 0) { throw new Referen
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
 
 function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
+
 
 
 
@@ -28394,18 +28397,21 @@ function (_React$Component) {
     value: function componentDidMount() {
       var _this2 = this;
 
-      firebase_app__WEBPACK_IMPORTED_MODULE_5__["auth"]().onAuthStateChanged(function (user) {
+      //check for a signed-in user
+      firebase_app__WEBPACK_IMPORTED_MODULE_6__["auth"]().onAuthStateChanged(function (user) {
         if (user) {
           _this2.props.toggleLogin();
         } else {
           _this2.props.toggleLogout();
         }
-      });
+      }); //get polls to send to redux store
+
+      this.props.fetchPoll();
     }
   }, {
     key: "handleSignOut",
     value: function handleSignOut() {
-      firebase_app__WEBPACK_IMPORTED_MODULE_5__["auth"]().signOut().then(function () {
+      firebase_app__WEBPACK_IMPORTED_MODULE_6__["auth"]().signOut().then(function () {
         console.log('signed out');
       })["catch"](function (error) {
         console.log(error);
@@ -28416,9 +28422,9 @@ function (_React$Component) {
     value: function render() {
       var _this3 = this;
 
-      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, this.props.loginModalisOpen ? react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_containers_loginModalContainer_js__WEBPACK_IMPORTED_MODULE_4__["default"], null) : null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, this.props.loginModalisOpen ? react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_containers_loginModalContainer_js__WEBPACK_IMPORTED_MODULE_5__["default"], null) : null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "navigation"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_containers_navigationContainer_js__WEBPACK_IMPORTED_MODULE_2__["NavigationContainer"], {
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_containers_navigationContainer_js__WEBPACK_IMPORTED_MODULE_3__["NavigationContainer"], {
         handleSignOut: this.handleSignOut
       })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "appContainer",
@@ -28427,9 +28433,9 @@ function (_React$Component) {
         }
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "info-display"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_containers_infoDisplayContainer_js__WEBPACK_IMPORTED_MODULE_3__["default"], null)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_containers_infoDisplayContainer_js__WEBPACK_IMPORTED_MODULE_4__["default"], null)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "rankings"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_containers_myRankingsContainer_js__WEBPACK_IMPORTED_MODULE_1__["default"], null)))));
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_containers_myRankingsContainer_js__WEBPACK_IMPORTED_MODULE_2__["default"], null)))));
     }
   }]);
 
@@ -28674,12 +28680,10 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "PrivateRouteContainer", function() { return PrivateRouteContainer; });
 /* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(14);
 /* harmony import */ var _actions_teamInfo_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(57);
-/* harmony import */ var _actions_polls_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(85);
-/* harmony import */ var _actions_standings_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(86);
-/* harmony import */ var _actions_loginModal_js__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(138);
-/* harmony import */ var _components_Navigation_jsx__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(87);
-/* harmony import */ var _components_PrivateRoute_jsx__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(149);
-
+/* harmony import */ var _actions_standings_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(86);
+/* harmony import */ var _actions_loginModal_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(138);
+/* harmony import */ var _components_Navigation_jsx__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(87);
+/* harmony import */ var _components_PrivateRoute_jsx__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(149);
 
 
 
@@ -28690,7 +28694,8 @@ __webpack_require__.r(__webpack_exports__);
 var mapStateToProps = function mapStateToProps(state, ownProps) {
   return {
     loginStatus: state.loginStatus,
-    signOut: ownProps.handleSignOut
+    signOut: ownProps.handleSignOut,
+    publishedPolls: state.polls
   };
 };
 
@@ -28699,14 +28704,11 @@ var mapDispatchToProps = function mapDispatchToProps(dispatch) {
     fetchTeam: function fetchTeam(query) {
       dispatch(Object(_actions_teamInfo_js__WEBPACK_IMPORTED_MODULE_1__["handleFetchTeam"])(query));
     },
-    fetchPoll: function fetchPoll(id) {
-      dispatch(Object(_actions_polls_js__WEBPACK_IMPORTED_MODULE_2__["handleFetchPoll"])(id));
-    },
     fetchStandings: function fetchStandings() {
-      dispatch(Object(_actions_standings_js__WEBPACK_IMPORTED_MODULE_3__["handleFetchStandings"])());
+      dispatch(Object(_actions_standings_js__WEBPACK_IMPORTED_MODULE_2__["handleFetchStandings"])());
     },
     toggleLoginModal: function toggleLoginModal(flag) {
-      dispatch(Object(_actions_loginModal_js__WEBPACK_IMPORTED_MODULE_4__["toggleModal"])(flag));
+      dispatch(Object(_actions_loginModal_js__WEBPACK_IMPORTED_MODULE_3__["toggleModal"])(flag));
     }
   };
 };
@@ -28714,8 +28716,8 @@ var mapDispatchToProps = function mapDispatchToProps(dispatch) {
 var containerCreator = Object(react_redux__WEBPACK_IMPORTED_MODULE_0__["connect"])(mapStateToProps, mapDispatchToProps, null, {
   pure: false
 });
-var NavigationContainer = containerCreator(_components_Navigation_jsx__WEBPACK_IMPORTED_MODULE_5__["default"]);
-var PrivateRouteContainer = containerCreator(_components_PrivateRoute_jsx__WEBPACK_IMPORTED_MODULE_6__["default"]);
+var NavigationContainer = containerCreator(_components_Navigation_jsx__WEBPACK_IMPORTED_MODULE_4__["default"]);
+var PrivateRouteContainer = containerCreator(_components_PrivateRoute_jsx__WEBPACK_IMPORTED_MODULE_5__["default"]);
 
 /***/ }),
 /* 57 */
@@ -30585,17 +30587,17 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(58);
 /* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_0__);
 
-function addPoll(poll) {
+function addPoll(polls) {
   return {
-    type: 'ADD_POLL',
-    poll: poll
+    type: 'ADD_POLLS',
+    polls: polls
   };
 }
-function handleFetchPoll(id) {
+function handleFetchPoll() {
   return function (dispatch) {
     axios__WEBPACK_IMPORTED_MODULE_0___default.a.get('https://site.api.espn.com/apis/site/v2/sports/football/college-football/rankings').then(function (_ref) {
       var data = _ref.data;
-      dispatch(addPoll(data.rankings[id]));
+      dispatch(addPoll(data.rankings));
     })["catch"](function (err) {
       return alert(err);
     });
@@ -30651,6 +30653,7 @@ __webpack_require__.r(__webpack_exports__);
 
 
 var Navigation = function Navigation(props) {
+  console.log(props.publishedPolls);
   return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "navigation-container"
   }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["HashRouter"], null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["NavLink"], {
@@ -30663,13 +30666,11 @@ var Navigation = function Navigation(props) {
     className: "navigation-item"
   }, "Polls", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "dropdown-content"
-  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["HashRouter"], null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
-    to: "/poll/0"
-  }, "CFP Committee")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
-    to: "/poll/1"
-  }, "AP Poll")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
-    to: "/poll/2"
-  }, "Coaches Poll"))))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["HashRouter"], null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["HashRouter"], null, props.publishedPolls.map(function (poll, index) {
+    return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
+      to: "/poll/".concat(index)
+    }, poll.shortName));
+  })))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["HashRouter"], null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "navigation-item"
   }, "Conferences", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "dropdown-content"
@@ -36299,7 +36300,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var mapStateToProps = function mapStateToProps(state, ownProps) {
   return {
-    poll: state.poll,
+    publishedPolls: state.polls,
     id: ownProps.match.params.id
   };
 };
@@ -36354,27 +36355,24 @@ function (_React$Component) {
     _classCallCheck(this, Poll);
 
     return _possibleConstructorReturn(this, _getPrototypeOf(Poll).call(this, props));
-  }
+  } // componentDidMount(){
+  //   this.props.fetchPoll(this.props.id);
+  // }
+  // componentDidUpdate(prevProps){
+  //   if(this.props.id !== prevProps.id){
+  //     this.props.fetchPoll(this.props.id)
+  //   }
+  // }
+
 
   _createClass(Poll, [{
-    key: "componentDidMount",
-    value: function componentDidMount() {
-      this.props.fetchPoll(this.props.id);
-    }
-  }, {
-    key: "componentDidUpdate",
-    value: function componentDidUpdate(prevProps) {
-      if (this.props.id !== prevProps.id) {
-        this.props.fetchPoll(this.props.id);
-      }
-    }
-  }, {
     key: "render",
     value: function render() {
       var props = this.props;
+      var id = props.match.params.id;
 
-      if (props.poll.ranks) {
-        return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, props.poll.name), props.poll.ranks.map(function (team, index) {
+      if (props.publishedPolls.length) {
+        return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, props.publishedPolls[id].name), props.publishedPolls[id].ranks.map(function (team, index) {
           return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_containers_conferenceItemContainer_js__WEBPACK_IMPORTED_MODULE_1__["PollItemContainer"], {
             team: team,
             rank: index + 1,
@@ -36384,7 +36382,7 @@ function (_React$Component) {
           style: {
             marginBottom: '30px'
           }
-        }, "Others recieving votes: ", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), props.poll.others.map(function (team, index) {
+        }, "Others recieving votes: ", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), props.publishedPolls[id].others.map(function (team, index) {
           return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
             style: {
               fontSize: '25px'
@@ -36829,9 +36827,6 @@ function (_React$Component) {
           user.updateProfile({
             displayName: _this2.state.dispayName
           }).then(function () {
-            /* CREATE USER POLLS */
-            console.log('user successfully created');
-
             _this2.props.toggleLoginModal(false);
           })["catch"](function (error) {
             console.log(error);
@@ -37044,7 +37039,9 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(14);
 /* harmony import */ var _components_App_jsx__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(50);
 /* harmony import */ var _actions_loginModal_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(138);
-/* harmony import */ var _actions_toggleLogin_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(148);
+/* harmony import */ var _actions_polls_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(85);
+/* harmony import */ var _actions_toggleLogin_js__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(148);
+
 
 
 
@@ -37062,10 +37059,13 @@ var mapDispatchToProps = function mapDispatchToProps(dispatch) {
       dispatch(Object(_actions_loginModal_js__WEBPACK_IMPORTED_MODULE_2__["toggleModal"])(flag));
     },
     toggleLogin: function toggleLogin() {
-      dispatch(Object(_actions_toggleLogin_js__WEBPACK_IMPORTED_MODULE_3__["toggleLogin"])());
+      dispatch(Object(_actions_toggleLogin_js__WEBPACK_IMPORTED_MODULE_4__["toggleLogin"])());
     },
     toggleLogout: function toggleLogout() {
-      dispatch(Object(_actions_toggleLogin_js__WEBPACK_IMPORTED_MODULE_3__["toggleLogout"])());
+      dispatch(Object(_actions_toggleLogin_js__WEBPACK_IMPORTED_MODULE_4__["toggleLogout"])());
+    },
+    fetchPoll: function fetchPoll() {
+      dispatch(Object(_actions_polls_js__WEBPACK_IMPORTED_MODULE_3__["handleFetchPoll"])());
     }
   };
 };
@@ -40224,7 +40224,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony default export */ __webpack_exports__["default"] = (Object(redux__WEBPACK_IMPORTED_MODULE_0__["createStore"])(_reducers_main__WEBPACK_IMPORTED_MODULE_2__["default"], {
   myRankings: [],
   teamInfo: [],
-  poll: {},
+  polls: [],
   standings: {},
   loginModalisOpen: false,
   loginStatus: 'LOGGED_OUT'
@@ -40280,7 +40280,7 @@ __webpack_require__.r(__webpack_exports__);
 var rootReducer = Object(redux__WEBPACK_IMPORTED_MODULE_0__["combineReducers"])({
   myRankings: _myRankings_js__WEBPACK_IMPORTED_MODULE_1__["default"],
   teamInfo: _teamInfo_js__WEBPACK_IMPORTED_MODULE_2__["default"],
-  poll: _poll_js__WEBPACK_IMPORTED_MODULE_3__["default"],
+  polls: _poll_js__WEBPACK_IMPORTED_MODULE_3__["default"],
   standings: _standings_js__WEBPACK_IMPORTED_MODULE_4__["default"],
   loginModalisOpen: _loginModal_js__WEBPACK_IMPORTED_MODULE_5__["default"],
   loginStatus: _toggleLogin_js__WEBPACK_IMPORTED_MODULE_6__["default"]
@@ -40366,12 +40366,12 @@ __webpack_require__.r(__webpack_exports__);
 
 
 var pollReducer = function pollReducer() {
-  var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
+  var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : [];
   var action = arguments.length > 1 ? arguments[1] : undefined;
 
   switch (action.type) {
-    case 'ADD_POLL':
-      return action.poll;
+    case 'ADD_POLLS':
+      return action.polls;
 
     default:
       return state;

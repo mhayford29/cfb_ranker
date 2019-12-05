@@ -3,7 +3,7 @@ import { handleFetchPoll } from '../actions/polls.js';
 import Poll from '../components/Poll.jsx';
 
 var mapStateToProps = (state, ownProps) => ({
-  poll: state.poll,
+  publishedPolls: state.polls,
   id: ownProps.match.params.id
 })
 

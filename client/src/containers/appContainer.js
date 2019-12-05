@@ -1,6 +1,7 @@
 import { connect } from 'react-redux';
 import App from '../components/App.jsx';
 import { toggleModal } from '../actions/loginModal.js';
+import { handleFetchPoll } from '../actions/polls.js';
 import { toggleLogin, toggleLogout } from '../actions/toggleLogin.js';
 
 
@@ -17,6 +18,9 @@ var mapDispatchToProps = (dispatch) => ({
   },
   toggleLogout: () => {
     dispatch(toggleLogout())
+  },
+  fetchPoll: () => {
+    dispatch(handleFetchPoll())
   }
 })
 

@@ -5,7 +5,7 @@ import rootReducer from './reducers/main';
 export default createStore(rootReducer, { 
   myRankings: [],
   teamInfo: [],
-  poll: {},
+  polls: [],
   standings: {},
   loginModalisOpen: false,
   loginStatus: 'LOGGED_OUT'

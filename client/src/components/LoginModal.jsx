@@ -65,10 +65,6 @@ class SignUpLoginModal extends React.Component {
         user.updateProfile({
           displayName: this.state.dispayName
         }).then(() => {
-
-          /* CREATE USER POLLS */
-
-          console.log('user successfully created')
           this.props.toggleLoginModal(false)
         }).catch((error) => {
           console.log(error)
@@ -166,29 +162,21 @@ var SignUp = (props) => {
     <div className='login'>
       <form>
         <div className='center'>Email</div>
-        
         <div className='center'>
           <input type="text" className='input-field' onChange={(e) => props.handleEmailInput(e)}></input> <br/>
         </div>
-        
         <div className='center'>Display Name</div>
-        
         <div className='center'>
           <input type="text" className='input-field' onChange={(e) => props.handleDisplayNameInput(e)}></input> <br/>
         </div>
-        
         <div className='center'>Password</div>
-        
         <div className='center'>
           <input type='password' className='input-field' onChange={(e) => props.handlePasswordInput(e)}></input> <br/>
         </div>
-        
         <div className='center'>Re Enter Password</div>
-        
         <div className='center'>
           <input type='password' className='input-field' onChange={(e) => props.handlePasswordVerify(e)}></input> <br/>
         </div>
-        
       </form>
       <div className='submit' onClick={props.handleCreateUser}>Submit</div>
     </div>

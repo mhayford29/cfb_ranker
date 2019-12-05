@@ -1,6 +1,5 @@
 import { connect } from 'react-redux';
 import { handleFetchTeam } from '../actions/teamInfo.js';
-import { handleFetchPoll } from '../actions/polls.js';
 import { handleFetchStandings } from '../actions/standings.js';
 import { toggleModal } from '../actions/loginModal.js';
 import Navigation from '../components/Navigation.jsx';
@@ -8,15 +7,13 @@ import PrivateRoute from '../components/PrivateRoute.jsx';
 
 var mapStateToProps = (state, ownProps) => ({
   loginStatus: state.loginStatus,
-  signOut: ownProps.handleSignOut
+  signOut: ownProps.handleSignOut,
+  publishedPolls: state.polls
 })
 
 var mapDispatchToProps = (dispatch) => ({
   fetchTeam: (query) => {
     dispatch(handleFetchTeam(query))
-  },
-  fetchPoll: (id) => {
-    dispatch(handleFetchPoll(id))
   },
   fetchStandings: () => {
     dispatch(handleFetchStandings())

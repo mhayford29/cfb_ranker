@@ -1,4 +1,5 @@
 import React from 'react';
+import axios from 'axios';
 import MyRankingsContainer from '../containers/myRankingsContainer.js';
 import { NavigationContainer } from '../containers/navigationContainer.js';
 import InfoDisplayContainer from '../containers/infoDisplayContainer.js';
@@ -13,6 +14,9 @@ class App extends React.Component {
   }
 
   componentDidMount(){
+    
+    //check for a signed-in user
+
     firebase.auth().onAuthStateChanged((user) => {
       if(user){
         this.props.toggleLogin()
@@ -20,6 +24,10 @@ class App extends React.Component {
         this.props.toggleLogout()
       }
     })
+
+    //get polls to send to redux store
+
+    this.props.fetchPoll();
   }
 
   handleSignOut(){

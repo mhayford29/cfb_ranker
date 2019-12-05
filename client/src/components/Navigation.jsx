@@ -5,6 +5,7 @@ import * as firebase from 'firebase/app';
 import 'firebase/auth'
 
 var Navigation = (props) => {
+  console.log(props.publishedPolls)
   return(
     <div className="navigation-container">
       <Router>
@@ -25,21 +26,13 @@ var Navigation = (props) => {
         Polls
         <div className="dropdown-content">
           <Router>
-            <div>
-              <Link to='/poll/0'>
-                CFP Committee               
-              </Link>
-            </div>
-            <div>
-              <Link to='/poll/1'>
-                AP Poll
-              </Link>
-            </div>
-            <div>
-              <Link to='/poll/2'>
-                Coaches Poll
-              </Link>
-            </div>
+            {props.publishedPolls.map((poll, index) => {
+              return <div>
+                        <Link to={`/poll/${index}`}>
+                          {poll.shortName}
+                        </Link>
+                      </div>
+            })}
           </Router>
         </div>
       </div>
