@@ -5,7 +5,6 @@ import * as firebase from 'firebase/app';
 import 'firebase/auth'
 
 var Navigation = (props) => {
-  console.log(props.publishedPolls)
   return(
     <div className="navigation-container">
       <Router>

@@ -30653,7 +30653,6 @@ __webpack_require__.r(__webpack_exports__);
 
 
 var Navigation = function Navigation(props) {
-  console.log(props.publishedPolls);
   return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "navigation-container"
   }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["HashRouter"], null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["NavLink"], {
@@ -36293,7 +36292,7 @@ function polyfill(Component) {
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(14);
 /* harmony import */ var _actions_polls_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(85);
-/* harmony import */ var _components_Poll_jsx__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(122);
+/* harmony import */ var _components_PublishedPoll_jsx__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(122);
 
 
 
@@ -36313,7 +36312,7 @@ var mapDispatchToProps = function mapDispatchToProps(dispatch) {
   };
 };
 
-var PollContainer = Object(react_redux__WEBPACK_IMPORTED_MODULE_0__["connect"])(mapStateToProps, mapDispatchToProps)(_components_Poll_jsx__WEBPACK_IMPORTED_MODULE_2__["default"]);
+var PollContainer = Object(react_redux__WEBPACK_IMPORTED_MODULE_0__["connect"])(mapStateToProps, mapDispatchToProps)(_components_PublishedPoll_jsx__WEBPACK_IMPORTED_MODULE_2__["default"]);
 /* harmony default export */ __webpack_exports__["default"] = (PollContainer);
 
 /***/ }),
@@ -36328,7 +36327,7 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
-var Poll = function Poll(props) {
+var PublishedPoll = function PublishedPoll(props) {
   var id = props.match.params.id;
 
   if (props.publishedPolls.length) {
@@ -36356,7 +36355,7 @@ var Poll = function Poll(props) {
   }
 };
 
-/* harmony default export */ __webpack_exports__["default"] = (Poll);
+/* harmony default export */ __webpack_exports__["default"] = (PublishedPoll);
 
 /***/ }),
 /* 123 */
@@ -40453,12 +40452,17 @@ var PrivateRoute = function PrivateRoute(_ref) {
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(2);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(58);
-/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_1__);
-/* harmony import */ var firebase_app__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(131);
-/* harmony import */ var firebase_app__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(firebase_app__WEBPACK_IMPORTED_MODULE_2__);
-/* harmony import */ var firebase_auth__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(136);
+/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(88);
+/* harmony import */ var _containers_navigationContainer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(56);
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(58);
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_3__);
+/* harmony import */ var firebase_app__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(131);
+/* harmony import */ var firebase_app__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(firebase_app__WEBPACK_IMPORTED_MODULE_4__);
+/* harmony import */ var firebase_auth__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(136);
+/* harmony import */ var _UserPoll_jsx__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(283);
 function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
+
+function _extends() { _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends.apply(this, arguments); }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
@@ -40475,6 +40479,9 @@ function _assertThisInitialized(self) { if (self === void 0) { throw new Referen
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
 
 function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
+
+
+
 
 
 
@@ -40509,8 +40516,8 @@ function (_React$Component) {
     value: function fetchUserPolls() {
       var _this2 = this;
 
-      axios__WEBPACK_IMPORTED_MODULE_1___default.a.get("/api/userpolls", {
-        email: firebase_app__WEBPACK_IMPORTED_MODULE_2___default.a.auth().currentUser.email
+      axios__WEBPACK_IMPORTED_MODULE_3___default.a.get("/api/userpolls", {
+        email: firebase_app__WEBPACK_IMPORTED_MODULE_4___default.a.auth().currentUser.email
       }).then(function (_ref) {
         var data = _ref.data;
 
@@ -40526,6 +40533,8 @@ function (_React$Component) {
   }, {
     key: "render",
     value: function render() {
+      var _this3 = this;
+
       return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         style: {
           paddingLeft: '25px',
@@ -40535,12 +40544,21 @@ function (_React$Component) {
         style: {
           textAlign: 'center'
         }
-      }, "My Ballots"), this.state.polls.map(function (year, index) {
+      }, "My Ballots"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "ballot-container"
+      }, this.state.polls.map(function (year, index) {
         return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(BallotItem, {
           year: year,
           index: index
         });
-      }));
+      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["HashRouter"], null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Route"], {
+        path: "/my_ballots/:year/:week",
+        render: function render(props) {
+          return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_UserPoll_jsx__WEBPACK_IMPORTED_MODULE_6__["default"], _extends({}, props, {
+            polls: _this3.state.polls
+          }));
+        }
+      })))));
     }
   }]);
 
@@ -40553,13 +40571,15 @@ var BallotItem = function BallotItem(props) {
     style: {
       borderBottom: '1px'
     }
-  }, year._id), year.polls.map(function (week, index) {
+  }, year._id), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["HashRouter"], null, year.polls.map(function (week, index) {
     return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
       style: {
         fontSize: 20
       }
-    }, "Week ", week.week);
-  }));
+    }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
+      to: "/my_ballots/".concat(year._id, "/").concat(week.week)
+    }, "Week ", week.week));
+  })));
 };
 
 /* harmony default export */ __webpack_exports__["default"] = (MyBallots);
@@ -57585,6 +57605,57 @@ webpackContext.id = 155;
 
 })));
 
+
+/***/ }),
+/* 283 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(2);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _PollItem_jsx__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(125);
+
+
+
+var UserPoll = function UserPoll(props) {
+  var polls = props.polls;
+  var _props$match$params = props.match.params,
+      week = _props$match$params.week,
+      year = _props$match$params.year;
+  var pollByWeek = polls.filter(function (e) {
+    return e._id == year;
+  })[0].polls.filter(function (e) {
+    return e.week == week;
+  });
+  console.log(pollByWeek);
+  return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, pollByWeek[0].poll.map(function (team, index) {
+    return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, index + 1, ". ", team.school);
+  })); // if(polls){
+  //   return(
+  //     <div>
+  //       <div>
+  //         {props.publishedPolls[id].name}
+  //       </div>
+  //       {props.publishedPolls[id].ranks.map((team, index) => {
+  //         return <PollItemContainer team={team} rank={index + 1} addToRankings={props.addToRankings}/>
+  //       })}
+  //       <div style={{ marginBottom: '30px' }}>
+  //         Others recieving votes: <br/>
+  //         {props.publishedPolls[id].others.map((team, index) => {
+  //           return <span style={{ fontSize: '25px' }}>{team.team.location}: {team.points},{'  '}</span>
+  //         })}
+  //       </div>
+  //     </div>
+  //   )
+  // } else{
+  // return(
+  //   <div>not here!!</div>
+  // )
+  //}
+};
+
+/* harmony default export */ __webpack_exports__["default"] = (UserPoll);
 
 /***/ })
 /******/ ]);

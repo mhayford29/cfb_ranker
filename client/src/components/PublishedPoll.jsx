@@ -1,7 +1,7 @@
 import React from 'react';
 import { PollItemContainer } from '../containers/conferenceItemContainer.js';
 
-var Poll = (props) => {
+var PublishedPoll = (props) => {
   const { id } = props.match.params;
   if(props.publishedPolls.length){
     return(
@@ -27,4 +27,4 @@ var Poll = (props) => {
   }
 }
 
-export default Poll;
+export default PublishedPoll;

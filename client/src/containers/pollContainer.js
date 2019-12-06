@@ -1,6 +1,6 @@
 import { connect } from 'react-redux';
 import { handleFetchPoll } from '../actions/polls.js';
-import Poll from '../components/Poll.jsx';
+import PublishedPoll from '../components/PublishedPoll.jsx';
 
 var mapStateToProps = (state, ownProps) => ({
   publishedPolls: state.polls,
@@ -13,6 +13,6 @@ var mapDispatchToProps = (dispatch) => ({
   }
 })
 
-var PollContainer = connect(mapStateToProps, mapDispatchToProps)(Poll)
+var PollContainer = connect(mapStateToProps, mapDispatchToProps)(PublishedPoll)
 
 export default PollContainer;
