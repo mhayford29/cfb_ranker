@@ -40567,6 +40567,9 @@ function (_React$Component) {
 
 var BallotItem = function BallotItem(props) {
   var year = props.year;
+  year.polls.sort(function (a, b) {
+    return b.week - a.week;
+  });
   return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     style: {
       borderBottom: '1px'
@@ -40576,8 +40579,9 @@ var BallotItem = function BallotItem(props) {
       style: {
         fontSize: 20
       }
-    }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
-      to: "/my_ballots/".concat(year._id, "/").concat(week.week)
+    }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["NavLink"], {
+      to: "/my_ballots/".concat(year._id, "/").concat(week.week),
+      activeClassName: "active-week"
     }, "Week ", week.week));
   })));
 };
@@ -57628,31 +57632,13 @@ var UserPoll = function UserPoll(props) {
   })[0].polls.filter(function (e) {
     return e.week == week;
   });
-  console.log(pollByWeek);
-  return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, pollByWeek[0].poll.map(function (team, index) {
+  return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    style: {
+      fontSize: '16px'
+    }
+  }, pollByWeek[0].poll.map(function (team, index) {
     return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, index + 1, ". ", team.school);
-  })); // if(polls){
-  //   return(
-  //     <div>
-  //       <div>
-  //         {props.publishedPolls[id].name}
-  //       </div>
-  //       {props.publishedPolls[id].ranks.map((team, index) => {
-  //         return <PollItemContainer team={team} rank={index + 1} addToRankings={props.addToRankings}/>
-  //       })}
-  //       <div style={{ marginBottom: '30px' }}>
-  //         Others recieving votes: <br/>
-  //         {props.publishedPolls[id].others.map((team, index) => {
-  //           return <span style={{ fontSize: '25px' }}>{team.team.location}: {team.points},{'  '}</span>
-  //         })}
-  //       </div>
-  //     </div>
-  //   )
-  // } else{
-  // return(
-  //   <div>not here!!</div>
-  // )
-  //}
+  }));
 };
 
 /* harmony default export */ __webpack_exports__["default"] = (UserPoll);

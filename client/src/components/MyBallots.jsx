@@ -1,5 +1,5 @@
 import React from 'react';
-import { HashRouter as Router, Route, Link } from 'react-router-dom';
+import { HashRouter as Router, Route, NavLink } from 'react-router-dom';
 import { PrivateRouteContainer } from '../containers/navigationContainer.js';
 import axios from 'axios';
 import firebase from 'firebase/app';
@@ -55,16 +55,17 @@ class MyBallots extends React.Component {
 
 var BallotItem = (props) => {
   const { year } = props
+  year.polls.sort((a, b) => b.week - a.week)
   return(
     <div>
       <div style={{ borderBottom: '1px' }}>{year._id}</div>
       <Router>
         {year.polls.map((week, index) => {
           return(
-            <div style={{ fontSize: 20 }}>
-              <Link to={`/my_ballots/${year._id}/${week.week}`}>
+            <div style={{ fontSize: 20 }} >
+              <NavLink to={`/my_ballots/${year._id}/${week.week}`} activeClassName='active-week'>
                 Week {week.week}
-              </Link>
+              </NavLink>
             </div>
           )
         })}
