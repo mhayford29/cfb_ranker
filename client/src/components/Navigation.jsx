@@ -181,7 +181,7 @@ var Navigation = (props) => {
                     </Link>
                   </div>
                 )
-              })}
+            })}
             </span>
           </div>
           <div>
