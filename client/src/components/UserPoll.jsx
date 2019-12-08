@@ -8,8 +8,22 @@ const UserPoll = (props) => {
   return(
     <div style={{ fontSize: '16px'}}>
       {pollByWeek[0].poll.map((team, index) => {
-        return <div>{index + 1}. {team.school}</div>
+        return <UserPollItem team={team} index={index}/>
       })}
+    </div>
+  )
+}
+
+const UserPollItem = (props) => {
+  const { team } = props;
+  return(
+    <div className="user-poll-item-container">
+      <div>
+        {props.index + 1}. {team.school}
+      </div>
+      <div>
+        <img src={team.logo} style={{ height: '16', width: '16' }}></img>{team.record}
+      </div>
     </div>
   )
 }

@@ -442,6 +442,7 @@ i {
   display: grid;
   grid-template-columns: 50% 50%;
   margin-top: 20px;
+  margin-bottom: 20px;
 }
 
 .year-container{
@@ -465,4 +466,9 @@ i {
 
 .week:hover{
   color: rgb(129, 129, 129)
+}
+
+.user-poll-item-container{
+  display: grid;
+  grid-template-columns: 50% 50%;
 }

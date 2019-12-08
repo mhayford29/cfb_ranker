@@ -57703,8 +57703,24 @@ var UserPoll = function UserPoll(props) {
       fontSize: '16px'
     }
   }, pollByWeek[0].poll.map(function (team, index) {
-    return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, index + 1, ". ", team.school);
+    return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(UserPollItem, {
+      team: team,
+      index: index
+    });
   }));
+};
+
+var UserPollItem = function UserPollItem(props) {
+  var team = props.team;
+  return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "user-poll-item-container"
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, props.index + 1, ". ", team.school), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
+    src: team.logo,
+    style: {
+      height: '16',
+      width: '16'
+    }
+  }), team.record));
 };
 
 /* harmony default export */ __webpack_exports__["default"] = (UserPoll);
