@@ -35,7 +35,6 @@ class Home extends React.Component {
       <div style={{ paddingLeft: 30 }}>
         <div>Welcome!</div>
         <p>I built this application to streamline the process of assembling a college football top 25 poll.</p>
-        <p>Signed in users can submit polls to cross-reference when making future polls</p>
       </div>
     )
   }
