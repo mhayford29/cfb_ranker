@@ -30668,7 +30668,12 @@ var Navigation = function Navigation(props) {
   }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["HashRouter"], null, props.publishedPolls.map(function (poll, index) {
     return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
       to: "/poll/".concat(index)
-    }, poll.shortName));
+    }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      style: {
+        paddingTop: '0px',
+        paddingBottom: '0px'
+      }
+    }, poll.shortName)));
   })))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["HashRouter"], null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "navigation-item"
   }, "Conferences", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
@@ -30681,7 +30686,12 @@ var Navigation = function Navigation(props) {
   }, _lib_schools_js__WEBPACK_IMPORTED_MODULE_2___default.a.AAC.map(function (team, index) {
     return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
       to: "/team/".concat(team)
-    }, team));
+    }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      style: {
+        paddingTop: '0px',
+        paddingBottom: '0px'
+      }
+    }, team)));
   }))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", null, "ACC"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
     className: "dropdown-submenu",
     style: {
@@ -30690,7 +30700,12 @@ var Navigation = function Navigation(props) {
   }, _lib_schools_js__WEBPACK_IMPORTED_MODULE_2___default.a.ACC.map(function (team, index) {
     return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
       to: "/team/".concat(team)
-    }, team));
+    }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      style: {
+        paddingTop: '0px',
+        paddingBottom: '0px'
+      }
+    }, team)));
   }))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", null, "Big 10"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
     className: "dropdown-submenu",
     style: {
@@ -30699,7 +30714,12 @@ var Navigation = function Navigation(props) {
   }, _lib_schools_js__WEBPACK_IMPORTED_MODULE_2___default.a.B1G.map(function (team, index) {
     return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
       to: "/team/".concat(team)
-    }, team));
+    }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      style: {
+        paddingTop: '0px',
+        paddingBottom: '0px'
+      }
+    }, team)));
   }))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", null, "Big-12"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
     className: "dropdown-submenu",
     style: {
@@ -30708,7 +30728,12 @@ var Navigation = function Navigation(props) {
   }, _lib_schools_js__WEBPACK_IMPORTED_MODULE_2___default.a.Big12.map(function (team, index) {
     return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
       to: "/team/".concat(team)
-    }, team));
+    }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      style: {
+        paddingTop: '0px',
+        paddingBottom: '0px'
+      }
+    }, team)));
   }))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", null, "Conference USA"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
     className: "dropdown-submenu",
     style: {
@@ -30717,7 +30742,12 @@ var Navigation = function Navigation(props) {
   }, _lib_schools_js__WEBPACK_IMPORTED_MODULE_2___default.a.CUSA.map(function (team, index) {
     return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
       to: "/team/".concat(team)
-    }, team));
+    }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      style: {
+        paddingTop: '0px',
+        paddingBottom: '0px'
+      }
+    }, team)));
   }))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", null, "Independents"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
     className: "dropdown-submenu",
     style: {
@@ -30726,7 +30756,12 @@ var Navigation = function Navigation(props) {
   }, _lib_schools_js__WEBPACK_IMPORTED_MODULE_2___default.a.Ind.map(function (team, index) {
     return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
       to: "/team/".concat(team)
-    }, team));
+    }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      style: {
+        paddingTop: '0px',
+        paddingBottom: '0px'
+      }
+    }, team)));
   }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, "Massachusetts"))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", null, "MAC"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
     className: "dropdown-submenu",
     style: {
@@ -30735,7 +30770,12 @@ var Navigation = function Navigation(props) {
   }, _lib_schools_js__WEBPACK_IMPORTED_MODULE_2___default.a.MAC.map(function (team, index) {
     return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
       to: "/team/".concat(team)
-    }, team));
+    }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      style: {
+        paddingTop: '0px',
+        paddingBottom: '0px'
+      }
+    }, team)));
   }))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", null, "Mountain West"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
     className: "dropdown-submenu",
     style: {
@@ -30744,7 +30784,12 @@ var Navigation = function Navigation(props) {
   }, _lib_schools_js__WEBPACK_IMPORTED_MODULE_2___default.a.MWC.map(function (team, index) {
     return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
       to: "/team/".concat(team)
-    }, team));
+    }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      style: {
+        paddingTop: '0px',
+        paddingBottom: '0px'
+      }
+    }, team)));
   }))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", null, "Pac-12"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
     className: "dropdown-submenu",
     style: {
@@ -30753,7 +30798,12 @@ var Navigation = function Navigation(props) {
   }, _lib_schools_js__WEBPACK_IMPORTED_MODULE_2___default.a.Pac12.map(function (team, index) {
     return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
       to: "/team/".concat(team)
-    }, team));
+    }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      style: {
+        paddingTop: '0px',
+        paddingBottom: '0px'
+      }
+    }, team)));
   }))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", null, "SEC"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
     className: "dropdown-submenu",
     style: {
@@ -30762,7 +30812,12 @@ var Navigation = function Navigation(props) {
   }, _lib_schools_js__WEBPACK_IMPORTED_MODULE_2___default.a.SEC.map(function (team, index) {
     return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
       to: "/team/".concat(team)
-    }, team));
+    }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      style: {
+        paddingTop: '0px',
+        paddingBottom: '0px'
+      }
+    }, team)));
   }))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", null, "Sun Belt"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
     className: "dropdown-submenu",
     style: {
@@ -30771,7 +30826,12 @@ var Navigation = function Navigation(props) {
   }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, "Appalachian State"), _lib_schools_js__WEBPACK_IMPORTED_MODULE_2___default.a.SunBelt.map(function (team, index) {
     return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
       to: "/team/".concat(team)
-    }, team));
+    }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      style: {
+        paddingTop: '0px',
+        paddingBottom: '0px'
+      }
+    }, team)));
   })))))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null), props.loginStatus === 'LOGGED_OUT' ? react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "signup-login",
     onClick: function onClick() {
@@ -40571,8 +40631,12 @@ var BallotItem = function BallotItem(props) {
     return b.week - a.week;
   });
   return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "year-container"
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     style: {
-      borderBottom: '1px'
+      textAlign: 'center',
+      color: 'white',
+      backgroundColor: 'black'
     }
   }, year._id), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["HashRouter"], null, year.polls.map(function (week, index) {
     return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
@@ -40582,8 +40646,10 @@ var BallotItem = function BallotItem(props) {
     }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["NavLink"], {
       to: "/my_ballots/".concat(year._id, "/").concat(week.week),
       activeClassName: "active-week"
-    }, "Week ", week.week));
-  })));
+    }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      className: "week"
+    }, "Week ", week.week)));
+  }))));
 };
 
 /* harmony default export */ __webpack_exports__["default"] = (MyBallots);

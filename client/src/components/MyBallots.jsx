@@ -58,18 +58,20 @@ var BallotItem = (props) => {
   year.polls.sort((a, b) => b.week - a.week)
   return(
     <div>
-      <div style={{ borderBottom: '1px' }}>{year._id}</div>
-      <Router>
-        {year.polls.map((week, index) => {
-          return(
-            <div style={{ fontSize: 20 }} >
-              <NavLink to={`/my_ballots/${year._id}/${week.week}`} activeClassName='active-week'>
-                Week {week.week}
-              </NavLink>
-            </div>
-          )
-        })}
-      </Router>
+      <div className='year-container'>
+        <div style={{ textAlign: 'center', color: 'white', backgroundColor: 'black' }}>{year._id}</div>
+        <Router>
+          {year.polls.map((week, index) => {
+            return(
+              <div style={{ fontSize: 20 }} >
+                <NavLink to={`/my_ballots/${year._id}/${week.week}`} activeClassName='active-week'>
+                  <div className='week'>Week {week.week}</div>
+                </NavLink>
+              </div>
+            )
+          })}
+        </Router>
+      </div>
     </div>
   )
 }
