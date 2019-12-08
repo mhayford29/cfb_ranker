@@ -1,5 +1,6 @@
 const mongoose = require('mongoose');
-const PASSWORD = process.env.PASSWORD || require('../config');
+require('dotenv').config();
+const PASSWORD = process.env.PASSWORD
 
 //mongoose.connect('mongodb://localhost/cfb_ranker', {useNewUrlParser: true});
 
