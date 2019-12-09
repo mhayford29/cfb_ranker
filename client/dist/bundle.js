@@ -117,6 +117,7 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
+console.log(_firebaseConfig_js__WEBPACK_IMPORTED_MODULE_5___default.a);
 firebase_app__WEBPACK_IMPORTED_MODULE_6__["initializeApp"](_firebaseConfig_js__WEBPACK_IMPORTED_MODULE_5___default.a);
 react_dom__WEBPACK_IMPORTED_MODULE_1___default.a.render(react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_redux__WEBPACK_IMPORTED_MODULE_2__["Provider"], {
   store: _store_js__WEBPACK_IMPORTED_MODULE_4__["default"]
@@ -57714,9 +57715,8 @@ var loginReducer = function loginReducer() {
 /* 283 */
 /***/ (function(module, exports, __webpack_require__) {
 
-/* WEBPACK VAR INJECTION */(function(process) {var FIREBASE_KEY = process.env.FIREBASE_KEY;
-module.exports = {
-  apiKey: FIREBASE_KEY,
+/* WEBPACK VAR INJECTION */(function(process) {module.exports = {
+  apiKey: process.env.FIREBASE_KEY,
   authDomain: "cfb-ranker.firebaseapp.com",
   databaseURL: "https://cfb-ranker.firebaseio.com",
   projectId: "cfb-ranker",

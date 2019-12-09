@@ -1,7 +1,5 @@
-const FIREBASE_KEY = process.env.FIREBASE_KEY
-
 module.exports = {
-  apiKey: FIREBASE_KEY,
+  apiKey: process.env.FIREBASE_KEY,
   authDomain: "cfb-ranker.firebaseapp.com",
   databaseURL: "https://cfb-ranker.firebaseio.com",
   projectId: "cfb-ranker",
