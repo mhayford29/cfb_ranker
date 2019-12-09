@@ -1,4 +1,4 @@
-const FIREBASE_KEY = process.env.FIREBASE_KEY || require('./config.js')
+const FIREBASE_KEY = process.env.FIREBASE_KEY
 
 module.exports = {
   apiKey: FIREBASE_KEY,

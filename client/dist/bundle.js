@@ -57714,8 +57714,7 @@ var loginReducer = function loginReducer() {
 /* 283 */
 /***/ (function(module, exports, __webpack_require__) {
 
-/* WEBPACK VAR INJECTION */(function(process) {var FIREBASE_KEY = process.env.FIREBASE_KEY || __webpack_require__(284);
-
+/* WEBPACK VAR INJECTION */(function(process) {var FIREBASE_KEY = process.env.FIREBASE_KEY;
 module.exports = {
   apiKey: FIREBASE_KEY,
   authDomain: "cfb-ranker.firebaseapp.com",
@@ -57727,13 +57726,6 @@ module.exports = {
   measurementId: "G-XC44H26XEP"
 };
 /* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(64)))
-
-/***/ }),
-/* 284 */
-/***/ (function(module, exports) {
-
-var FIREBASE_KEY = 'AIzaSyAA84qCDBk32EGCyOb-jMqj1n7I22PGjeE';
-module.exports = FIREBASE_KEY;
 
 /***/ })
 /******/ ]);
