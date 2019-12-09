@@ -1,4 +1,5 @@
 const path = require('path');
+const webpack = require('webpack')
 //const Dotenv = require('dotenv-webpack');
 
 module.exports = {  
@@ -22,5 +23,6 @@ module.exports = {
   },
   resolve: {
     extensions: [".js", ".jsx"]
-  }
+  },
+  plugins: [new webpack.EnvironmentPlugin(['FIREBASE_KEY'])]
 }

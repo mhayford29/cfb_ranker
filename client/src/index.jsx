@@ -7,8 +7,6 @@ import config from '../../firebaseConfig.js';
 import * as firebase from 'firebase/app';
 import 'firebase/auth';
 
-console.log(config)
-
 firebase.initializeApp(config);
 
 ReactDOM.render(<Provider store={store}> <AppContainer /> </Provider>, document.getElementById('app'))
