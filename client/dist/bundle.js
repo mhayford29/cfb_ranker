@@ -57709,13 +57709,11 @@ var loginReducer = function loginReducer() {
 
 /***/ }),
 /* 283 */
-/***/ (function(module, exports, __webpack_require__) {
+/***/ (function(module, exports) {
 
 //require('dotenv').config()
-var FIREBASE_KEY = __webpack_require__(284);
-
 module.exports = {
-  apiKey: FIREBASE_KEY,
+  apiKey: undefined,
   authDomain: "cfb-ranker.firebaseapp.com",
   databaseURL: "https://cfb-ranker.firebaseio.com",
   projectId: "cfb-ranker",
@@ -57724,13 +57722,6 @@ module.exports = {
   appId: "1:653104447417:web:588cc3d422670d9f860068",
   measurementId: "G-XC44H26XEP"
 };
-
-/***/ }),
-/* 284 */
-/***/ (function(module, exports) {
-
-var FIREBASE_KEY = 'AIzaSyBSZMxXcORd-DI5ZRR6Q-euNqeL-VpBN_A';
-module.exports = FIREBASE_KEY;
 
 /***/ })
 /******/ ]);
