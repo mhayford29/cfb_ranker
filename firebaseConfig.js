@@ -1,3 +1,5 @@
+require('dotenv').config()
+
 module.exports = {
   apiKey: process.env.FIREBASE_KEY,
   authDomain: "cfb-ranker.firebaseapp.com",

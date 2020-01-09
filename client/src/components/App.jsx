@@ -1,5 +1,4 @@
 import React from 'react';
-import axios from 'axios';
 import MyRankingsContainer from '../containers/myRankingsContainer.js';
 import { NavigationContainer } from '../containers/navigationContainer.js';
 import InfoDisplayContainer from '../containers/infoDisplayContainer.js';
@@ -64,7 +63,5 @@ class App extends React.Component {
     )
   }
 }
-
-
 
 export default App;
