@@ -28563,10 +28563,11 @@ function (_React$Component) {
   _createClass(Rankings, [{
     key: "handlePostRankings",
     value: function handlePostRankings() {
+      var today = new Date();
       var week = Object(_dateFunctions_js__WEBPACK_IMPORTED_MODULE_5__["getWeekNumber"])();
       axios__WEBPACK_IMPORTED_MODULE_1___default.a.patch("/api/userpolls", {
         email: firebase_app__WEBPACK_IMPORTED_MODULE_2___default.a.auth().currentUser.email,
-        year: 2019,
+        year: today.getFullYear(),
         week: week,
         poll: this.props.rankings
       }).then(function () {

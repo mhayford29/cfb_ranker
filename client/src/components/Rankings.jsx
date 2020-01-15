@@ -12,10 +12,11 @@ class Rankings extends React.Component {
   }
 
   handlePostRankings(){
+    var today = new Date
     var week = getWeekNumber();
     axios.patch(`/api/userpolls`, {
       email: firebase.auth().currentUser.email,
-      year: 2019,
+      year: today.getFullYear(),
       week: week,
       poll: this.props.rankings
     })
