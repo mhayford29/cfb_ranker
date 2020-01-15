@@ -5,6 +5,7 @@ module.exports = {
   teams: {
     get: (req, res) => {
       const { query } = req
+      console.log(query)
       model.GameIds.aggregate([
         { $match: query },
         { $lookup: {
@@ -13,19 +14,26 @@ module.exports = {
             foreignField: "id",
             as: "game_data"
         }},
+        { $unwind: "$game_data" },
         { $project: { 
           "game_data.week": 1,
           "game_data.data.boxscore.teams": 1,
           "game_data.data.scoringPlays": 1,
           "location": 1,
           "name": 1,
-          "schoolId": 1 ,
+          "schoolId": 1,
           "stats": 1,
           "color": 1,
           "alternateColor": 1,
           "logos": 1,
           "school": 1,
           "gameIds": 1
+        }},
+        { $match: {}},
+        { $group: {
+          _id: "$_id",
+          game_data: { $push: "$game_data" },
+          schoolData: { $first: "$$ROOT" }
         }}
       ])
       .then(data => {

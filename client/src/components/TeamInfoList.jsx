@@ -21,6 +21,7 @@ class TeamInfoList extends React.Component {
     Axios
       .get(`/api/team`, { params: { school: team }})
       .then(({ data }) => {
+        console.log(data)
         this.setState({
           displayedTeam: data
         }, () => console.log(this.state.displayedTeam))
@@ -32,13 +33,14 @@ class TeamInfoList extends React.Component {
     const { team } = this.props
     if(team !== prevProps.team){
       Axios
-      .get(`/api/team`, { params: { school: team }})
-      .then(({ data }) => {
-        this.setState({
-          displayedTeam: data
-        }, () => console.log(this.state.displayedTeam))
-      })
-      .catch(err => alert(err))
+        .get(`/api/team`, { params: { school: team }})
+        .then(({ data }) => {
+          console.log(data)
+          this.setState({
+            displayedTeam: data
+          }, () => console.log(this.state.displayedTeam))
+        })
+        .catch(err => alert(err))
     }
   }
 
