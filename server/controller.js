@@ -19,6 +19,7 @@ module.exports = {
           "game_data.week": 1,
           "game_data.data.boxscore.teams": 1,
           "game_data.data.scoringPlays": 1,
+          "game_data.data.header.competitions": 1,
           "location": 1,
           "name": 1,
           "schoolId": 1,
