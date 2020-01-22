@@ -52,7 +52,7 @@ var seedGameData = async () => {
   var idMemo = {};
   try{
     for(const school of teamFullNames){
-      let { data } = await axios.get(`http://localhost:3000/api/team`, {params: { school: school }})
+      let data = await GameIds.find({ school: school })
       try{
         for(const id of data[0].gameIds){
           if(!idMemo[id]){
@@ -66,12 +66,12 @@ var seedGameData = async () => {
               })
               console.log(`success in creating week ${result.data.header.week} data for ${school}`)
             } catch(err){
-              console.log('error with model.create')
+              console.log('error with gameIds.create')
             }
           }
         }
       } catch(err){
-        console.log('error getting api data')
+        console.log(err, 'error with gameIds.find()')
       }
     }
   } catch(err) {
