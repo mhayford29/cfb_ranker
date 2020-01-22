@@ -46,9 +46,13 @@ const ScheduleItem = (props) => {
 
 const NotPlayed = (props) => {
   const { game: { data: { boxscore: { teams } }} } = props;
+  const { game: { data: { header: {competitions }}}} = props;
+  var options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
+  var gameDate = new Date(competitions[0].date)
+  var gameDateStr = gameDate.toLocaleDateString("en-US", options)
   return(
     <div>
-      {teams[0].team.location} vs. {teams[1].team.location}
+      {gameDateStr} {teams[0].team.location} vs. {teams[1].team.location}
     </div>
   )
 }

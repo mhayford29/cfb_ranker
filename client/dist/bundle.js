@@ -54461,7 +54461,16 @@ var ScheduleItem = function ScheduleItem(props) {
 
 var NotPlayed = function NotPlayed(props) {
   var teams = props.game.data.boxscore.teams;
-  return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, teams[0].team.location, " vs. ", teams[1].team.location);
+  var competitions = props.game.data.header.competitions;
+  var options = {
+    weekday: 'long',
+    year: 'numeric',
+    month: 'long',
+    day: 'numeric'
+  };
+  var gameDate = new Date(competitions[0].date);
+  var gameDateStr = gameDate.toLocaleDateString("en-US", options);
+  return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, gameDateStr, " ", teams[0].team.location, " vs. ", teams[1].team.location);
 };
 
 /* harmony default export */ __webpack_exports__["default"] = (Schedule);
