@@ -13,10 +13,10 @@ var TeamInfoItem = (props) => {
   return(
     <div className="team-info-item">
       <div className="team-header-container">
-        <span width={200} height={200}>
-          <img src={schoolData.logos[0]} width={200} height={200}></img>
+        <span width={120} height={120}>
+          <img src={schoolData.logos[0]} width={120} height={120}></img>
         </span>
-        <span style={{ fontSize: '35px', display: 'flex', alignItems: 'center', justifyContent: 'center'}}>
+        <span style={{ fontSize: '40px', display: 'flex', alignItems: 'center', justifyContent: 'center'}}>
           {schoolData.location} {schoolData.name}
         </span>
       </div>

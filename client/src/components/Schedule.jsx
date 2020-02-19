@@ -6,7 +6,7 @@ const Schedule = (props) => {
     return a.week - b.week;
   })
   return(
-    <div>
+    <div style={{fontSize: '20px'}}>
       {schedule.map((game, index) => {
         return game.data.scoringPlays ? <ScheduleItem game={game} id={id} index={index}/> : <NotPlayed game={game} id={id} index={index}/>
       })} 

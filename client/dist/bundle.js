@@ -54345,15 +54345,15 @@ var TeamInfoItem = function TeamInfoItem(props) {
   }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "team-header-container"
   }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
-    width: 200,
-    height: 200
+    width: 120,
+    height: 120
   }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
     src: schoolData.logos[0],
-    width: 200,
-    height: 200
+    width: 120,
+    height: 120
   })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
     style: {
-      fontSize: '35px',
+      fontSize: '40px',
       display: 'flex',
       alignItems: 'center',
       justifyContent: 'center'
@@ -54420,7 +54420,11 @@ var Schedule = function Schedule(props) {
   schedule.sort(function (a, b) {
     return a.week - b.week;
   });
-  return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, schedule.map(function (game, index) {
+  return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    style: {
+      fontSize: '20px'
+    }
+  }, schedule.map(function (game, index) {
     return game.data.scoringPlays ? react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(ScheduleItem, {
       game: game,
       id: id,

@@ -121,7 +121,7 @@ a{
 
 .team-header-container{
   display: grid;
-  grid-template-columns: 200px auto;
+  grid-template-columns: 120px auto;
 }
 
 .second-row-container{
