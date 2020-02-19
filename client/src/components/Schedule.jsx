@@ -8,7 +8,7 @@ const Schedule = (props) => {
   return(
     <div>
       {schedule.map((game, index) => {
-        return game.data.scoringPlays ? <ScheduleItem game={game} id={id}/> : <NotPlayed game={game} id={id}/>
+        return game.data.scoringPlays ? <ScheduleItem game={game} id={id} index={index}/> : <NotPlayed game={game} id={id} index={index}/>
       })} 
     </div>
   )
@@ -17,8 +17,15 @@ const Schedule = (props) => {
 const ScheduleItem = (props) => {
   const { game, id } = props;
   const { homeScore, awayScore } = game.data.scoringPlays[game.data.scoringPlays.length - 1];
+  const { game: { data: { boxscore: { teams } }} } = props;
+  const { game: { data: { header: {competitions }}}} = props;
   var isHomeTeam = false;
   var win = false;
+  var options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
+  var gameDate = new Date(competitions[0].date)
+  var gameDateStr = gameDate.toLocaleDateString("en-US", options)
+  var backgroundColor;
+  (props.index + 1) % 2 === 1 ? backgroundColor = 'rgb(218, 218, 218)' : null
   if(game.data.boxscore.teams[1].team.id == id){
     isHomeTeam = true;
   }
@@ -32,7 +39,8 @@ const ScheduleItem = (props) => {
     }
   }
   return(
-    <div className="prev-game-item-container">
+    <div className="prev-game-item-container" style={{background: backgroundColor}}>
+      {gameDateStr}
       {isHomeTeam 
         ? <div>{game.data.boxscore.teams[0].team.location} <img src={game.data.boxscore.teams[0].team.logo} height={25} width={25}/></div> 
         : <div>@ {game.data.boxscore.teams[1].team.location} <img src={game.data.boxscore.teams[1].team.logo} height={25} width={25}/></div>}
@@ -50,9 +58,12 @@ const NotPlayed = (props) => {
   var options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
   var gameDate = new Date(competitions[0].date)
   var gameDateStr = gameDate.toLocaleDateString("en-US", options)
+  var backgroundColor;
+  (props.index + 1) % 2 === 1 ? backgroundColor = 'rgb(218, 218, 218)' : null
   return(
-    <div>
-      {gameDateStr} {teams[0].team.location} vs. {teams[1].team.location}
+    <div className="not-played-item-container" style={{background: backgroundColor}}>
+      <div>{gameDateStr}</div> 
+      <div>{teams[0].team.location} vs. {teams[1].team.location}</div>
     </div>
   )
 }
