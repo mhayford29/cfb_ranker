@@ -31,14 +31,14 @@ const TeamSelectModal = (props) => {
                 <div onClick={() => fetchTeam('UCF')}>Central Florida</div>
                 <div onClick={() => fetchTeam('Cincinnati')}>Cincinnati</div>
                 <div onClick={() => fetchTeam('East Carolina')}>East Carolina</div>
-                <div onClick={() => fetchTeam('Houston', 3)}>Houston</div>
-                <div onClick={() => fetchTeam('Memphis', 4)}>Memphis</div>
-                <div onClick={() => fetchTeam('Navy', 5)}>Navy</div>
-                <div onClick={() => fetchTeam('USF', 7)}>South Florida</div>
-                <div onClick={() => fetchTeam('SMU', 6)}>Southern Methodist</div>
-                <div onClick={() => fetchTeam('Temple', 8)}>Temple</div>
-                <div onClick={() => fetchTeam('Tulane', 9)}>Tulane</div>
-                <div onClick={() => fetchTeam('Tulsa', 10)}>Tulsa</div>
+                <div onClick={() => fetchTeam('Houston')}>Houston</div>
+                <div onClick={() => fetchTeam('Memphis')}>Memphis</div>
+                <div onClick={() => fetchTeam('Navy')}>Navy</div>
+                <div onClick={() => fetchTeam('USF')}>South Florida</div>
+                <div onClick={() => fetchTeam('SMU')}>Southern Methodist</div>
+                <div onClick={() => fetchTeam('Temple')}>Temple</div>
+                <div onClick={() => fetchTeam('Tulane')}>Tulane</div>
+                <div onClick={() => fetchTeam('Tulsa')}>Tulsa</div>
             </div>
             <div className="modal-column">
               <div className="modal-header">ACC</div>
@@ -76,118 +76,118 @@ const TeamSelectModal = (props) => {
             </div>
             <div className="modal-column">
             <div className="modal-header">Big 12</div>
-                <div onClick={() => fetchTeam('Baylor', 0)}>Baylor</div>
-                <div onClick={() => fetchTeam('Iowa State', 1)}>Iowa State</div>
-                <div onClick={() => fetchTeam('Kansas', 2)}>Kansas</div>
-                <div onClick={() => fetchTeam('Kansas State', 3)}>Kansas State</div>
-                <div onClick={() => fetchTeam('Oklahoma', 4)}>Oklahoma</div>
-                <div onClick={() => fetchTeam('Oklahoma State', 5)}>Oklahoma State</div>
-                <div onClick={() => fetchTeam('TCU', 6)}>TCU</div>
-                <div onClick={() => fetchTeam('Texas', 7)}>Texas</div>
-                <div onClick={() => fetchTeam('Texas Tech', 8)}>Texas Tech</div>
-                <div onClick={() => fetchTeam('West Virginia', 9)}>West Virginia</div>
+                <div onClick={() => fetchTeam('Baylor')}>Baylor</div>
+                <div onClick={() => fetchTeam('Iowa State')}>Iowa State</div>
+                <div onClick={() => fetchTeam('Kansas')}>Kansas</div>
+                <div onClick={() => fetchTeam('Kansas State')}>Kansas State</div>
+                <div onClick={() => fetchTeam('Oklahoma')}>Oklahoma</div>
+                <div onClick={() => fetchTeam('Oklahoma State')}>Oklahoma State</div>
+                <div onClick={() => fetchTeam('TCU')}>TCU</div>
+                <div onClick={() => fetchTeam('Texas')}>Texas</div>
+                <div onClick={() => fetchTeam('Texas Tech')}>Texas Tech</div>
+                <div onClick={() => fetchTeam('West Virginia')}>West Virginia</div>
             </div>
             <div className="modal-column">
             <div className="modal-header">C-USA</div>
-                <div onClick={() => fetchTeam('UAB', 10)}>Alabama Birmingham</div>
-                <div onClick={() => fetchTeam('FAU', 1)}>Florida Atlantic</div>
-                <div onClick={() => fetchTeam('Florida Intl', 2)}>Florida International</div>
-                <div onClick={() => fetchTeam('LA Tech', 3)}>Louisiana Tech</div>
-                <div onClick={() => fetchTeam('Marshall', 4)}>Marshall</div>
-                <div onClick={() => fetchTeam('Mid Tennessee', 5)}>Middle Tennessee</div>
-                <div onClick={() => fetchTeam('Charlotte', 0)}>North Carolina Charlotte</div>
-                <div onClick={() => fetchTeam('North Texas', 6)}>North Texas</div>
-                <div onClick={() => fetchTeam('Old Dominion', 7)}>Old Dominion</div>
-                <div onClick={() => fetchTeam('Rice', 8)}>Rice</div>
-                <div onClick={() => fetchTeam('Southern Miss', 9)}>Southern Miss</div>
-                <div onClick={() => fetchTeam('UTEP', 11)}>Texas El Paso</div>
-                <div onClick={() => fetchTeam('UTSA', 12)}>Texas San Antonio</div>
-                <div onClick={() => fetchTeam('W Kentucky', 13)}>Western Kentucky</div>
+                <div onClick={() => fetchTeam('UAB')}>Alabama Birmingham</div>
+                <div onClick={() => fetchTeam('FAU')}>Florida Atlantic</div>
+                <div onClick={() => fetchTeam('Florida Intl')}>Florida International</div>
+                <div onClick={() => fetchTeam('LA Tech')}>Louisiana Tech</div>
+                <div onClick={() => fetchTeam('Marshall')}>Marshall</div>
+                <div onClick={() => fetchTeam('Mid Tennessee')}>Middle Tennessee</div>
+                <div onClick={() => fetchTeam('Charlotte')}>North Carolina Charlotte</div>
+                <div onClick={() => fetchTeam('North Texas')}>North Texas</div>
+                <div onClick={() => fetchTeam('Old Dominion')}>Old Dominion</div>
+                <div onClick={() => fetchTeam('Rice')}>Rice</div>
+                <div onClick={() => fetchTeam('Southern Miss')}>Southern Miss</div>
+                <div onClick={() => fetchTeam('UTEP')}>Texas El Paso</div>
+                <div onClick={() => fetchTeam('UTSA')}>Texas San Antonio</div>
+                <div onClick={() => fetchTeam('W Kentucky')}>Western Kentucky</div>
             </div>
             <div className="modal-column">
             <div className="modal-header">Independents</div>
-                <div onClick={() => fetchTeam('Army', 0)}>Army</div>
-                <div onClick={() => fetchTeam('BYU', 1)}>BYU</div>
-                <div onClick={() => fetchTeam('UConn', 1)}>Connecticut</div>
-                <div onClick={() => fetchTeam('Liberty', 2)}>Liberty</div>
-                <div onClick={() => fetchTeam('New Mexico St', 3)}>New Mexico State</div>
-                <div onClick={() => fetchTeam('Notre Dame', 4)}>Notre Dame</div>
+                <div onClick={() => fetchTeam('Army')}>Army</div>
+                <div onClick={() => fetchTeam('BYU')}>BYU</div>
+                <div onClick={() => fetchTeam('UConn')}>Connecticut</div>
+                <div onClick={() => fetchTeam('Liberty')}>Liberty</div>
+                <div onClick={() => fetchTeam('New Mexico St')}>New Mexico State</div>
+                <div onClick={() => fetchTeam('Notre Dame')}>Notre Dame</div>
                 <div>Massachusetts</div>
             </div>
             <div className="modal-column">
             <div className="modal-header">MAC</div>
-                <div onClick={() => fetchTeam('Akron', 0)}>Akron</div>
-                <div onClick={() => fetchTeam('Ball State', 1)}>Ball State</div>
-                <div onClick={() => fetchTeam('Bowling Green', 2)}>Bowling Green</div>
-                <div onClick={() => fetchTeam('Buffalo', 3)}>Buffalo</div>
-                <div onClick={() => fetchTeam('Cent Michigan', 4)}>Central Michigan</div>
-                <div onClick={() => fetchTeam('E Michigan', 5)}>Eastern Michigan</div>
-                <div onClick={() => fetchTeam('Kent State', 6)}>Kent State</div>
-                <div onClick={() => fetchTeam('Miami (OH)', 7)}>Miami University</div>
-                <div onClick={() => fetchTeam('N Illinois', 8)}>Northern Illinois</div>
-                <div onClick={() => fetchTeam('Ohio', 9)}>Ohio University</div>
-                <div onClick={() => fetchTeam('Toledo', 10)}>Toledo</div>
-                <div onClick={() => fetchTeam('W Michigan', 11)}>Western Michigan</div>
+                <div onClick={() => fetchTeam('Akron')}>Akron</div>
+                <div onClick={() => fetchTeam('Ball State')}>Ball State</div>
+                <div onClick={() => fetchTeam('Bowling Green')}>Bowling Green</div>
+                <div onClick={() => fetchTeam('Buffalo')}>Buffalo</div>
+                <div onClick={() => fetchTeam('Cent Michigan')}>Central Michigan</div>
+                <div onClick={() => fetchTeam('E Michigan')}>Eastern Michigan</div>
+                <div onClick={() => fetchTeam('Kent State')}>Kent State</div>
+                <div onClick={() => fetchTeam('Miami (OH)')}>Miami University</div>
+                <div onClick={() => fetchTeam('N Illinois')}>Northern Illinois</div>
+                <div onClick={() => fetchTeam('Ohio')}>Ohio University</div>
+                <div onClick={() => fetchTeam('Toledo')}>Toledo</div>
+                <div onClick={() => fetchTeam('W Michigan')}>Western Michigan</div>
             </div>
             <div className="modal-column">
             <div className="modal-header">MWC</div>
-                <div onClick={() => fetchTeam('Air Force', 0)}>Air Force</div>
-                <div onClick={() => fetchTeam('Boise State', 1)}>Boise State</div>
-                <div onClick={() => fetchTeam('Colorado State', 2)}>Colorado State</div>
-                <div onClick={() => fetchTeam('Fresno State', 3)}>Fresno State</div>
-                <div onClick={() => fetchTeam(`Hawai'i`, 4)}>Hawaii</div>
-                <div onClick={() => fetchTeam('Nevada', 5)}>Nevada</div>
-                <div onClick={() => fetchTeam('UNLV', 9)}>Nevada Las Vegas</div>
-                <div onClick={() => fetchTeam('New Mexico', 6)}>New Mexico</div>
-                <div onClick={() => fetchTeam('San Diego State', 7)}>San Diego State</div>
-                <div onClick={() => fetchTeam('San Jose State', 8)}>San Jose State</div>
-                <div onClick={() => fetchTeam('Utah State', 10)}>Utah State</div>
-                <div onClick={() => fetchTeam('Wyoming', 11)}>Wyoming</div>
+                <div onClick={() => fetchTeam('Air Force')}>Air Force</div>
+                <div onClick={() => fetchTeam('Boise State')}>Boise State</div>
+                <div onClick={() => fetchTeam('Colorado State')}>Colorado State</div>
+                <div onClick={() => fetchTeam('Fresno State')}>Fresno State</div>
+                <div onClick={() => fetchTeam(`Hawai'i`)}>Hawaii</div>
+                <div onClick={() => fetchTeam('Nevada')}>Nevada</div>
+                <div onClick={() => fetchTeam('UNLV')}>Nevada Las Vegas</div>
+                <div onClick={() => fetchTeam('New Mexico')}>New Mexico</div>
+                <div onClick={() => fetchTeam('San Diego State')}>San Diego State</div>
+                <div onClick={() => fetchTeam('San Jose State')}>San Jose State</div>
+                <div onClick={() => fetchTeam('Utah State')}>Utah State</div>
+                <div onClick={() => fetchTeam('Wyoming')}>Wyoming</div>
             </div>
             <div className="modal-column">
             <div className="modal-header">Pac 12</div>
-                <div onClick={() => fetchTeam('Arizona', 0)}>Arizona</div>
-                <div onClick={() => fetchTeam('Arizona State', 1)}>Arizona State</div>
+                <div onClick={() => fetchTeam('Arizona')}>Arizona</div>
+                <div onClick={() => fetchTeam('Arizona State')}>Arizona State</div>
                 <div onClick={() => fetchTeam('Cal')}>California</div>
-                <div onClick={() => fetchTeam('Colorado', 3)}>Colorado</div>
-                <div onClick={() => fetchTeam('Oregon', 4)}>Oregon</div>
-                <div onClick={() => fetchTeam('Oregon St', 5)}>Oregon State</div>
-                <div onClick={() => fetchTeam('Stanford', 6)}>Stanford</div>
-                <div onClick={() => fetchTeam('UCLA', 7)}>UCLA</div>
-                <div onClick={() => fetchTeam('USC', 8)}>USC</div>
-                <div onClick={() => fetchTeam('Utah', 9)}>Utah</div>
-                <div onClick={() => fetchTeam('Washington', 10)}>Washington</div>
-                <div onClick={() => fetchTeam('Washington St', 11)}>Washington State</div>
+                <div onClick={() => fetchTeam('Colorado')}>Colorado</div>
+                <div onClick={() => fetchTeam('Oregon')}>Oregon</div>
+                <div onClick={() => fetchTeam('Oregon St')}>Oregon State</div>
+                <div onClick={() => fetchTeam('Stanford')}>Stanford</div>
+                <div onClick={() => fetchTeam('UCLA')}>UCLA</div>
+                <div onClick={() => fetchTeam('USC')}>USC</div>
+                <div onClick={() => fetchTeam('Utah')}>Utah</div>
+                <div onClick={() => fetchTeam('Washington')}>Washington</div>
+                <div onClick={() => fetchTeam('Washington St')}>Washington State</div>
             </div>
             <div className="modal-column">
             <div className="modal-header">SEC</div>
                 <div onClick={() => fetchTeam('Alabama')}>Alabama</div>
                 <div onClick={() => fetchTeam('Arkansas')}>Arkansas</div>
-                <div onClick={() => fetchTeam('Auburn', 2)}>Auburn</div>
-                <div onClick={() => fetchTeam('Florida', 3)}>Florida</div>
-                <div onClick={() => fetchTeam('Georgia', 4)}>Georgia</div>
-                <div onClick={() => fetchTeam('Kentucky', 5)}>Kentucky</div>
-                <div onClick={() => fetchTeam('LSU', 6)}>LSU</div>
-                <div onClick={() => fetchTeam('Ole Miss', 9)}>Ole Miss</div>
-                <div onClick={() => fetchTeam('Miss St', 7)}>Mississippi State</div>
-                <div onClick={() => fetchTeam('Missouri', 8)}>Missouri</div>
-                <div onClick={() => fetchTeam('S Carolina', 10)}>South Carolina</div>
-                <div onClick={() => fetchTeam('Tennessee', 11)}>Tennessee</div>
-                <div onClick={() => fetchTeam('Texas A&M', 12)}>Texas A&M</div>
-                <div onClick={() => fetchTeam('Vanderbilt', 13)}>Vanderbilt</div>
+                <div onClick={() => fetchTeam('Auburn')}>Auburn</div>
+                <div onClick={() => fetchTeam('Florida')}>Florida</div>
+                <div onClick={() => fetchTeam('Georgia')}>Georgia</div>
+                <div onClick={() => fetchTeam('Kentucky')}>Kentucky</div>
+                <div onClick={() => fetchTeam('LSU')}>LSU</div>
+                <div onClick={() => fetchTeam('Ole Miss')}>Ole Miss</div>
+                <div onClick={() => fetchTeam('Miss St')}>Mississippi State</div>
+                <div onClick={() => fetchTeam('Missouri')}>Missouri</div>
+                <div onClick={() => fetchTeam('S Carolina')}>South Carolina</div>
+                <div onClick={() => fetchTeam('Tennessee')}>Tennessee</div>
+                <div onClick={() => fetchTeam('Texas A&M')}>Texas A&M</div>
+                <div onClick={() => fetchTeam('Vanderbilt')}>Vanderbilt</div>
             </div>
             <div className="modal-column">
             <div className="modal-header">Sun Belt</div>
                 <div>Appalachian State</div>
-                <div onClick={() => fetchTeam('Arkansas State', 1)}>Arkansas State</div>
-                <div onClick={() => fetchTeam('C. Carolina', 2)}>Coastal Carolina</div>
-                <div onClick={() => fetchTeam('Ga Southern', 3)}>Georgia Southern</div>
-                <div onClick={() => fetchTeam('Georgia State', 4)}>Georgia State</div>
-                <div onClick={() => fetchTeam('Louisiana', 5)}>Louisiana Lafayette</div>
-                <div onClick={() => fetchTeam('UL Monroe', 6)}>Louisiana Monroe</div>
-                <div onClick={() => fetchTeam('South Alabama', 7)}>South Alabama</div>
-                <div onClick={() => fetchTeam('Texas State', 8)}>Texas State</div>
-                <div onClick={() => fetchTeam('Troy', 9)}>Troy</div>
+                <div onClick={() => fetchTeam('Arkansas State')}>Arkansas State</div>
+                <div onClick={() => fetchTeam('C. Carolina')}>Coastal Carolina</div>
+                <div onClick={() => fetchTeam('Ga Southern')}>Georgia Southern</div>
+                <div onClick={() => fetchTeam('Georgia State')}>Georgia State</div>
+                <div onClick={() => fetchTeam('Louisiana')}>Louisiana Lafayette</div>
+                <div onClick={() => fetchTeam('UL Monroe')}>Louisiana Monroe</div>
+                <div onClick={() => fetchTeam('South Alabama')}>South Alabama</div>
+                <div onClick={() => fetchTeam('Texas State')}>Texas State</div>
+                <div onClick={() => fetchTeam('Troy')}>Troy</div>
             </div>
           </div>
         </Modal>
