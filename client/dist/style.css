@@ -475,6 +475,7 @@ i {
   height: auto;
   width: 60%;
   overflow: hidden;
+  margin-bottom: 25px;
 }
 
 .active-week div{

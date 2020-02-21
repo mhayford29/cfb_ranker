@@ -3,7 +3,7 @@ import axios from 'axios';
 import firebase from 'firebase/app';
 import 'firebase/auth';
 import RankedTeamContainer from '../containers/rankedTeamContainer.js';
-import { getWeekNumber, isValidDay } from '../../../dateFunctions.js'
+import DateFunctions from '../../../dateFunctions.js'
 
 class Rankings extends React.Component {
   constructor(props){
@@ -13,7 +13,8 @@ class Rankings extends React.Component {
 
   handlePostRankings(){
     var today = new Date
-    var week = getWeekNumber();
+    var week = DateFunctions.getWeekNumber();
+    week < 0 ? week = 0 : null
     axios.patch(`/api/userpolls`, {
       email: firebase.auth().currentUser.email,
       year: today.getFullYear(),
@@ -27,13 +28,13 @@ class Rankings extends React.Component {
   render(){
     return(
       <div className="rankings-container">
-        <div>Your poll for week {getWeekNumber()}:</div>   
+        <div>Your way-too-early poll for 2020:</div>   
         {this.props.rankings.map((team, index) => {
           return <RankedTeamContainer team={team} index={index} />
         })}
-        {isValidDay() 
-        ? <div className="test" onClick={this.handlePostRankings}>Save</div>
-        : null}
+        {DateFunctions.isValidDay() || DateFunctions.isValidWeek()
+          ? <div className="test" onClick={this.handlePostRankings}>Save</div>
+          : null}
       </div>
     )
   }

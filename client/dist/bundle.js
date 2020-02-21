@@ -28564,7 +28564,8 @@ function (_React$Component) {
     key: "handlePostRankings",
     value: function handlePostRankings() {
       var today = new Date();
-      var week = Object(_dateFunctions_js__WEBPACK_IMPORTED_MODULE_5__["getWeekNumber"])();
+      var week = _dateFunctions_js__WEBPACK_IMPORTED_MODULE_5___default.a.getWeekNumber();
+      week < 0 ? week = 0 : null;
       axios__WEBPACK_IMPORTED_MODULE_1___default.a.patch("/api/userpolls", {
         email: firebase_app__WEBPACK_IMPORTED_MODULE_2___default.a.auth().currentUser.email,
         year: today.getFullYear(),
@@ -28581,12 +28582,12 @@ function (_React$Component) {
     value: function render() {
       return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "rankings-container"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, "Your poll for week ", Object(_dateFunctions_js__WEBPACK_IMPORTED_MODULE_5__["getWeekNumber"])(), ":"), this.props.rankings.map(function (team, index) {
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, "Your way-too-early poll for 2020:"), this.props.rankings.map(function (team, index) {
         return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_containers_rankedTeamContainer_js__WEBPACK_IMPORTED_MODULE_4__["default"], {
           team: team,
           index: index
         });
-      }), Object(_dateFunctions_js__WEBPACK_IMPORTED_MODULE_5__["isValidDay"])() ? react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      }), _dateFunctions_js__WEBPACK_IMPORTED_MODULE_5___default.a.isValidDay() || _dateFunctions_js__WEBPACK_IMPORTED_MODULE_5___default.a.isValidWeek() ? react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "test",
         onClick: this.handlePostRankings
       }, "Save") : null);
@@ -33638,7 +33639,8 @@ var moment = __webpack_require__(92);
 
 module.exports = {
   getWeekNumber: function getWeekNumber() {
-    var start = new Date('2019-08-24 23:00:00');
+    //start is the date of the first saturday of the season, not the first full saturday of the season
+    var start = new Date('2020-08-29 23:00:00');
     var end = new Date();
     var diff = new moment.duration(end.getTime() - start.getTime());
     return Math.floor(diff.asWeeks()) + 1;
@@ -33646,6 +33648,10 @@ module.exports = {
   isValidDay: function isValidDay() {
     var currentDate = new Date();
     return currentDate.getDay() < 2 ? true : false;
+  },
+  isValidWeek: function isValidWeek() {
+    var weekNumber = this.getWeekNumber();
+    return weekNumber < 0 ? true : false;
   }
 };
 
@@ -57071,6 +57077,9 @@ function (_React$Component) {
     value: function render() {
       var _this3 = this;
 
+      this.state.polls.sort(function (a, b) {
+        return b._id - a._id;
+      });
       return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         style: {
           paddingLeft: '25px',
@@ -57082,12 +57091,12 @@ function (_React$Component) {
         }
       }, "My Ballots"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "ballot-container"
-      }, this.state.polls.map(function (year, index) {
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, this.state.polls.map(function (year, index) {
         return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(BallotItem, {
           year: year,
           index: index
         });
-      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["HashRouter"], null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Route"], {
+      })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["HashRouter"], null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Route"], {
         path: "/my_ballots/:year/:week",
         render: function render(props) {
           return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_UserPoll_jsx__WEBPACK_IMPORTED_MODULE_6__["default"], _extends({}, props, {
@@ -57106,7 +57115,7 @@ var BallotItem = function BallotItem(props) {
   year.polls.sort(function (a, b) {
     return b.week - a.week;
   });
-  return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+  return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "year-container"
   }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     style: {
@@ -57124,8 +57133,8 @@ var BallotItem = function BallotItem(props) {
       activeClassName: "active-week"
     }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
       className: "week"
-    }, "Week ", week.week)));
-  }))));
+    }, week.week > 0 ? "Week ".concat(week.week) : "Preseason")));
+  })));
 };
 
 /* harmony default export */ __webpack_exports__["default"] = (MyBallots);
