@@ -28566,7 +28566,7 @@ function (_React$Component) {
       var today = new Date();
       var week = _dateFunctions_js__WEBPACK_IMPORTED_MODULE_5___default.a.getWeekNumber();
       week < 0 ? week = 0 : null;
-      firebase_app__WEBPACK_IMPORTED_MODULE_2___default.a.auth().currentUser === null ? alert('Error saving poll. Please sign in to save polls.') : axios__WEBPACK_IMPORTED_MODULE_1___default.a.patch("/api/userpolls", {
+      firebase_app__WEBPACK_IMPORTED_MODULE_2___default.a.auth().currentUser === null ? alert('Please sign in to save your poll.') : axios__WEBPACK_IMPORTED_MODULE_1___default.a.patch("/api/userpolls", {
         email: firebase_app__WEBPACK_IMPORTED_MODULE_2___default.a.auth().currentUser.email,
         year: today.getFullYear(),
         week: week,
@@ -28574,7 +28574,7 @@ function (_React$Component) {
       }).then(function () {
         return alert('poll submitted successfully!');
       })["catch"](function (err) {
-        return alert('Error saving poll. Please sign in to save polls.');
+        return alert('There was an error with your submission');
       });
     }
   }, {

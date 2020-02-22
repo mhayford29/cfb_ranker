@@ -15,7 +15,7 @@ class Rankings extends React.Component {
     var today = new Date
     var week = DateFunctions.getWeekNumber();
     week < 0 ? week = 0 : null
-    firebase.auth().currentUser === null ? alert('Error saving poll. Please sign in to save polls.') :
+    firebase.auth().currentUser === null ? alert('Please sign in to save your poll.') :
     axios.patch(`/api/userpolls`, {
       email: firebase.auth().currentUser.email,
       year: today.getFullYear(),
@@ -23,7 +23,7 @@ class Rankings extends React.Component {
       poll: this.props.rankings
     })
     .then(() => alert('poll submitted successfully!'))
-    .catch(err => alert('Error saving poll. Please sign in to save polls.'))
+    .catch(err => alert('There was an error with your submission'))
   }
 
   render(){
