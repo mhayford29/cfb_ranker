@@ -15,6 +15,7 @@ class Rankings extends React.Component {
     var today = new Date
     var week = DateFunctions.getWeekNumber();
     week < 0 ? week = 0 : null
+    firebase.auth().currentUser === null ? alert('Error saving poll. Please sign in to save polls.') :
     axios.patch(`/api/userpolls`, {
       email: firebase.auth().currentUser.email,
       year: today.getFullYear(),
@@ -22,13 +23,13 @@ class Rankings extends React.Component {
       poll: this.props.rankings
     })
     .then(() => alert('poll submitted successfully!'))
-    .catch(err => console.log(err))
+    .catch(err => alert('Error saving poll. Please sign in to save polls.'))
   }
 
   render(){
     return(
       <div className="rankings-container">
-        <div>Your way-too-early poll for 2020:</div>   
+        <div style={{marginBottom: '10px'}}>Your way-too-early poll for 2020:</div>   
         {this.props.rankings.map((team, index) => {
           return <RankedTeamContainer team={team} index={index} />
         })}

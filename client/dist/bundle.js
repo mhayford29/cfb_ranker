@@ -28566,7 +28566,7 @@ function (_React$Component) {
       var today = new Date();
       var week = _dateFunctions_js__WEBPACK_IMPORTED_MODULE_5___default.a.getWeekNumber();
       week < 0 ? week = 0 : null;
-      axios__WEBPACK_IMPORTED_MODULE_1___default.a.patch("/api/userpolls", {
+      firebase_app__WEBPACK_IMPORTED_MODULE_2___default.a.auth().currentUser === null ? alert('Error saving poll. Please sign in to save polls.') : axios__WEBPACK_IMPORTED_MODULE_1___default.a.patch("/api/userpolls", {
         email: firebase_app__WEBPACK_IMPORTED_MODULE_2___default.a.auth().currentUser.email,
         year: today.getFullYear(),
         week: week,
@@ -28574,7 +28574,7 @@ function (_React$Component) {
       }).then(function () {
         return alert('poll submitted successfully!');
       })["catch"](function (err) {
-        return console.log(err);
+        return alert('Error saving poll. Please sign in to save polls.');
       });
     }
   }, {
@@ -28582,7 +28582,11 @@ function (_React$Component) {
     value: function render() {
       return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "rankings-container"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, "Your way-too-early poll for 2020:"), this.props.rankings.map(function (team, index) {
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        style: {
+          marginBottom: '10px'
+        }
+      }, "Your way-too-early poll for 2020:"), this.props.rankings.map(function (team, index) {
         return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_containers_rankedTeamContainer_js__WEBPACK_IMPORTED_MODULE_4__["default"], {
           team: team,
           index: index
