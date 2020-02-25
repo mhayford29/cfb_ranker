@@ -13,7 +13,7 @@ class Standings extends React.Component{
   render(){
     if(this.props.standings.children){
       return(
-        <div style={{ marginBottom: '50px'}}>
+        <div style={{ marginBottom: '50px' }}>
           {this.props.standings.children.map((conf, index) => {
             return <Conference conf={conf} addToRankings={this.props.addToRankings}/>
           })}

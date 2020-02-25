@@ -206,7 +206,7 @@ a{
 .poll-item-container{
   display: grid;
   grid-template-columns: 30% 15% auto;
-  font-size: 25px;
+  font-size: 18px;
 }
 
 .thumbnail{

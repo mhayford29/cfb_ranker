@@ -56654,7 +56654,16 @@ var PublishedPoll = function PublishedPoll(props) {
   var id = props.match.params.id;
 
   if (props.publishedPolls.length) {
-    return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, props.publishedPolls[id].name), props.publishedPolls[id].ranks.map(function (team, index) {
+    return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      style: {
+        marginLeft: '150px',
+        marginRight: '150px'
+      }
+    }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      style: {
+        textAlign: 'center'
+      }
+    }, props.publishedPolls[id].name), props.publishedPolls[id].ranks.map(function (team, index) {
       return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_containers_conferenceItemContainer_js__WEBPACK_IMPORTED_MODULE_1__["PollItemContainer"], {
         team: team,
         rank: index + 1,
@@ -56665,7 +56674,11 @@ var PublishedPoll = function PublishedPoll(props) {
         marginBottom: '30px'
       }
     }, "Others recieving votes: ", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), props.publishedPolls[id].others.map(function (team, index) {
-      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
+      return index === props.publishedPolls[id].others.length - 1 ? react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
+        style: {
+          fontSize: '25px'
+        }
+      }, team.team.location, ": ", team.points) : react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
         style: {
           fontSize: '25px'
         }
@@ -56775,23 +56788,32 @@ __webpack_require__.r(__webpack_exports__);
 
 
 var PollItem = function PollItem(props) {
-  var team = props.team;
+  var team = props.team,
+      rank = props.rank;
   var teamInfo = {
     school: team.team.location,
     record: team.recordSummary,
     logo: team.team.logo
   };
+  var backgroundColor;
+  rank % 2 === 1 ? backgroundColor = 'rgb(218, 218, 218)' : null;
   return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-    className: "poll-item-container"
-  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, props.rank, ". ", team.team.location), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
+    className: "poll-item-container",
+    style: {
+      background: backgroundColor
+    }
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, rank, ". ", team.team.location), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
     src: team.team.logo,
     className: "thumbnail"
-  }), team.recordSummary), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
-    className: "button",
+  }), team.recordSummary), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    style: {
+      marginLeft: '25%'
+    },
+    className: "conference-item-rank-button",
     onClick: function onClick() {
       return props.addToRankings(teamInfo);
     }
-  }, "Rank ", team.team.location)));
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", null, "Rank ", team.team.location))));
 };
 
 /* harmony default export */ __webpack_exports__["default"] = (PollItem);

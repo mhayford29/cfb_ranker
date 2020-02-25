@@ -5,7 +5,7 @@ var PublishedPoll = (props) => {
   const { id } = props.match.params;
   if(props.publishedPolls.length){
     return(
-      <div style={{marginLeft: '100px', marginRight: '100px'}}>
+      <div style={{marginLeft: '150px', marginRight: '150px'}}>
         <div style={{textAlign: 'center'}}>
           {props.publishedPolls[id].name}
         </div>
