@@ -56671,18 +56671,19 @@ var PublishedPoll = function PublishedPoll(props) {
       });
     }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
       style: {
-        marginBottom: '30px'
+        margin: '15px 0px 30px 0px',
+        fontSize: '30px'
       }
     }, "Others recieving votes: ", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), props.publishedPolls[id].others.map(function (team, index) {
       return index === props.publishedPolls[id].others.length - 1 ? react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
         style: {
-          fontSize: '25px'
+          fontSize: '18px'
         }
-      }, team.team.location, ": ", team.points) : react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
+      }, team.team.location, ": ", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("b", null, team.points)) : react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
         style: {
-          fontSize: '25px'
+          fontSize: '18px'
         }
-      }, team.team.location, ": ", team.points, ",", '  ');
+      }, team.team.location, ": ", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("b", null, team.points), ",", '  ');
     })));
   } else {
     return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {

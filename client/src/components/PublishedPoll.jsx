@@ -12,12 +12,12 @@ var PublishedPoll = (props) => {
         {props.publishedPolls[id].ranks.map((team, index) => {
           return <PollItemContainer team={team} rank={index + 1} addToRankings={props.addToRankings}/>
         })}
-        <div style={{ marginBottom: '30px' }}>
+        <div style={{ margin: '15px 0px 30px 0px', fontSize: '30px' }}>
           Others recieving votes: <br/>
           {props.publishedPolls[id].others.map((team, index) => {
             return index === props.publishedPolls[id].others.length - 1
-            ?  <span style={{ fontSize: '25px' }}>{team.team.location}: {team.points}</span>
-            :  <span style={{ fontSize: '25px' }}>{team.team.location}: {team.points},{'  '}</span>
+            ?  <span style={{ fontSize: '18px' }}>{team.team.location}: <b>{team.points}</b></span>
+            :  <span style={{ fontSize: '18px' }}>{team.team.location}: <b>{team.points}</b>,{'  '}</span>
           })}
         </div>
       </div>
